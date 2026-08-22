@@ -1,9 +1,12 @@
 # Apneia na Prática — Landing Page Oficial
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](./CHANGELOG.md)
+[![Live Demo](https://img.shields.io/badge/demo-GitHub%20Pages-success.svg)](https://ltraina0.github.io/apneia-na-pratica-lp/)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](./CHANGELOG.md)
 [![Framework](https://img.shields.io/badge/framework-Astro%205.x-orange.svg)](https://astro.build)
 [![Multi-AI](https://img.shields.io/badge/AI%20Governance-AGENTS.md-purple.svg)](./AGENTS.md)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](#)
+
+> 🌐 **Deploy em Produção (GitHub Pages):** [https://ltraina0.github.io/apneia-na-pratica-lp/](https://ltraina0.github.io/apneia-na-pratica-lp/)
 
 Repositório oficial da Landing Page de alta conversão para o treinamento e cartilha prática **"Apneia na Prática"**, voltado para cirurgiões-dentistas que desejam identificar sinais de distúrbios respiratórios do sono na consulta clínica e estabelecer critérios seguros de encaminhamento.
 

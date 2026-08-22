@@ -7,6 +7,15 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.0.1] - 2026-08-22
+
+### Adicionado
+- **Deploy no GitHub Pages:** Publicação oficial da Landing Page em [https://ltraina0.github.io/apneia-na-pratica-lp/](https://ltraina0.github.io/apneia-na-pratica-lp/).
+- **Configuração de Base URL:** Ajuste em `astro.config.mjs` e nos componentes para suportar caminhos estáticos no GitHub Pages.
+- **Suporte a .nojekyll:** Inclusão de `.nojekyll` para permitir o carregamento correto dos assets do Astro (`_astro/`).
+
+---
+
 ## [1.0.0] - 2026-08-22
 
 ### Adicionado
