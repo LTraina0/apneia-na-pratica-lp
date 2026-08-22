@@ -1,16 +1,17 @@
 ---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <section class="hero-section" id="inicio">
   <!-- Camada de Fundo Sutil Clínico -->
-  <div class="hero-bg-layer" aria-hidden="true"></div>
+  <div class="hero-bg-layer" style={`background-image: url('${baseUrl}assets/hero-bg.jpg');`} aria-hidden="true"></div>
 
   <div class="container text-center hero-content">
     
     <!-- Logo Real Oficial -->
     <div class="logo-wrapper reveal delay-1">
       <img 
-        src="/assets/logo.png" 
+        src={`${baseUrl}assets/logo.png`} 
         alt="Apneia na Prática" 
         width="164" 
         height="75" 
@@ -33,7 +34,7 @@
     <div class="mockup-wrapper reveal delay-3">
       <div class="mockup-ambient-glow" aria-hidden="true"></div>
       <img 
-        src="/assets/mockup.png" 
+        src={`${baseUrl}assets/mockup.png`} 
         alt="Mockup do treinamento Apneia na Prática exibido em notebook, tablet e smartphone" 
         width="580" 
         height="385" 
@@ -76,7 +77,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/assets/hero-bg.jpg') center top / cover no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
     opacity: 0.6;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 65%, rgba(0, 0, 0, 0) 100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 65%, rgba(0, 0, 0, 0) 100%);
