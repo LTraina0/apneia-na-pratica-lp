@@ -1,0 +1,321 @@
+---
+const learningPoints = [
+  "Como trazer o sono para a anamnese de forma mais direcionada.",
+  "O que observar durante a consulta.",
+  "Como analisar sinais dentro do contexto do paciente.",
+  "Como utilizar questionários como apoio à investigação.",
+  "Como evitar conclusões a partir de sinais isolados.",
+  "Quando existem motivos para aprofundar ou encaminhar."
+];
+---
+
+<section class="offer-section" id="oferta">
+  <div class="container">
+    <div class="offer-grid">
+
+      <!-- Coluna Esquerda: Conteúdo (7/12) -->
+      <div class="offer-content reveal">
+        <div class="eyebrow-wrapper">
+          <span class="eyebrow eyebrow-accent">
+            O QUE VOCÊ RECEBE
+          </span>
+        </div>
+
+        <h2 class="offer-heading">
+          Apneia na Prática: um treinamento direto ao ponto para levar mais critério à investigação durante a consulta.
+        </h2>
+
+        <p class="offer-intro">
+          Você vai aprender a reconhecer sinais de possível apneia, conduzir perguntas mais direcionadas e organizar melhor as informações antes de decidir quando a investigação merece avançar.
+        </p>
+
+        <div class="learning-block">
+          <h3 class="learning-title">No treinamento, você vai aprender:</h3>
+          <ul class="learning-list">
+            {learningPoints.map((point) => (
+              <li class="learning-item">
+                <span class="check-icon" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                <span class="learning-text">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Bloco de Bônus / Cartilha -->
+        <div class="bonus-box">
+          <div class="bonus-tag">Você também recebe</div>
+          <p class="bonus-desc">
+            <strong>Uma cartilha prática para uso no consultório</strong>, pensada para ajudar a levar o conteúdo do treinamento para a rotina clínica.
+          </p>
+        </div>
+      </div>
+
+      <!-- Coluna Direita: Offer Card (5/12) -->
+      <div class="offer-card-wrapper reveal delay-2">
+        <div class="offer-card">
+          <div class="offer-badge">Acesso Imediato</div>
+          
+          <div class="offer-brand">
+            <span class="product-name">APNEIA NA PRÁTICA</span>
+            <span class="product-bundle">Treinamento + cartilha prática</span>
+          </div>
+
+          <hr class="offer-divider" />
+
+          <div class="investment-block">
+            <span class="investment-label">INVESTIMENTO</span>
+            <div class="price-value">R$ 47,00</div>
+          </div>
+
+          <a href="https://pay.hotmart.com" target="_blank" rel="noopener noreferrer" class="btn-primary offer-btn">
+            QUERO ACESSAR AGORA
+          </a>
+
+          <div class="offer-trust-info">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lock-icon" aria-hidden="true">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <span class="microcopy">Pagamento seguro via Hotmart.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .offer-section {
+    padding-top: clamp(52px, 6.5vw, 84px);
+    padding-bottom: clamp(52px, 6.5vw, 84px);
+    background-color: var(--bg-page);
+    position: relative;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(32px, 4vw, 56px);
+    align-items: center;
+  }
+
+  /* Coluna Esquerda */
+  .offer-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow-wrapper {
+    margin-bottom: 12px;
+  }
+
+  .offer-heading {
+    color: var(--color-navy-700);
+    font-size: clamp(23px, 2.8vw, 34px);
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+
+  .offer-intro {
+    color: var(--color-text-body);
+    font-size: clamp(14.5px, 1.05vw, 16px);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .learning-block {
+    margin-bottom: 20px;
+  }
+
+  .learning-title {
+    color: var(--color-navy-700);
+    font-size: 17.5px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .learning-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .learning-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(24, 181, 200, 0.16);
+    color: var(--color-cyan-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .learning-text {
+    color: var(--color-text-body);
+    font-size: 14.5px;
+    line-height: 1.45;
+  }
+
+  .bonus-box {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-left: 4px solid var(--color-cyan-500);
+    border-radius: var(--radius-card);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .bonus-tag {
+    font-family: var(--font-primary);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-teal-600);
+    margin-bottom: 3px;
+  }
+
+  .bonus-desc {
+    color: var(--color-text-body);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .bonus-desc strong {
+    color: var(--color-navy-700);
+  }
+
+  /* Coluna Direita (Offer Card) */
+  .offer-card-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .offer-card {
+    background-color: #FFFFFF;
+    border-radius: var(--radius-offer);
+    padding: clamp(28px, 3.5vw, 36px) clamp(22px, 2.8vw, 30px);
+    box-shadow: 0 16px 40px -8px rgba(12, 38, 88, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: var(--color-text-dark);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid var(--color-cyan-500);
+    transition: transform var(--transition-fast);
+  }
+
+  .offer-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .offer-badge {
+    align-self: center;
+    background: var(--badge-cyan-gradient);
+    color: var(--color-teal-600);
+    border: 1px solid rgba(24, 181, 200, 0.25);
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 11px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+  }
+
+  .offer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 14px;
+  }
+
+  .product-name {
+    font-family: var(--font-primary);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--color-navy-700);
+    letter-spacing: 0.02em;
+  }
+
+  .product-bundle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  .offer-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin-bottom: 16px;
+  }
+
+  .investment-block {
+    margin-bottom: 16px;
+  }
+
+  .investment-label {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 3px;
+  }
+
+  .price-value {
+    font-family: var(--font-primary);
+    font-size: clamp(40px, 4.5vw, 50px);
+    font-weight: 800;
+    color: var(--color-navy-700);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .offer-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .offer-trust-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+  }
+
+  .lock-icon {
+    color: var(--color-teal-600);
+  }
+
+  @media (max-width: 960px) {
+    .offer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .offer-card {
+      max-width: 420px;
+    }
+  }
+</style>

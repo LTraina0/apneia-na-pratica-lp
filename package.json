@@ -1,0 +1,15 @@
+{
+  "name": "apneia-na-pratica-lp",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev --open",
+    "start": "astro dev --open",
+    "build": "astro build",
+    "preview": "astro preview --open",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.4.1"
+  }
+}

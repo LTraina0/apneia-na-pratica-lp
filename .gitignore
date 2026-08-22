@@ -1,0 +1,40 @@
+# Build & Dependencies
+node_modules/
+dist/
+.astro/
+
+# Environment Variables
+.env
+.env.production
+.env.development
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary and AI session cache (preserves .ai rules, ignores scratch/temp)
+.gemini/
+.claude/
+*.tmp
+*.temp
+scratch/

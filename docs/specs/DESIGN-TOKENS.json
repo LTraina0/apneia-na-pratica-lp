@@ -1,0 +1,133 @@
+{
+  "project": "Apneia na Prática",
+  "version": "1.0",
+  "colors": {
+    "brand": {
+      "navy900": "#041141",
+      "navy700": "#0C2658",
+      "blue600": "#21789F",
+      "teal600": "#0982A2",
+      "cyan500": "#18B5C8",
+      "yellow500": "#FFC81B"
+    },
+    "neutral": {
+      "white": "#FFFFFF",
+      "offWhite": "#F7F8FA",
+      "blueGray50": "#EEF3F8",
+      "blueGray100": "#DCE6F0",
+      "blueGray300": "#A7B7C9",
+      "textDark": "#14253F",
+      "textMuted": "#5C6F86"
+    },
+    "semantic": {
+      "pageBackground": "#F7F8FA",
+      "surface": "#FFFFFF",
+      "surfaceSoft": "#EEF3F8",
+      "surfaceDark": "#0C2658",
+      "heading": "#0C2658",
+      "body": "#14253F",
+      "muted": "#5C6F86",
+      "border": "#DCE6F0",
+      "actionStart": "#21789F",
+      "actionEnd": "#18B5C8",
+      "rareAccent": "#FFC81B"
+    }
+  },
+  "layout": {
+    "containerMax": "1160px",
+    "desktopReference": "1440px",
+    "gridColumnsDesktop": 12,
+    "gridGapDesktop": "24px",
+    "mobileSidePadding": "20px",
+    "tabletSidePadding": "32px"
+  },
+  "breakpoints": {
+    "mobile": "360px",
+    "tablet": "768px",
+    "desktop": "1024px",
+    "wide": "1440px"
+  },
+  "spacing": {
+    "unit": "8px",
+    "sectionDesktop": "clamp(80px, 7vw, 112px)",
+    "sectionMobile": "48px",
+    "xs": "8px",
+    "sm": "16px",
+    "md": "24px",
+    "lg": "32px",
+    "xl": "48px",
+    "2xl": "64px",
+    "3xl": "80px"
+  },
+  "radius": {
+    "small": "12px",
+    "button": "16px",
+    "card": "18px",
+    "largeCard": "24px",
+    "offer": "26px"
+  },
+  "typography": {
+    "h1": {
+      "desktop": "clamp(48px, 4.2vw, 56px)",
+      "mobile": "clamp(34px, 9vw, 38px)",
+      "weight": 800,
+      "lineHeight": 1.04
+    },
+    "h2": {
+      "desktop": "clamp(36px, 3.4vw, 44px)",
+      "mobile": "clamp(28px, 7vw, 32px)",
+      "weight": 700,
+      "lineHeight": 1.1
+    },
+    "body": {
+      "size": "clamp(16px, 1.2vw, 18px)",
+      "lineHeight": 1.5,
+      "maxMeasure": "65ch"
+    },
+    "micro": {
+      "size": "12px",
+      "lineHeight": 1.4
+    },
+    "lock_status": "provisional_single_family_until_final_font_is_approved",
+    "max_font_families": 2,
+    "primaryFontFamily": "Rubik, Arial, sans-serif",
+    "secondaryFontFamily": "Arial, Helvetica, sans-serif",
+    "fontRoles": {
+      "display": "Rubik",
+      "headings": "Rubik",
+      "buttons": "Rubik",
+      "price": "Rubik",
+      "labels": "Rubik",
+      "body": "Arial",
+      "microcopy": "Arial",
+      "footer": "Arial"
+    }
+  },
+  "button": {
+    "minHeight": "56px",
+    "mobileWidth": "100%",
+    "desktopPreferredWidth": "320px-420px",
+    "radius": "16px",
+    "fontWeight": 700,
+    "background": "linear-gradient(90deg, #21789F 0%, #18B5C8 100%)",
+    "textColor": "#FFFFFF",
+    "focus": "2px solid #FFC81B"
+  },
+  "cards": {
+    "border": "1px solid #DCE6F0",
+    "background": "#FFFFFF",
+    "softBackground": "#EEF3F8",
+    "radius": "18px",
+    "shadow": "0 10px 30px rgba(20,61,124,0.08)"
+  },
+  "motion": {
+    "default": "none",
+    "transition": "160ms-240ms ease",
+    "reducedMotion": "disable non-essential motion"
+  },
+  "palette_source": {
+    "type": "sampled_from_supplied_logo",
+    "asset": "Frame 3200.png",
+    "note": "Values are implementation tokens sampled/normalized from the supplied logo, not an official brand manual."
+  }
+}

@@ -1,0 +1,89 @@
+---
+---
+
+<footer class="site-footer">
+  <div class="container text-center">
+    
+    <div class="footer-content">
+      <!-- Aviso Clínico Obrigatório -->
+      <p class="clinical-disclaimer">
+        Este é um conteúdo educacional destinado a dentistas. Sinais, sintomas, questionários e observações clínicas não equivalem, isoladamente, a diagnóstico de apneia do sono. O treinamento não substitui avaliação clínica individual nem exames diagnósticos quando indicados.
+      </p>
+
+      <!-- Links Institucionais e Suporte -->
+      <div class="footer-links">
+        <a href="#inicio" class="footer-link">Início</a>
+        <span class="divider" aria-hidden="true">•</span>
+        <a href="#identificacao" class="footer-link">Sinais Clínicos</a>
+        <span class="divider" aria-hidden="true">•</span>
+        <a href="#metodo" class="footer-link">Método</a>
+        <span class="divider" aria-hidden="true">•</span>
+        <a href="#oferta" class="footer-link">Oferta</a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="copyright-text">
+        <strong>© 2026 Apneia na Prática. Todos os direitos reservados.</strong>
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: clamp(36px, 4.5vw, 56px);
+    padding-bottom: clamp(36px, 4.5vw, 56px);
+    background-color: var(--color-blue-gray-50);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .footer-content {
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .clinical-disclaimer {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  .footer-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-link:hover {
+    color: var(--color-blue-600);
+    text-decoration: underline;
+  }
+
+  .divider {
+    color: var(--color-blue-gray-300);
+  }
+
+  .copyright-text {
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  .copyright-text strong {
+    font-weight: 600;
+    color: var(--color-text-body);
+  }
+</style>

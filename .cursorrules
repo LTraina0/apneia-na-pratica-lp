@@ -1,0 +1,15 @@
+# Regras do Projeto — Apneia na Prática
+
+Você está desenvolvendo a Landing Page institucional e de conversão do treinamento "Apneia na Prática".
+
+## Diretrizes de Código
+- Framework: Astro 5
+- Componentes: em `src/components/`, com scoped styles e tokens CSS.
+- Não instalar pacotes pesados sem necessidade.
+- Teste de build: `npm run build`.
+
+## Guardrails de Copy & Conteúdo
+- Nunca prometa "cura", "eliminação da apneia" ou "diagnóstico no consultório".
+- A consulta constrói "suspeita clínica e critério de encaminhamento".
+- O preço é R$ 47,00 (não inventar parcelamentos ou descontos fictícios).
+- Precedência de verdade: `docs/specs/COPY.md` > `docs/specs/PROJECT-CONTEXT.md`.
