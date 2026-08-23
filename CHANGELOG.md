@@ -7,6 +7,15 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.0.2] - 2026-08-23
+
+### Modificado
+- **Refinamento de UI e CTAs:** Novo componente `CtaBlock.astro` com botão de alta conversão, gradiente verde, microinterações e âncora de preço R$ 47.
+- **Fidelidade Visual:** Refinamento tipográfico e alinhamentos nos componentes `Hero`, `Identification`, `Comparison` e `Offer`.
+- **Deploy Atualizado:** Publicação da nova compilação no GitHub Pages.
+
+---
+
 ## [1.0.1] - 2026-08-22
 
 ### Adicionado

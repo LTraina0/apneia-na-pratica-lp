@@ -1,4 +1,6 @@
 ---
+import CtaBlock from './CtaBlock.astro';
+
 const learningPoints = [
   "Como trazer o sono para a anamnese de forma mais direcionada.",
   "O que observar durante a consulta.",
@@ -71,17 +73,7 @@ const learningPoints = [
             <div class="price-value">R$ 47,00</div>
           </div>
 
-          <a href="https://pay.hotmart.com" target="_blank" rel="noopener noreferrer" class="btn-primary offer-btn">
-            QUERO ACESSAR AGORA
-          </a>
-
-          <div class="offer-trust-info">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lock-icon" aria-hidden="true">
-              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-            <span class="microcopy">Pagamento seguro via Hotmart.</span>
-          </div>
+          <CtaBlock showPrice={false} text="QUERO ACESSAR AGORA" href="https://pay.hotmart.com" target="_blank" showIcon={false} microcopy="Pagamento seguro via Hotmart." className="offer-card-cta" />
         </div>
       </div>
 
@@ -319,3 +311,5 @@ const learningPoints = [
     }
   }
 </style>
+
+

@@ -1,0 +1,70 @@
+{
+  "primitive": {
+    "color": {
+      "navy950": { "value": "#020B27", "source": "computed" },
+      "navy900": { "value": "#041141", "source": "computed" },
+      "navy700": { "value": "#0C2658", "source": "style", "styleName": "Downriver" },
+      "primaryDark": { "value": "#0A1F47", "source": "style", "styleName": "primary/dark" },
+      "blue600": { "value": "#21789F", "source": "computed" },
+      "teal600": { "value": "#0982A2", "source": "computed" },
+      "cyan500": { "value": "#18B5C8", "source": "computed" },
+      "greenCtaStart": { "value": "#089F4E", "source": "computed" },
+      "greenCtaEnd": { "value": "#06C05D", "source": "computed" },
+      "greenPrice": { "value": "#1FA34A", "source": "computed" },
+      "white": { "value": "#FFFFFF", "source": "style", "styleName": "White" },
+      "grey98": { "value": "#F8FAFC", "source": "style", "styleName": "Catskill White" },
+      "slateGray": { "value": "#64748B", "source": "style", "styleName": "Slate Gray" },
+      "mirage": { "value": "#1E293B", "source": "style", "styleName": "Mirage" }
+    },
+    "fontFamily": {
+      "primary": { "value": "Rubik, Arial, sans-serif", "source": "style", "styleName": "Font 1" },
+      "body": { "value": "Arimo, Arial, Helvetica, sans-serif", "source": "computed" },
+      "price": { "value": "Google Sans, Rubik, sans-serif", "source": "computed" }
+    },
+    "radius": {
+      "btn": { "value": "8px", "source": "computed" },
+      "card": { "value": "16px", "source": "computed" }
+    }
+  },
+  "semantic": {
+    "color": {
+      "bg": {
+        "page": { "value": "#F8FAFC", "source": "style", "styleName": "color/grey/98" },
+        "surface": { "value": "#FFFFFF", "source": "style", "styleName": "White" }
+      },
+      "text": {
+        "heading": { "value": "#0A1F47", "source": "style", "styleName": "primary/dark" },
+        "body": { "value": "#1E293B", "source": "style", "styleName": "color/azure/17" },
+        "muted": { "value": "#64748B", "source": "style", "styleName": "color/azure/47" },
+        "priceHighlight": { "value": "#1FA34A", "source": "computed" }
+      },
+      "cta": {
+        "gradient": { "value": "linear-gradient(169.75deg, #089F4E 0.84%, #06C05D 99.16%)", "source": "computed" },
+        "shadow": { "value": "1px 17px 10px rgba(0, 11, 10, 0.2)", "source": "computed" },
+        "borderHighlight": { "value": "inset 0px 1.5px 0px 0px rgba(92, 255, 168, 0.51)", "source": "computed" }
+      }
+    },
+    "typography": {
+      "heroHeadline": {
+        "desktop": { "fontSize": "46px", "lineHeight": "54px", "letterSpacing": "-1px", "fontWeight": 700 },
+        "mobile": { "fontSize": "30px", "lineHeight": "33px", "letterSpacing": "-0.75px", "fontWeight": 700 }
+      },
+      "heroSubtitle": {
+        "desktop": { "fontSize": "25px", "lineHeight": "34px", "letterSpacing": "-0.66px" },
+        "mobile": { "fontSize": "16px", "lineHeight": "19px", "letterSpacing": "normal" }
+      },
+      "priceAnchor": {
+        "desktop": { "fontSize": "24px", "lineHeight": "38.4px", "fontWeight": 600 },
+        "mobile": { "fontSize": "20px", "lineHeight": "38.4px", "fontWeight": 600 }
+      },
+      "ctaButton": {
+        "desktop": { "fontSize": "26px", "lineHeight": "27px", "fontWeight": 700, "padding": "24px 80px" },
+        "mobile": { "fontSize": "20px", "lineHeight": "27px", "fontWeight": 700, "padding": "20px" }
+      },
+      "microcopy": {
+        "desktop": { "fontSize": "15px", "lineHeight": "18.2px", "color": "#64748B" },
+        "mobile": { "fontSize": "13px", "lineHeight": "18.2px", "color": "#64748B" }
+      }
+    }
+  }
+}

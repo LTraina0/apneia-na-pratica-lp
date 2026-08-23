@@ -1,4 +1,6 @@
 ---
+import CtaBlock from './CtaBlock.astro';
+
 const looseItems = [
   "A conversa depende apenas do que o paciente relata espontaneamente.",
   "Uma resposta como “eu não ronco” pode encerrar a anamnese cedo demais.",
@@ -176,11 +178,9 @@ const organizedItems = [
       </div>
     </div>
 
-    <!-- CTA Clean e Premium -->
-    <div class="cta-wrapper reveal delay-4">
-      <a href="#oferta" class="btn-primary comparison-cta">
-        QUERO APRENDER ESSE PROCESSO
-      </a>
+    <!-- CTA Master Component -->
+    <div class="reveal delay-4">
+      <CtaBlock showPrice={false} text="QUERO APRENDER ESSE PROCESSO" href="#oferta" showIcon={false} />
     </div>
 
   </div>
@@ -408,10 +408,7 @@ const organizedItems = [
     justify-content: center;
   }
 
-  .comparison-cta {
-    width: 100%;
-    max-width: 380px;
-  }
+  .comparison-cta { width: 100%; max-width: 392px; }
 
   @media (max-width: 860px) {
     .panels-wrapper {
@@ -445,3 +442,6 @@ const organizedItems = [
     }
   }
 </style>
+
+
+

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
 
 :root {
   /* Brand Colors */
@@ -6,11 +7,22 @@
   --color-navy-900: #041141;
   --color-navy-800: #081B4B;
   --color-navy-700: #0C2658;
+  --primary-dark: #0A1F47;
   --color-blue-600: #21789F;
   --color-teal-600: #0982A2;
   --color-cyan-500: #18B5C8;
   --color-cyan-400: #38D3E5;
   --color-yellow-500: #FFC81B;
+
+  /* CTA & Price Green Tokens (Figma Master Component) */
+  --color-green-cta-start: #089F4E;
+  --color-green-cta-end: #06C05D;
+  --color-green-price: #1FA34A;
+  --cta-gradient-green: linear-gradient(169.75deg, #089F4E 0.84%, #06C05D 99.16%);
+  --cta-gradient-green-hover: linear-gradient(169.75deg, #078c44 0.84%, #05ab52 99.16%);
+  --cta-btn-shadow: 1px 17px 10px rgba(0, 11, 10, 0.2);
+  --cta-btn-highlight: inset 0px 1.5px 0px 0px rgba(92, 255, 168, 0.51);
+  --radius-cta-btn: 8px;
 
   /* Neutral Colors */
   --color-white: #FFFFFF;
@@ -22,6 +34,7 @@
   --color-text-dark: #0F172A;
   --color-text-body: #1E293B;
   --color-text-muted: #64748B;
+  --color-grey-98: #F8FAFC;
 
   /* Semantic Variables */
   --bg-page: #F8FAFC;
@@ -29,26 +42,27 @@
   --bg-surface-soft: #F1F5F9;
   --bg-surface-dark: #0C2658;
   
-  --text-heading: #0C2658;
+  --text-heading: #0A1F47;
   --text-body: #1E293B;
   --text-muted: #64748B;
   --border-subtle: #E2E8F0;
 
   /* Gradients */
-  --cta-gradient: linear-gradient(135deg, #1C749B 0%, #18B5C8 100%);
-  --cta-gradient-hover: linear-gradient(135deg, #166081 0%, #15A0B1 100%);
+  --cta-gradient: linear-gradient(169.75deg, #089F4E 0.84%, #06C05D 99.16%);
+  --cta-gradient-hover: linear-gradient(169.75deg, #078c44 0.84%, #05ab52 99.16%);
   --surface-gradient-dark: linear-gradient(165deg, #0C2658 0%, #06183A 60%, #020B27 100%);
   --badge-cyan-gradient: linear-gradient(135deg, rgba(24, 181, 200, 0.14) 0%, rgba(33, 120, 159, 0.08) 100%);
   
   /* Typography */
   --font-primary: 'Rubik', Arial, sans-serif;
   --font-secondary: Arial, Helvetica, sans-serif;
+  --font-arimo: 'Arimo', Arial, sans-serif;
 
   /* Layout & Spacing */
   --container-max: 1140px;
   --container-narrow: 800px;
   --radius-sm: 10px;
-  --radius-btn: 14px;
+  --radius-btn: 8px;
   --radius-card: 16px;
   --radius-lg: 22px;
   --radius-offer: 24px;
@@ -100,9 +114,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1 {
-  font-size: clamp(30px, 4.8vw, 48px);
+  font-size: clamp(30px, 4.8vw, 42px);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.025em;
   text-wrap: balance;
 }
@@ -185,29 +199,33 @@ p {
   padding-right: 20px;
 }
 
-/* Button CTA Component */
+/* Button CTA Component (Master Tokenized from Figma) */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-primary);
-  font-size: 15px;
+  gap: 14px;
+  font-family: var(--font-arimo), var(--font-primary);
+  font-size: 20px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--color-white) !important;
   text-decoration: none;
-  background: var(--cta-gradient);
-  min-height: 52px;
-  padding: 14px 34px;
-  border-radius: var(--radius-btn);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--cta-gradient-green);
+  min-height: 72px;
+  padding: 18px 36px;
+  border-radius: var(--radius-cta-btn);
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(28, 116, 155, 0.25), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--cta-btn-highlight), var(--cta-btn-shadow);
   transition: all var(--transition-fast);
   text-align: center;
   position: relative;
   overflow: hidden;
+  max-width: 392px;
+  width: 100%;
+  border: none;
 }
 
 .btn-primary::before {
@@ -217,15 +235,14 @@ p {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
   transition: left 0.5s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(24, 181, 200, 0.32), 0 2px 6px rgba(28, 116, 155, 0.2);
-  background: var(--cta-gradient-hover);
-  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: var(--cta-btn-highlight), 1px 22px 16px rgba(0, 11, 10, 0.28);
+  background: var(--cta-gradient-green-hover);
 }
 
 .btn-primary:hover::before {
@@ -233,12 +250,54 @@ p {
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(1px);
 }
 
 .btn-primary:focus-visible {
   outline: 3px solid var(--color-yellow-500);
   outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .btn-primary {
+    font-size: 18px;
+    line-height: 22px;
+    min-height: 60px;
+    padding: 16px 20px;
+    max-width: 350px;
+  }
+}
+
+/* Microcopy under CTA */
+.microcopy-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--color-text-muted);
+  margin-top: 10px;
+}
+
+.lock-icon {
+  color: var(--color-teal-600);
+  flex-shrink: 0;
+}
+
+.cta-microcopy {
+  font-family: var(--font-arimo), var(--font-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 392px;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .cta-microcopy {
+    font-size: 13px;
+    max-width: 350px;
+  }
 }
 
 /* Utility classes */

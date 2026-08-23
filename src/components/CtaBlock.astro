@@ -1,0 +1,242 @@
+---
+interface Props {
+  showPrice?: boolean;
+  text?: string;
+  href?: string;
+  showIcon?: boolean;
+  microcopy?: string;
+  className?: string;
+  target?: string;
+}
+
+const {
+  showPrice = false,
+  text = "QUERO ACESSAR AGORA",
+  href = "#oferta",
+  showIcon = true,
+  microcopy = "Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos.",
+  className = "",
+  target = "_self"
+} = Astro.props;
+---
+
+<div class={`cta-master-container ${className}`}>
+  {showPrice && (
+    <div class="price-anchor" data-node-id="131:1289">
+      <span class="price-prefix">POR APENAS </span>
+      <span class="price-green">R$47</span>
+    </div>
+  )}
+
+  <div class="cta-inner-wrapper" data-node-id="131:1290">
+    <a href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined} class="master-btn" data-node-id="131:1291">
+      <div class="master-btn-content" data-node-id="135:1791">
+        {showIcon && (
+          <svg class="master-hand-icon" width="29.5" height="35.2" viewBox="0 0 33.5104 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g clip-path="url(#clip0_cta_master)">
+              <path d="M18.8899 39.7756C18.222 39.4982 17.5239 39.2768 16.8962 38.9276C16.1315 38.5023 15.6115 37.8125 15.203 37.0376C15.1248 36.8884 14.9603 36.7395 14.803 36.6842C11.5455 35.5449 9.4299 33.3211 8.47253 30.0124C8.15374 28.9094 7.77997 27.799 7.65923 26.6681C7.39749 24.2211 8.43443 22.3559 10.5312 21.0749C10.5965 21.0348 10.6609 20.9947 10.7589 20.9346C10.6611 20.5612 10.5646 20.1817 10.463 19.803C9.86709 17.5817 9.26184 15.364 8.67737 13.1401C8.12339 11.0344 9.368 9.08746 11.4694 8.73826C13.1341 8.46143 14.7852 9.47531 15.2775 11.1344C15.7022 12.5671 16.0657 14.0173 16.4561 15.4597C16.4895 15.5821 16.526 15.7027 16.5728 15.8677C17.9662 15.0662 19.3272 15.0891 20.6418 15.9985C22.4297 14.6789 23.6327 14.5686 25.3831 15.6536C25.4233 15.5806 25.4614 15.4409 25.5522 15.3589C27.372 13.7016 30.3917 14.4138 31.1026 16.7613C31.9324 19.4976 32.6548 22.2709 33.3091 25.0545C33.7848 27.0797 33.3891 29.0407 32.439 30.8914C32.3512 31.0627 32.3217 31.3063 32.3644 31.4937C32.9751 34.1544 31.5475 36.7244 28.9282 37.4825C26.2281 38.2626 23.5014 38.9503 20.7854 39.6743C20.5406 39.7389 20.2888 39.7767 20.0405 39.8279L18.8899 39.7756ZM11.392 23.2837C10.2591 23.969 9.66799 25.4733 9.9956 26.8328C10.1955 27.6649 10.4317 28.4873 10.6649 29.3106C11.4527 32.089 13.2409 33.8716 16.029 34.6266C16.6082 34.7832 16.9518 35.0909 17.1401 35.6591C17.5836 36.9962 18.9083 37.7708 20.2676 37.4248C22.9657 36.7367 25.6551 36.0105 28.3375 35.2614C29.2634 35.0033 29.8411 34.3347 30.1119 33.4041C30.2929 32.7841 30.1899 32.1871 29.9984 31.5962C29.8295 31.0751 29.8853 30.6123 30.1908 30.1394C30.8204 29.1637 31.1782 28.0783 31.1573 26.915C31.144 26.194 31.0596 25.4584 30.8833 24.7606C30.2823 22.3833 29.6324 20.0191 28.9878 17.6531C28.8024 16.9734 28.219 16.6425 27.5752 16.8058C26.9717 16.9588 26.6281 17.5498 26.7652 18.2099C26.8148 18.4468 26.8872 18.6798 26.9442 18.915C27.1076 19.5824 26.7757 20.1854 26.1476 20.3617C25.5268 20.5364 24.9278 20.1884 24.7285 19.5213C24.5852 19.0444 24.47 18.5596 24.3256 18.0826C24.1323 17.4435 23.5311 17.0954 22.9273 17.2576C22.3121 17.4222 21.9618 18.0047 22.0971 18.6556C22.1408 18.8677 22.2123 19.0738 22.2664 19.2843C22.4509 20.004 22.1266 20.6431 21.4926 20.8141C20.8452 20.9886 20.2454 20.6128 20.0411 19.8995C19.9004 19.4084 19.7827 18.91 19.6295 18.4234C19.4326 17.7964 18.8092 17.4668 18.2035 17.6463C17.6155 17.8204 17.2769 18.4147 17.4187 19.0372C17.475 19.2857 17.5521 19.5301 17.6135 19.7788C17.7877 20.4795 17.4668 21.0891 16.8313 21.2703C16.1865 21.4541 15.5846 21.0783 15.3867 20.3601C15.1861 19.6335 14.9938 18.9053 14.7983 18.177C14.2464 16.1165 13.6933 14.057 13.1445 11.9957C13.0123 11.4997 12.744 11.135 12.2188 11.0332C11.333 10.8607 10.66 11.6182 10.9016 12.527C11.7179 15.6007 12.5458 18.671 13.3683 21.7431C13.8238 23.4455 14.2834 25.1472 14.7317 26.8515C14.9091 27.5247 14.5725 28.1438 13.961 28.3158C13.3256 28.495 12.72 28.1333 12.5172 27.4538C12.495 27.3801 12.4768 27.3065 12.4566 27.2318C12.1041 25.9254 11.7516 24.6181 11.392 23.2837Z" fill="white"/>
+              <path d="M8.84813 0.411705C15.2148 -1.29425 21.7593 2.48415 23.4652 8.85088C23.8884 10.4304 23.9736 12.0207 23.7659 13.5455C23.4903 13.5108 23.2087 13.5017 22.9198 13.5237C22.5906 13.5489 22.272 13.6136 21.9614 13.7088C22.2132 12.2878 22.1688 10.7909 21.7706 9.30493C20.3155 3.87449 14.7326 0.651177 9.30219 2.10626C3.87206 3.56155 0.649513 9.14418 2.10455 14.5744C2.96148 17.772 5.25015 20.2025 8.09523 21.3647C7.69456 21.8114 7.34434 22.3015 7.05793 22.8296C3.89703 21.411 1.37674 18.6359 0.409995 15.0285C-1.29592 8.66194 2.48172 2.11788 8.84813 0.411705Z" fill="white" fill-opacity="0.24"/>
+              <path d="M9.74732 3.80495C14.2415 2.60074 18.8616 5.2682 20.0658 9.76237C20.4646 11.2509 20.4358 12.7522 20.0596 14.1396C19.6149 13.9889 19.154 13.9015 18.6783 13.888C18.4952 13.8828 18.3133 13.8901 18.1332 13.906C18.4967 12.7615 18.5505 11.5037 18.2168 10.2578C17.2863 6.78507 13.7158 4.72454 10.2431 5.65505C6.77055 6.58576 4.70952 10.1552 5.64 13.6277C6.07104 15.236 7.06922 16.5401 8.3605 17.3859L9.01991 19.8468C6.54029 18.932 4.52713 16.8702 3.79093 14.1232C2.58676 9.62922 5.25343 5.00934 9.74732 3.80495Z" fill="white" fill-opacity="0.72"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_cta_master">
+                <rect width="33.5104" height="40" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        )}
+        <span class="master-btn-text" data-node-id="131:1297">{text}</span>
+      </div>
+    </a>
+
+    {microcopy && (
+      <div class="microcopy-wrapper">
+        <p class="cta-microcopy" data-node-id="131:1303">
+          {microcopy}
+        </p>
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .cta-master-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+    max-width: 504px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .price-anchor {
+    font-family: var(--font-arimo), var(--font-primary);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 38.4px;
+    color: #1E293B;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .price-green {
+    color: #1FA34A;
+    font-weight: 700;
+  }
+
+  .cta-inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 464px;
+    width: 100%;
+  }
+
+  .master-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cta-gradient-green);
+    border-radius: 8px;
+    width: 464px;
+    max-width: 100%;
+    min-height: 80px;
+    padding: 20px 48px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: inset 0px 1.5px 0px 0px rgba(92, 255, 168, 0.51), 1px 17px 10px rgba(0, 11, 10, 0.2);
+    transition: all var(--transition-fast);
+    overflow: hidden;
+    border: none;
+  }
+
+  .master-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .master-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0px 1.5px 0px 0px rgba(92, 255, 168, 0.7), 1px 22px 16px rgba(0, 11, 10, 0.28);
+    background: var(--cta-gradient-green-hover);
+  }
+
+  .master-btn:hover::before {
+    left: 100%;
+  }
+
+  .master-btn:active {
+    transform: translateY(1px);
+  }
+
+  .master-btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .master-hand-icon {
+    width: 29.5px;
+    height: 35.2px;
+    flex-shrink: 0;
+  }
+
+  .master-btn-text {
+    font-family: var(--font-arimo), var(--font-primary);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 24px;
+    color: #FFFFFF;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .microcopy-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #64748B;
+  }
+
+  .lock-icon {
+    color: var(--color-teal-600);
+    flex-shrink: 0;
+  }
+
+  .cta-microcopy {
+    font-family: var(--font-arimo), var(--font-secondary);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.2px;
+    color: #64748B;
+    text-align: center;
+    margin: 0;
+    max-width: 464px;
+    width: 100%;
+  }
+
+  /* Mobile Overrides (Exact Node 136:3) */
+  @media (max-width: 767px) {
+    .cta-master-container {
+      padding: 6px 20px;
+      gap: 10px;
+      max-width: 390px;
+    }
+
+    .price-anchor {
+      font-size: 20px;
+      line-height: 38.4px;
+    }
+
+    .cta-inner-wrapper {
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .master-btn {
+      width: 100%;
+      max-width: 350px;
+      min-height: 72px;
+      padding: 16px 20px;
+    }
+
+    .master-btn-content {
+      gap: 14px;
+    }
+
+    .master-hand-icon {
+      width: 28px;
+      height: 33.5px;
+    }
+
+    .master-btn-text {
+      font-size: 19px;
+      line-height: 24px;
+    }
+
+    .cta-microcopy {
+      font-size: 13px;
+      line-height: 18.2px;
+      max-width: 350px;
+    }
+  }
+</style>
+
