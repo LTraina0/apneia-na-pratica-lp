@@ -1,89 +1,145 @@
 ---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
-<footer class="site-footer">
-  <div class="container text-center">
-    
-    <div class="footer-content">
-      <!-- Aviso Clínico Obrigatório -->
-      <p class="clinical-disclaimer">
-        Este é um conteúdo educacional destinado a dentistas. Sinais, sintomas, questionários e observações clínicas não equivalem, isoladamente, a diagnóstico de apneia do sono. O treinamento não substitui avaliação clínica individual nem exames diagnósticos quando indicados.
-      </p>
+<footer class="site-footer" data-node-id="148:610" data-name="Footer - Rodapé institucional">
+  <div class="footer-divider reveal reveal-line" aria-hidden="true"></div>
 
-      <!-- Links Institucionais e Suporte -->
-      <div class="footer-links">
-        <a href="#inicio" class="footer-link">Início</a>
-        <span class="divider" aria-hidden="true">•</span>
-        <a href="#identificacao" class="footer-link">Sinais Clínicos</a>
-        <span class="divider" aria-hidden="true">•</span>
-        <a href="#metodo" class="footer-link">Método</a>
-        <span class="divider" aria-hidden="true">•</span>
-        <a href="#oferta" class="footer-link">Oferta</a>
-      </div>
+  <div class="footer-content">
+    <img
+      src={`${baseUrl}assets/logo.png`}
+      alt="Apneia na Prática"
+      width="132"
+      height="64"
+      class="footer-logo reveal reveal-scale delay-1"
+      loading="lazy"
+    />
 
-      <!-- Copyright -->
-      <p class="copyright-text">
-        <strong>© 2026 Apneia na Prática. Todos os direitos reservados.</strong>
-      </p>
-    </div>
+    <p class="footer-copyright reveal reveal-soft delay-2">
+      © 2026 Nome da Empresa. <span>Todos os direitos reservados.</span>
+    </p>
 
+    <p class="footer-contact reveal reveal-soft delay-3">
+      Nome do Profissional - Área de Atuação - contato@email.com.br
+    </p>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    padding-top: clamp(36px, 4.5vw, 56px);
-    padding-bottom: clamp(36px, 4.5vw, 56px);
-    background-color: var(--color-blue-gray-50);
-    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    min-height: 175.1px;
+    gap: 20px;
+    color: #FFFFFF;
+    background: #050A18;
+  }
+
+  .footer-divider {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 3px;
+    opacity: 0.7;
+    background: linear-gradient(90deg, rgba(46, 173, 194, 0), #2EADC2 50%, rgba(46, 173, 194, 0));
+  }
+
+  .footer-divider.reveal {
+    opacity: 0;
+    transform: scaleX(0.18);
+    transform-origin: center;
+    filter: none;
+  }
+
+  .footer-divider.reveal.is-visible {
+    opacity: 0.7;
+    transform: scaleX(1);
   }
 
   .footer-content {
-    max-width: 840px;
-    margin: 0 auto;
     display: flex;
+    flex: 0 0 auto;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
-  }
-
-  .clinical-disclaimer {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--color-text-muted);
-  }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 12px;
-    font-size: 13px;
-    color: var(--color-text-muted);
+    width: 100%;
+    gap: 8px;
+    padding: 12px 12px 20px;
   }
 
-  .footer-link {
-    color: var(--color-text-muted);
-    text-decoration: none;
-    transition: color var(--transition-fast);
+  .footer-logo {
+    display: block;
+    width: 132px;
+    height: 64.1px;
+    object-fit: contain;
+    filter: drop-shadow(0 2.03px 6.09px rgba(12, 38, 88, 0.05));
   }
 
-  .footer-link:hover {
-    color: var(--color-blue-600);
+  .footer-copyright,
+  .footer-contact {
+    margin: 0;
+    text-align: center;
+  }
+
+  .footer-copyright {
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14.4px;
+    font-weight: 700;
+    line-height: 22.32px;
+    white-space: nowrap;
+  }
+
+  .footer-copyright span {
     text-decoration: underline;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
   }
 
-  .divider {
-    color: var(--color-blue-gray-300);
+  .footer-contact {
+    width: 100%;
+    color: rgba(226, 232, 240, 0.85);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13.76px;
+    font-weight: 400;
+    line-height: normal;
   }
 
-  .copyright-text {
-    font-size: 13px;
-    color: var(--color-text-muted);
-  }
+  @media (max-width: 767px) {
+    .site-footer {
+      min-height: 158.7px;
+      gap: 10px;
+    }
 
-  .copyright-text strong {
-    font-weight: 600;
-    color: var(--color-text-body);
+    .footer-divider {
+      height: 2.5px;
+      opacity: 0.76;
+    }
+
+    .footer-content {
+      width: calc(100% - 44px);
+      max-width: 346px;
+      margin: 0 auto;
+      gap: 7.1px;
+      padding: 6px 17.74px 20px;
+    }
+
+    .footer-logo {
+      width: 115.33px;
+      height: 56.01px;
+      filter: drop-shadow(0 1.77px 5.32px rgba(12, 38, 88, 0.05));
+    }
+
+    .footer-copyright {
+      font-size: 12.42px;
+      line-height: 19.8px;
+    }
+
+    .footer-contact {
+      max-width: 310.51px;
+      font-size: 12.21px;
+      line-height: normal;
+    }
   }
 </style>

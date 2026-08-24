@@ -313,14 +313,28 @@ p {
 /* Scroll Animations */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translate3d(0, 26px, 0) scale(0.995);
+  filter: blur(5px);
+  transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1), transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), filter 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+.reveal-soft {
+  transform: translate3d(0, 18px, 0) scale(0.998);
+}
+
+.reveal-scale {
+  transform: translate3d(0, 16px, 0) scale(0.94);
+}
+
+.reveal-cta {
+  transform: translate3d(0, 22px, 0) scale(0.98);
 }
 
 /* Stagger delay helpers */
@@ -328,6 +342,7 @@ p {
 .delay-2 { transition-delay: 0.12s; }
 .delay-3 { transition-delay: 0.18s; }
 .delay-4 { transition-delay: 0.24s; }
+.delay-5 { transition-delay: 0.32s; }
 
 /* Accessible reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -340,5 +355,7 @@ p {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
   }
 }

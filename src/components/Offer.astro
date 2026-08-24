@@ -1,315 +1,424 @@
 ---
 import CtaBlock from './CtaBlock.astro';
 
-const learningPoints = [
-  "Como trazer o sono para a anamnese de forma mais direcionada.",
-  "O que observar durante a consulta.",
-  "Como analisar sinais dentro do contexto do paciente.",
-  "Como utilizar questionários como apoio à investigação.",
-  "Como evitar conclusões a partir de sinais isolados.",
-  "Quando existem motivos para aprofundar ou encaminhar."
-];
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
-<section class="offer-section" id="oferta">
-  <div class="container">
-    <div class="offer-grid">
+<section class="offer-section scene-transition" id="oferta" data-node-id="147:526" data-name="section#oferta">
+  <div class="offer-divider reveal reveal-line" aria-hidden="true"></div>
+  <div class="offer-glow offer-glow-top" aria-hidden="true"></div>
+  <div class="offer-glow offer-glow-bottom" aria-hidden="true"></div>
 
-      <!-- Coluna Esquerda: Conteúdo (7/12) -->
-      <div class="offer-content reveal">
-        <div class="eyebrow-wrapper">
-          <span class="eyebrow eyebrow-accent">
-            O QUE VOCÊ RECEBE
-          </span>
-        </div>
+  <article class="offer-card" data-node-id="147:531" data-name="div.card-premium">
+    <span class="offer-badge reveal reveal-soft delay-1">Acesso Imediato</span>
 
-        <h2 class="offer-heading">
-          Apneia na Prática: um treinamento direto ao ponto para levar mais critério à investigação durante a consulta.
-        </h2>
+    <header class="offer-brand reveal reveal-soft delay-2">
+      <h2>APNEIA NA PRÁTICA</h2>
+      <p>Treinamento + cartilha prática</p>
+    </header>
 
-        <p class="offer-intro">
-          Você vai aprender a reconhecer sinais de possível apneia, conduzir perguntas mais direcionadas e organizar melhor as informações antes de decidir quando a investigação merece avançar.
-        </p>
-
-        <div class="learning-block">
-          <h3 class="learning-title">No treinamento, você vai aprender:</h3>
-          <ul class="learning-list">
-            {learningPoints.map((point) => (
-              <li class="learning-item">
-                <span class="check-icon" aria-hidden="true">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span class="learning-text">{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Bloco de Bônus / Cartilha -->
-        <div class="bonus-box">
-          <div class="bonus-tag">Você também recebe</div>
-          <p class="bonus-desc">
-            <strong>Uma cartilha prática para uso no consultório</strong>, pensada para ajudar a levar o conteúdo do treinamento para a rotina clínica.
-          </p>
-        </div>
-      </div>
-
-      <!-- Coluna Direita: Offer Card (5/12) -->
-      <div class="offer-card-wrapper reveal delay-2">
-        <div class="offer-card">
-          <div class="offer-badge">Acesso Imediato</div>
-          
-          <div class="offer-brand">
-            <span class="product-name">APNEIA NA PRÁTICA</span>
-            <span class="product-bundle">Treinamento + cartilha prática</span>
-          </div>
-
-          <hr class="offer-divider" />
-
-          <div class="investment-block">
-            <span class="investment-label">INVESTIMENTO</span>
-            <div class="price-value">R$ 47,00</div>
-          </div>
-
-          <CtaBlock showPrice={false} text="QUERO ACESSAR AGORA" href="https://pay.hotmart.com" target="_blank" showIcon={false} microcopy="Pagamento seguro via Hotmart." className="offer-card-cta" />
-        </div>
-      </div>
-
+    <div class="offer-mockup-frame reveal reveal-scale delay-3" data-node-id="147:538">
+      <img
+        src={`${baseUrl}assets/mockup.png`}
+        alt="Treinamento Apneia na Prática exibido em notebook, tablet e smartphone"
+        width="496"
+        height="372"
+        loading="lazy"
+      />
     </div>
-  </div>
+
+    <div class="offer-description reveal reveal-soft delay-4">
+      <h3>Um treinamento direto ao ponto para levar mais critério à investigação durante a consulta.</h3>
+      <p class="offer-details offer-details-desktop">
+        Você vai aprender a reconhecer sinais de possível apneia, conduzir perguntas mais direcionadas e organizar melhor as informações antes de decidir quando a investigação merece avançar.
+      </p>
+      <p class="offer-details offer-details-mobile">
+        Você vai aprender a reconhecer sinais de apneia, fazer perguntas e organizar informações antes de avançar na investigação.
+      </p>
+    </div>
+
+    <CtaBlock
+      showPrice={true}
+      text="QUERO ACESSAR AGORA"
+      href="https://pay.hotmart.com"
+      target="_blank"
+      showIcon={true}
+      microcopy="Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos."
+      className="offer-figma-cta reveal reveal-cta delay-5"
+    />
+  </article>
 </section>
 
 <style>
   .offer-section {
-    padding-top: clamp(52px, 6.5vw, 84px);
-    padding-bottom: clamp(52px, 6.5vw, 84px);
-    background-color: var(--bg-page);
     position: relative;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .offer-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: clamp(32px, 4vw, 56px);
-    align-items: center;
-  }
-
-  /* Coluna Esquerda */
-  .offer-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .eyebrow-wrapper {
-    margin-bottom: 12px;
-  }
-
-  .offer-heading {
-    color: var(--color-navy-700);
-    font-size: clamp(23px, 2.8vw, 34px);
-    line-height: 1.25;
-    margin-bottom: 14px;
-  }
-
-  .offer-intro {
-    color: var(--color-text-body);
-    font-size: clamp(14.5px, 1.05vw, 16px);
-    line-height: 1.55;
-    margin-bottom: 20px;
-  }
-
-  .learning-block {
-    margin-bottom: 20px;
-  }
-
-  .learning-title {
-    color: var(--color-navy-700);
-    font-size: 17.5px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .learning-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .learning-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .check-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: rgba(24, 181, 200, 0.16);
-    color: var(--color-cyan-500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .learning-text {
-    color: var(--color-text-body);
-    font-size: 14.5px;
-    line-height: 1.45;
-  }
-
-  .bonus-box {
-    background-color: #FFFFFF;
-    border: 1px solid rgba(226, 232, 240, 0.9);
-    border-left: 4px solid var(--color-cyan-500);
-    border-radius: var(--radius-card);
-    padding: 16px 20px;
-    box-shadow: var(--shadow-card);
-  }
-
-  .bonus-tag {
-    font-family: var(--font-primary);
-    font-size: 11.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-teal-600);
-    margin-bottom: 3px;
-  }
-
-  .bonus-desc {
-    color: var(--color-text-body);
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
-  .bonus-desc strong {
-    color: var(--color-navy-700);
-  }
-
-  /* Coluna Direita (Offer Card) */
-  .offer-card-wrapper {
     display: flex;
     justify-content: center;
+    min-height: 1234px;
+    padding: 142.5px 20px 131px;
+    overflow: hidden;
+    background: #050A18;
+  }
+
+
+  .offer-divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(1919px, 100%);
+    height: 2.5px;
+    transform: translateX(-50%);
+    opacity: 0.7;
+    background: linear-gradient(90deg, rgba(46, 173, 194, 0), #2EADC2 50%, rgba(46, 173, 194, 0));
+  }
+
+  .offer-divider.reveal {
+    opacity: 0;
+    transform: scaleX(0.18);
+    transform-origin: center;
+    filter: none;
+  }
+
+  .offer-divider.reveal.is-visible {
+    opacity: 0.7;
+    transform: scaleX(1);
+  }
+
+  .offer-glow {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 9999px;
+    background: rgba(69, 170, 236, 0.31);
+  }
+
+  .offer-glow-top {
+    top: -533px;
+    left: 50%;
+    width: 1292px;
+    height: 1066px;
+    transform: translateX(-50%);
+    filter: blur(287.717px);
+  }
+
+  .offer-section.is-visible .offer-glow-top {
+    animation: offer-breathe 7s ease-in-out 1.1s infinite;
+  }
+
+  .offer-glow-bottom {
+    top: 1999px;
+    left: -80px;
+    width: 1252px;
+    height: 803px;
+    filter: blur(300px);
+  }
+
+  @keyframes offer-breathe {
+    0%, 100% {
+      opacity: 0.78;
+      transform: translateX(-50%) scale(0.98);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.035);
+    }
   }
 
   .offer-card {
-    background-color: #FFFFFF;
-    border-radius: var(--radius-offer);
-    padding: clamp(28px, 3.5vw, 36px) clamp(22px, 2.8vw, 30px);
-    box-shadow: 0 16px 40px -8px rgba(12, 38, 88, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
-    color: var(--color-text-dark);
-    width: 100%;
-    max-width: 400px;
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(724px, 100%);
+    min-height: 960.66px;
+    padding: 40px;
+    gap: 12px;
+    color: #1E293B;
     text-align: center;
-    border: 2px solid var(--color-cyan-500);
-    transition: transform var(--transition-fast);
-  }
-
-  .offer-card:hover {
-    transform: translateY(-3px);
+    background: #F3F3F3;
+    border-radius: 28px;
   }
 
   .offer-badge {
-    align-self: center;
-    background: var(--badge-cyan-gradient);
-    color: var(--color-teal-600);
-    border: 1px solid rgba(24, 181, 200, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 27.48px;
+    padding: 6.23px 14.54px;
+    margin-bottom: 8px;
+    color: #0982A2;
     font-family: var(--font-primary);
-    font-size: 11px;
+    font-size: 11.07px;
     font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.9825px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 4px 11px;
-    border-radius: 6px;
-    margin-bottom: 14px;
+    white-space: nowrap;
+    background: linear-gradient(130deg, rgba(24, 181, 200, 0.14), rgba(33, 120, 159, 0.08));
+    border: 1px solid rgba(24, 181, 200, 0.22);
+    border-radius: 9999px;
   }
 
   .offer-brand {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    margin-bottom: 14px;
-  }
-
-  .product-name {
-    font-family: var(--font-primary);
-    font-size: 19px;
-    font-weight: 800;
-    color: var(--color-navy-700);
-    letter-spacing: 0.02em;
-  }
-
-  .product-bundle {
-    font-size: 14px;
-    color: var(--color-text-muted);
-  }
-
-  .offer-divider {
-    border: none;
-    border-top: 1px solid var(--border-subtle);
-    margin-bottom: 16px;
-  }
-
-  .investment-block {
-    margin-bottom: 16px;
-  }
-
-  .investment-label {
-    display: block;
-    font-family: var(--font-primary);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--color-text-muted);
-    margin-bottom: 3px;
-  }
-
-  .price-value {
-    font-family: var(--font-primary);
-    font-size: clamp(40px, 4.5vw, 50px);
-    font-weight: 800;
-    color: var(--color-navy-700);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .offer-btn {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .offer-trust-info {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
-    color: var(--color-text-muted);
-    font-size: 12px;
+    gap: 4px;
+    padding: 4px 20px;
   }
 
-  .lock-icon {
-    color: var(--color-teal-600);
+  .offer-brand h2 {
+    margin: 0;
+    color: #0C2658;
+    font-family: var(--font-primary);
+    font-size: 34.29px;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: -1.37px;
+    white-space: nowrap;
   }
 
-  @media (max-width: 960px) {
-    .offer-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
+  .offer-brand p {
+    margin: 0;
+    color: #64748B;
+    font-family: var(--font-secondary);
+    font-size: 21.95px;
+    line-height: normal;
+  }
+
+  .offer-mockup-frame {
+    position: relative;
+    flex: 0 0 auto;
+    width: 464.4px;
+    height: 297.36px;
+    overflow: hidden;
+    border-radius: 11.33px;
+  }
+
+  .offer-mockup-frame img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  .offer-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .offer-description h3 {
+    width: 100%;
+    margin: 0;
+    color: #0C2658;
+    font-family: var(--font-primary);
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -0.76px;
+    text-align: center;
+  }
+
+  .offer-details {
+    width: 100%;
+    max-width: 600px;
+    margin: 0;
+    padding: 0;
+    color: #1E293B;
+    font-family: var(--font-secondary);
+    font-size: 17px;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  .offer-details-mobile {
+    display: none;
+  }
+
+  :global(.offer-figma-cta) {
+    width: 449.71px !important;
+    max-width: 100% !important;
+    padding: 12.5px 20.84px !important;
+    gap: 12.5px !important;
+  }
+
+  :global(.offer-figma-cta .cta-inner-wrapper) {
+    width: 100% !important;
+    max-width: 432.37px !important;
+    gap: 17.72px !important;
+  }
+
+  :global(.offer-figma-cta .master-btn) {
+    width: 100% !important;
+    min-height: 80px !important;
+    padding: 18.46px 46.16px !important;
+    border-radius: 7.09px !important;
+  }
+
+  :global(.offer-figma-cta .master-btn-content) {
+    gap: 12.48px !important;
+  }
+
+  :global(.offer-figma-cta .master-hand-icon) {
+    width: 26.13px !important;
+    height: 31.19px !important;
+  }
+
+  :global(.offer-figma-cta .master-btn-text) {
+    font-size: 20.27px !important;
+    line-height: 21.05px !important;
+  }
+
+  :global(.offer-figma-cta .cta-microcopy) {
+    font-size: 13.29px !important;
+    line-height: 16.13px !important;
+  }
+
+  @media (max-width: 767px) {
+    .offer-section {
+      min-height: 825px;
+      padding: 84px 20px 84.41px;
+    }
+
+    .offer-divider {
+      width: 100%;
+      opacity: 0.76;
+    }
+
+    .offer-glow-top {
+      top: -243.64px;
+      width: 944px;
+      height: 468px;
+      background: rgba(69, 170, 236, 0.34);
+    }
+
+    .offer-glow-bottom {
+      display: none;
     }
 
     .offer-card {
-      max-width: 420px;
+      width: 100%;
+      min-height: 656.59px;
+      padding: 13.74px 13.74px 12.81px;
+      gap: 8.25px;
+      border: 1px solid #2EADC2;
+      border-radius: 16.12px;
+    }
+
+    .offer-badge {
+      min-height: 18.95px;
+      padding: 4.28px 9.99px;
+      margin-top: 3.92px;
+      margin-bottom: 9.77px;
+      font-size: 7.61px;
+      letter-spacing: 0.675px;
+      border-width: 0.69px;
+    }
+
+    .offer-brand {
+      gap: 2.75px;
+      padding: 2.75px 13.74px;
+    }
+
+    .offer-brand h2 {
+      font-size: 23.56px;
+      letter-spacing: -0.94px;
+    }
+
+    .offer-brand p {
+      font-size: 15.08px;
+    }
+
+    .offer-mockup-frame {
+      width: 100%;
+      max-width: 319.13px;
+      height: 204.34px;
+      border-radius: 7.78px;
+    }
+
+    .offer-description {
+      gap: 8px;
+      padding: 6px 0;
+    }
+
+    .offer-description h3 {
+      font-size: 23px;
+      line-height: 26px;
+      letter-spacing: -0.76px;
+    }
+
+    .offer-details-desktop {
+      display: none;
+    }
+
+    .offer-details-mobile {
+      display: block;
+      max-width: none;
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: -0.14px;
+    }
+
+    :global(.offer-figma-cta) {
+      width: 291.33px !important;
+      padding: 8.09px 13.48px 5.77px !important;
+      gap: 8.09px !important;
+    }
+
+    :global(.offer-figma-cta .price-anchor) {
+      font-size: 13.75px !important;
+      line-height: 22px !important;
+    }
+
+    :global(.offer-figma-cta .price-green) {
+      font-size: 24px !important;
+      line-height: 22px !important;
+    }
+
+    :global(.offer-figma-cta .cta-inner-wrapper) {
+      max-width: 279.6px !important;
+      gap: 7.1px !important;
+    }
+
+    :global(.offer-figma-cta .master-btn) {
+      min-height: 44px !important;
+      padding: 7.72px 19.3px !important;
+      border-radius: 4.58px !important;
+    }
+
+    :global(.offer-figma-cta .master-btn-content) {
+      gap: 8.07px !important;
+    }
+
+    :global(.offer-figma-cta .master-hand-icon) {
+      width: 16.9px !important;
+      height: 20.17px !important;
+    }
+
+    :global(.offer-figma-cta .master-btn-text) {
+      font-size: 13.11px !important;
+      line-height: 13.61px !important;
+      white-space: nowrap;
+    }
+
+    :global(.offer-figma-cta .cta-microcopy) {
+      font-size: 8.59px !important;
+      line-height: 10.43px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .offer-glow-top {
+      animation: none !important;
+      transform: translateX(-50%);
     }
   }
 </style>
-
-
