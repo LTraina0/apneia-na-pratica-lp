@@ -7,6 +7,7 @@ interface Props {
   microcopy?: string;
   className?: string;
   target?: string;
+  leadCapture?: boolean;
 }
 
 const {
@@ -16,7 +17,8 @@ const {
   showIcon = true,
   microcopy = "Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos.",
   className = "",
-  target = "_self"
+  target = "_self",
+  leadCapture = false
 } = Astro.props;
 ---
 
@@ -29,7 +31,16 @@ const {
   )}
 
   <div class="cta-inner-wrapper" data-node-id="131:1290">
-    <a href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined} class="master-btn" data-node-id="131:1291">
+    <a
+      href={href}
+      target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+      class="master-btn"
+      data-node-id="131:1291"
+      data-lead-capture={leadCapture ? 'true' : undefined}
+      aria-haspopup={leadCapture ? 'dialog' : undefined}
+      aria-controls={leadCapture ? 'lead-capture-modal' : undefined}
+    >
       <div class="master-btn-content" data-node-id="135:1791">
         {showIcon && (
           <svg class="master-hand-icon" width="29.5" height="35.2" viewBox="0 0 33.5104 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

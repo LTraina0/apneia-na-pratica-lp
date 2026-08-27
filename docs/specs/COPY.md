@@ -4,73 +4,61 @@
 
 ## DOBRA 1 — HERO
 
-**APNEIA NA PRÁTICA**
+# Reconheça sinais de possível apneia antes que passem despercebidos na consulta.
 
-# Aprenda a reconhecer sinais de possível apneia antes que passem despercebidos na sua consulta.
+Aprenda o que perguntar, o que observar e como organizar melhor as informações para entender quando a investigação do sono merece avançar.
 
-Saiba o que observar, quais perguntas fazer e quando o sono merece uma investigação mais aprofundada. **Treinamento para dentistas por R$ 47,00, com cartilha prática para uso no consultório.**
+**Treinamento para dentistas por R$ 47,00, com cartilha prática para uso no consultório.**
 
-**CTA:** QUERO ACESSAR AGORA
+**CTA:** QUERO ACESSAR O TREINAMENTO
 
-Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos.
+**Microcopy:** Acesso pela Hotmart • 7 dias de garantia
 
 ---
 
 ## DOBRA 2 — IDENTIFICAÇÃO
 
-**Eyebrow:** VOCÊ SE IDENTIFICA?
+**Eyebrow:** ISSO ACONTECE NA SUA CONSULTA?
 
 # Nem todo paciente chega dizendo que tem um problema de sono.
 
-Na rotina do consultório, os sinais de possível apneia nem sempre aparecem como uma queixa direta. Às vezes, o que surge são indícios soltos que parecem comuns no dia a dia — e é justamente aí que uma investigação mais criteriosa começa.
+Muitas vezes, os sinais aparecem de forma fragmentada durante a consulta. O desafio não é apenas perceber que algo pode estar acontecendo — é saber quais informações merecem atenção e como conectá-las.
 
-### Card 1 — Ronco
-O paciente pode até negar o ronco ou não perceber sua frequência, mas isso não encerra a investigação.
+### Card 1 — Ronco pouco percebido ou negado
+O paciente pode dizer que não ronca ou simplesmente não saber com que frequência isso acontece.
 
 ### Card 2 — Sono não reparador
-Quando o paciente relata que dorme, mas não sente que descansou, isso pode merecer perguntas mais específicas.
+Ele dorme, mas continua acordando cansado ou com a sensação de que não descansou.
 
-### Card 3 — Cansaço constante
-Nem todo cansaço é “só rotina corrida”. Em alguns casos, ele pode ser um sinal que pede mais contexto.
+### Card 3 — Cansaço e sonolência durante o dia
+Sintomas que podem parecer parte da rotina, mas que ganham outro significado quando analisados dentro do contexto do paciente.
 
-### Card 4 — Sonolência durante o dia
-Dormir em horários impróprios ou sentir sono excessivo ao longo do dia pode indicar a necessidade de investigar melhor.
-
-### Card 5 — Respostas que encerram cedo a anamnese
-Frases como “eu não ronco” ou “isso é normal pra mim” não devem ser tratadas automaticamente como ponto final.
-
-### Card 6 — Informações que ainda precisam ser conectadas
-O desafio muitas vezes não é perceber um sinal isolado, mas saber como reunir as informações e decidir o próximo passo.
+### Card 4 — Informações que aparecem desconectadas
+O desafio muitas vezes não está em um único sinal, mas em saber como juntar anamnese, sintomas, observações e ferramentas de apoio.
 
 **CTA:** QUERO APRENDER A INVESTIGAR MELHOR
 
 ---
 
-## DOBRA 3 — INVESTIGAÇÃO MAIS ESTRUTURADA
+## DOBRA 3 — MECANISMO CLÍNICO
 
-# Reconhecer um sinal é diferente de saber o que fazer com ele.
+# Reconhecer um sinal é apenas o começo.
 
-O **Apneia na Prática** ajuda você a sair de informações soltas e organizar uma investigação mais criteriosa durante a consulta.
+O que muda a investigação é saber o que perguntar, o que observar, como organizar as informações e quando decidir o próximo passo.
 
-### Quando a investigação fica solta
+### 01 — PERGUNTAR
+Conduzir uma anamnese mais direcionada sobre sono e sintomas relacionados.
 
-- A conversa depende apenas do que o paciente relata espontaneamente.
-- Uma resposta como “eu não ronco” pode encerrar a anamnese cedo demais.
-- Cansaço, sono não reparador e sonolência ficam desconectados.
-- Sinais e questionários acabam sendo vistos isoladamente.
-- Fica menos claro quando aprofundar ou encaminhar.
+### 02 — OBSERVAR
+Identificar sinais relevantes dentro do contexto clínico do paciente.
 
-### Quando você organiza a investigação
+### 03 — ORGANIZAR
+Conectar informações da anamnese, observação clínica e ferramentas de apoio.
 
-- Faz perguntas mais direcionadas sobre sono e sintomas relacionados.
-- Observa os sinais dentro do contexto clínico do paciente.
-- Integra anamnese, avaliação e ferramentas de apoio.
-- Evita transformar um sinal isolado em diagnóstico.
-- Entende melhor quando a investigação merece avançar.
+### 04 — DECIDIR
+Entender quando existem motivos para aprofundar a investigação ou encaminhar o paciente.
 
-**É esse raciocínio que você aprende no Apneia na Prática.**
-
-**Perguntar → Observar → Organizar → Decidir o próximo passo**
+**Nenhum sinal isolado equivale a um diagnóstico.**
 
 **CTA:** QUERO APRENDER ESSE PROCESSO
 

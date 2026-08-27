@@ -1,0 +1,174 @@
+---
+const faqItems = [
+  {
+    question: 'Para quem é o Apneia na Prática?',
+    answer: 'Para dentistas que desejam reconhecer possíveis sinais relacionados ao sono e organizar melhor essas informações durante a consulta.',
+  },
+  {
+    question: 'O treinamento ensina a diagnosticar apneia?',
+    answer: 'Não. O treinamento tem caráter educacional e aborda reconhecimento de sinais, anamnese, observação clínica e ferramentas de apoio. Sinais, sintomas e questionários isolados não estabelecem diagnóstico de apneia do sono.',
+  },
+  {
+    question: 'Como funciona a garantia?',
+    answer: 'Após a compra, você terá 7 dias para acessar o conteúdo e avaliar se o treinamento faz sentido para você. Caso decida não continuar, poderá solicitar o reembolso dentro do prazo da garantia.',
+  },
+];
+---
+
+<section class="faq-section scene-transition" id="duvidas" aria-labelledby="faq-title">
+  <div class="container faq-container">
+    <header class="faq-header text-center reveal reveal-soft">
+      <span class="eyebrow">DÚVIDAS FREQUENTES</span>
+      <h2 id="faq-title">O essencial antes de começar.</h2>
+    </header>
+
+    <div class="faq-list reveal reveal-soft delay-1">
+      {faqItems.map((item) => (
+        <details class="faq-item" name="apneia-faq">
+          <summary>
+            <span>{item.question}</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: clamp(66px, 7vw, 92px) 0 clamp(72px, 8vw, 104px);
+    background: linear-gradient(180deg, #F8FCFD 0%, #F8FBFD 100%);
+    border-bottom: 1px solid rgba(24, 181, 200, 0.1);
+  }
+
+  .faq-container {
+    max-width: 920px;
+  }
+
+  .faq-header {
+    margin-bottom: clamp(28px, 4vw, 38px);
+  }
+
+  .faq-header h2 {
+    margin-top: 14px;
+    color: var(--color-navy-700);
+  }
+
+  .faq-list {
+    border-top: 1px solid rgba(24, 181, 200, 0.22);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(24, 181, 200, 0.22);
+  }
+
+  .faq-item summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 28px;
+    align-items: center;
+    gap: 24px;
+    padding: 23px 4px;
+    color: var(--color-navy-700);
+    font-family: var(--font-primary);
+    font-size: clamp(17px, 2vw, 19px);
+    font-weight: 700;
+    line-height: 1.28;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary:focus-visible {
+    outline: 2px solid var(--color-cyan-500);
+    outline-offset: 5px;
+    border-radius: 4px;
+  }
+
+  .faq-icon {
+    position: relative;
+    display: block;
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(24, 181, 200, 0.35);
+    border-radius: 50%;
+    transition: transform var(--transition-smooth), background-color var(--transition-smooth);
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 1.5px;
+    background: var(--color-teal-600);
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    transition: transform var(--transition-smooth);
+  }
+
+  .faq-item[open] .faq-icon {
+    background: rgba(24, 181, 200, 0.08);
+    transform: rotate(180deg);
+  }
+
+  .faq-item[open] .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .faq-answer {
+    padding: 0 58px 23px 4px;
+  }
+
+  .faq-answer p {
+    max-width: 76ch;
+    color: var(--color-text-body);
+    line-height: 1.62;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .faq-item summary:hover {
+      color: var(--color-teal-600);
+    }
+  }
+
+  @media (max-width: 680px) {
+    .faq-section {
+      padding: 60px 0 72px;
+    }
+
+    .faq-item summary {
+      grid-template-columns: minmax(0, 1fr) 26px;
+      gap: 14px;
+      padding: 20px 2px;
+      font-size: 16px;
+    }
+
+    .faq-answer {
+      padding: 0 40px 21px 2px;
+    }
+
+    .faq-answer p {
+      font-size: 14.5px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon,
+    .faq-icon::after {
+      transition: none;
+    }
+  }
+</style>

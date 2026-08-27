@@ -1,87 +1,23 @@
 ---
 import CtaBlock from './CtaBlock.astro';
 
-const looseItems = [
-  "A conversa depende apenas do que o paciente relata espontaneamente.",
-  "Uma resposta como “eu não ronco” pode encerrar a anamnese cedo demais.",
-  "Cansaço, sono não reparador e sonolência ficam desconectados.",
-  "Sinais e questionários acabam sendo vistos isoladamente.",
-  "Fica menos claro quando aprofundar ou encaminhar."
-];
-
-const organizedItems = [
-  "Faz perguntas mais direcionadas sobre sono e sintomas relacionados.",
-  "Observa os sinais dentro do contexto clínico do paciente.",
-  "Integra anamnese, avaliação e ferramentas de apoio.",
-  "Evita transformar um sinal isolado em diagnóstico.",
-  "Entende melhor quando a investigação merece avançar."
-];
 ---
 
-<section class="comparison-section" id="metodo">
+<section class="clinical-process-section" id="metodo">
   <div class="container text-center">
 
     <!-- H2 Principal -->
-    <h2 class="comparison-title reveal">
-      Reconhecer um sinal é diferente de saber o que fazer com ele.
+    <h2 class="clinical-process-title reveal">
+      Reconhecer um sinal é apenas o começo.
     </h2>
 
     <!-- Subtítulo -->
-    <p class="comparison-subtitle reveal delay-1">
-      O <strong>Apneia na Prática</strong> ajuda você a sair de informações soltas e organizar uma investigação mais criteriosa durante a consulta.
+    <p class="clinical-process-subtitle reveal delay-1">
+      O que muda a investigação é saber o que perguntar, o que observar, como organizar as informações e quando decidir o próximo passo.
     </p>
 
-    <!-- Dois Painéis Lado a Lado (Clean / Editorial) -->
-    <div class="panels-wrapper">
-      
-      <!-- Painel Esquerdo: Investigação Solta -->
-      <div class="comparison-panel panel-loose reveal delay-2">
-        <div class="panel-header">
-          <span class="panel-badge badge-neutral">Cenário Desestruturado</span>
-          <h3 class="panel-title">Quando a investigação fica solta</h3>
-        </div>
-        <ul class="panel-list">
-          {looseItems.map((item) => (
-            <li class="panel-list-item">
-              <span class="icon-indicator indicator-loose" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9" />
-                  <line x1="9" y1="12" x2="15" y2="12" />
-                </svg>
-              </span>
-              <span class="item-text">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Painel Direito: Investigação Organizada -->
-      <div class="comparison-panel panel-organized reveal delay-3">
-        <div class="panel-header">
-          <span class="panel-badge badge-cyan">Método Clínico</span>
-          <h3 class="panel-title">Quando você organiza a investigação</h3>
-        </div>
-        <ul class="panel-list">
-          {organizedItems.map((item) => (
-            <li class="panel-list-item">
-              <span class="icon-indicator indicator-organized" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </span>
-              <span class="item-text">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Conclusão e Fluxo Vetorial 100% Transparente do Processo -->
+    <!-- Processo clínico reaproveitado da composição original -->
     <div class="process-container reveal delay-3">
-      <p class="process-tagline">
-        <strong>É esse raciocínio que você aprende no Apneia na Prática.</strong>
-      </p>
 
       <!-- Fluxo Vetorial Contínuo 100% Transparente -->
       <div class="process-vector-flow">
@@ -99,6 +35,7 @@ const organizedItems = [
           <div class="flow-meta">
             <span class="flow-num">01</span>
             <span class="flow-title">PERGUNTAR</span>
+            <p class="flow-description">Conduzir uma anamnese mais direcionada sobre sono e sintomas relacionados.</p>
           </div>
         </div>
 
@@ -122,6 +59,7 @@ const organizedItems = [
           <div class="flow-meta">
             <span class="flow-num">02</span>
             <span class="flow-title">OBSERVAR</span>
+            <p class="flow-description">Identificar sinais relevantes dentro do contexto clínico do paciente.</p>
           </div>
         </div>
 
@@ -150,6 +88,7 @@ const organizedItems = [
           <div class="flow-meta">
             <span class="flow-num">03</span>
             <span class="flow-title">ORGANIZAR</span>
+            <p class="flow-description">Conectar informações da anamnese, observação clínica e ferramentas de apoio.</p>
           </div>
         </div>
 
@@ -161,7 +100,7 @@ const organizedItems = [
           </svg>
         </div>
 
-        <!-- Step 4: Decidir o próximo passo -->
+        <!-- Step 4: Decidir -->
         <div class="flow-step">
           <div class="flow-icon">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -171,11 +110,14 @@ const organizedItems = [
           </div>
           <div class="flow-meta">
             <span class="flow-num">04</span>
-            <span class="flow-title">DECIDIR O PRÓXIMO PASSO</span>
+            <span class="flow-title">DECIDIR</span>
+            <p class="flow-description">Entender quando existem motivos para aprofundar a investigação ou encaminhar o paciente.</p>
           </div>
         </div>
 
       </div>
+
+      <p class="clinical-note">Nenhum sinal isolado equivale a um diagnóstico.</p>
     </div>
 
     <!-- CTA Master Component -->
@@ -187,7 +129,7 @@ const organizedItems = [
 </section>
 
 <style>
-  .comparison-section {
+  .clinical-process-section {
     padding-top: clamp(48px, 6vw, 76px);
     padding-bottom: clamp(48px, 6vw, 76px);
     background-color: var(--bg-surface);
@@ -196,13 +138,13 @@ const organizedItems = [
     position: relative;
   }
 
-  .comparison-title {
+  .clinical-process-title {
     max-width: 820px;
     margin: 0 auto clamp(12px, 1.6vw, 16px);
     color: var(--color-navy-700);
   }
 
-  .comparison-subtitle {
+  .clinical-process-subtitle {
     max-width: 700px;
     margin: 0 auto clamp(28px, 3.5vw, 40px);
     font-size: clamp(15px, 1.1vw, 16.5px);
@@ -210,138 +152,19 @@ const organizedItems = [
     color: var(--color-text-body);
   }
 
-  .comparison-subtitle strong {
-    font-weight: 700;
-    color: var(--color-navy-700);
-  }
-
-  /* Painéis Lado a Lado - Clean / Flat / Editorial */
-  .panels-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    margin-bottom: clamp(36px, 4.5vw, 48px);
-    text-align: left;
-  }
-
-  .comparison-panel {
-    border-radius: var(--radius-card);
-    padding: clamp(24px, 3vw, 32px) clamp(20px, 2.5vw, 28px);
-    display: flex;
-    flex-direction: column;
-    box-shadow: none;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  }
-
-  .comparison-panel:hover {
-    transform: translateY(-2px);
-  }
-
-  .panel-loose {
-    background-color: var(--color-blue-gray-50);
-    border: 1px solid var(--color-blue-gray-100);
-  }
-
-  .panel-organized {
-    background-color: #FFFFFF;
-    border: 2px solid var(--color-cyan-500);
-    box-shadow: 0 8px 24px rgba(24, 181, 200, 0.1);
-  }
-
-  .panel-header {
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-  }
-
-  .panel-badge {
-    display: inline-block;
-    font-family: var(--font-primary);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 9px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-  }
-
-  .badge-neutral {
-    background-color: var(--color-blue-gray-100);
-    color: var(--color-text-muted);
-  }
-
-  .badge-cyan {
-    background: var(--badge-cyan-gradient);
-    color: var(--color-teal-600);
-    border: 1px solid rgba(24, 181, 200, 0.25);
-  }
-
-  .panel-title {
-    font-size: clamp(18px, 1.8vw, 21px);
-    font-weight: 700;
-    color: var(--color-navy-700);
-  }
-
-  .panel-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-  }
-
-  .panel-list-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 11px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--color-text-body);
-  }
-
-  .icon-indicator {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1px;
-  }
-
-  .indicator-loose {
-    background-color: var(--color-blue-gray-100);
-    color: var(--color-text-muted);
-  }
-
-  .indicator-organized {
-    background-color: rgba(24, 181, 200, 0.15);
-    color: var(--color-cyan-500);
-  }
-
-  .item-text {
-    flex: 1;
-  }
-
   /* Process Vector Flow */
   .process-container {
-    max-width: 860px;
+    max-width: 1040px;
     margin: 0 auto clamp(24px, 3.5vw, 36px);
   }
 
-  .process-tagline {
-    font-size: clamp(15px, 1.15vw, 17px);
-    color: var(--color-navy-700);
-    margin-bottom: 24px;
-  }
 
   .process-vector-flow {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    max-width: 820px;
+    max-width: 1040px;
     margin: 0 auto clamp(20px, 3vw, 32px);
     background: transparent;
     padding: 0;
@@ -353,7 +176,7 @@ const organizedItems = [
     align-items: center;
     text-align: center;
     flex: 1;
-    max-width: 170px;
+    max-width: 210px;
     transition: transform var(--transition-fast);
   }
 
@@ -393,44 +216,43 @@ const organizedItems = [
     line-height: 1.25;
   }
 
+  .flow-description {
+    max-width: 210px;
+    margin-top: 8px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--color-text-muted);
+  }
+
   .flow-connector {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     padding: 0 4px;
-    margin-bottom: 30px;
+    margin-top: 17px;
   }
 
-  /* CTA Clean & Premium */
-  .cta-wrapper {
-    display: flex;
-    justify-content: center;
+  .clinical-note {
+    margin: 6px auto 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-navy-700);
   }
-
-  .comparison-cta { width: 100%; max-width: 392px; }
 
   @media (max-width: 860px) {
-    .panels-wrapper {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
     .process-vector-flow {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px 16px;
+      gap: 28px 20px;
     }
 
     .flow-connector {
       display: none;
     }
 
-    .flow-step {
-      max-width: 100%;
-    }
-
-    .comparison-cta {
+    .flow-step,
+    .flow-description {
       max-width: 100%;
     }
   }

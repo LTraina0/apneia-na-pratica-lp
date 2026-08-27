@@ -1,36 +1,42 @@
 ---
-import CtaBlock from './CtaBlock.astro';
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const cards = [
   {
     title: "Ronco",
     description: "O paciente pode até negar o ronco ou não perceber sua frequência, mas isso não encerra a investigação.",
-    icon: "snore"
+    icon: "ronco.svg",
+    iconLayout: "snore"
   },
   {
     title: "Sono não reparador",
     description: "Quando o paciente relata que dorme, mas não sente que descansou, isso pode merecer perguntas mais específicas.",
-    icon: "moon"
+    icon: "sono-nao-reparador.svg",
+    iconLayout: "compact"
   },
   {
     title: "Cansaço constante",
     description: "Nem todo cansaço é “só rotina corrida”. Em alguns casos, ele pode ser um sinal que pede mais contexto.",
-    icon: "fatigue"
+    icon: "cansaco-constante.svg",
+    iconLayout: "fatigue"
   },
   {
     title: "Sonolência durante o dia",
     description: "Dormir em horários impróprios ou sentir sono excessivo ao longo do dia pode indicar a necessidade de investigar melhor.",
-    icon: "sun-clock"
+    icon: "sonolencia-dia.svg",
+    iconLayout: "compact"
   },
   {
     title: "Respostas que encerram cedo a anamnese",
-    description: "Frases como “eu não ronco” ou “isso é normal pra mim” não devem ser tratadas automaticamente como ponto final.",
-    icon: "chat-stop"
+    description: "O paciente pode até negar o ronco ou não perceber sua frequência, mas isso não encerra a investigação.",
+    icon: "anamnese.svg",
+    iconLayout: "compact"
   },
   {
     title: "Informações que ainda precisam ser conectadas",
-    description: "O desafio muitas vezes não é perceber um sinal isolado, mas saber como reunir as informações e decidir o próximo passo.",
-    icon: "nodes"
+    description: "O paciente pode até negar o ronco ou não perceber sua frequência, mas isso não encerra a investigação.",
+    icon: "informacoes-conectadas.svg",
+    iconLayout: "compact"
   }
 ];
 ---
@@ -41,7 +47,7 @@ const cards = [
     <!-- Eyebrow -->
     <div class="reveal">
       <span class="eyebrow identification-eyebrow">
-        VOCÊ SE IDENTIFICA?
+        ISSO ACONTECE NA SUA CONSULTA?
       </span>
     </div>
 
@@ -52,53 +58,20 @@ const cards = [
 
     <!-- Intro Text -->
     <p class="identification-intro reveal delay-2">
-      Na rotina do consultório, os sinais de possível apneia nem sempre aparecem como uma queixa direta. Às vezes, o que surge são indícios soltos que parecem comuns no dia a dia — e é justamente aí que uma investigação mais criteriosa começa.
+      Muitas vezes, os sinais aparecem de forma fragmentada durante a consulta. O desafio não é apenas perceber que algo pode estar acontecendo — é saber quais informações merecem atenção e como conectá-las.
     </p>
 
-    <!-- Grid 3x2 (6 Cards) -->
+    <!-- Grid 3x2 (6 Cards) — Figma 208:591 -->
     <div class="cards-grid">
       {cards.map((card, index) => (
         <div class={`card-item reveal delay-${(index % 3) + 1}`}>
-          <div class="card-icon-wrapper">
-            {card.icon === "snore" && (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 12h5l2-6 4 12 2-6h7" />
-              </svg>
-            )}
-            {card.icon === "moon" && (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              </svg>
-            )}
-            {card.icon === "fatigue" && (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="16" height="10" x="2" y="7" rx="2" ry="2" />
-                <line x1="22" x2="22" y1="11" y2="13" />
-                <line x1="6" x2="6" y1="10" y2="14" stroke-width="2" />
-              </svg>
-            )}
-            {card.icon === "sun-clock" && (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            )}
-            {card.icon === "chat-stop" && (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                <line x1="9" y1="10" x2="15" y2="10" />
-              </svg>
-            )}
-            {card.icon === "nodes" && (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="6" cy="6" r="3" />
-                <circle cx="18" cy="6" r="3" />
-                <circle cx="12" cy="18" r="3" />
-                <line x1="8.5" y1="7.5" x2="15.5" y2="7.5" />
-                <line x1="7.5" y1="8.5" x2="10.5" y2="15.5" />
-                <line x1="16.5" y1="8.5" x2="13.5" y2="15.5" />
-              </svg>
-            )}
+          <div class={`card-icon card-icon--${card.iconLayout}`} aria-hidden="true">
+            <img
+              src={`${baseUrl}assets/identification/${card.icon}`}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <h3 class="card-title">{card.title}</h3>
           <p class="card-description">{card.description}</p>
@@ -106,10 +79,6 @@ const cards = [
       ))}
     </div>
 
-    <!-- CTA Centralizado Master Component -->
-    <div class="reveal delay-3">
-      <CtaBlock showPrice={false} text="QUERO APRENDER A INVESTIGAR MELHOR" href="#oferta" showIcon={false} />
-    </div>
 
   </div>
 </section>
@@ -120,6 +89,10 @@ const cards = [
     padding-bottom: clamp(44px, 6vw, 76px);
     background-color: var(--bg-page);
     position: relative;
+  }
+
+  .identification-section .container {
+    padding-inline: 32px;
   }
 
   .identification-eyebrow {
@@ -142,22 +115,30 @@ const cards = [
 
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: clamp(28px, 4vw, 40px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 18px;
+    row-gap: 38.5px;
+    margin-bottom: 0;
     text-align: center;
   }
 
   .card-item {
-    background-color: #FFFFFF;
-    border: 1px solid rgba(226, 232, 240, 0.85);
+    width: 100%;
+    max-width: 346.67px;
+    height: 212px;
+    justify-self: center;
+    background: linear-gradient(180deg, var(--color-white) 0%, #EEF6FF 100%);
+    border: 1px solid rgba(24, 181, 200, 0.3);
     border-radius: var(--radius-card);
-    padding: clamp(22px, 2.8vw, 28px) clamp(18px, 2.2vw, 24px);
+    padding: 18px 28px;
     box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all var(--transition-fast);
+    justify-content: center;
+    gap: 18px;
+    overflow: hidden;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   }
 
   .card-item:hover {
@@ -166,54 +147,98 @@ const cards = [
     border-color: rgba(24, 181, 200, 0.35);
   }
 
-  .card-icon-wrapper {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #F1F5F9 0%, rgba(24, 181, 200, 0.12) 100%);
-    border: 1px solid rgba(24, 181, 200, 0.18);
-    color: var(--color-cyan-500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 14px;
+  .card-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
     transition: transform var(--transition-fast);
   }
 
-  .card-item:hover .card-icon-wrapper {
-    transform: scale(1.06);
-    color: var(--color-blue-600);
+  .card-icon img {
+    display: block;
+    max-width: none;
+  }
+
+  .card-icon--snore {
+    width: 18.333px;
+    height: 11px;
+  }
+
+  .card-icon--snore img {
+    width: 20.167px;
+    height: 12.833px;
+  }
+
+  .card-icon--compact {
+    width: 16.5px;
+    height: 16.5px;
+  }
+
+  .card-icon--compact img {
+    width: 18.333px;
+    height: 18.333px;
+  }
+
+  .card-icon--fatigue,
+  .card-icon--fatigue img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .card-item:hover .card-icon {
+    transform: scale(1.05);
   }
 
   .card-title {
-    font-size: 17.5px;
+    width: 100%;
+    margin: 0;
+    font-size: 24px;
     font-weight: 700;
     color: var(--color-navy-700);
-    margin-bottom: 8px;
-    line-height: 1.3;
+    line-height: 1.2;
+    letter-spacing: -0.48px;
+    text-wrap: balance;
   }
 
   .card-description {
+    width: 100%;
+    margin: 0;
     font-size: 14px;
-    line-height: 1.5;
-    color: var(--color-text-muted);
+    line-height: 21px;
+    color: var(--color-text-body);
+    text-wrap: pretty;
   }
 
   @media (max-width: 1024px) {
     .cards-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 346.67px));
+      justify-content: center;
+      column-gap: 18px;
+      row-gap: 24px;
     }
   }
 
   @media (max-width: 680px) {
+    .identification-section .container {
+      padding-inline: 20px;
+    }
+
     .cards-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 346.67px);
       gap: 14px;
+      justify-content: center;
     }
 
     .card-item {
-      padding: 20px 16px;
+      padding-inline: 28px;
+    }
+  }
+
+  @media (max-width: 359px) {
+    .card-item {
+      height: auto;
+      min-height: 212px;
+      padding-block: 22px;
     }
   }
 </style>

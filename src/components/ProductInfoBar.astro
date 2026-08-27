@@ -1,0 +1,129 @@
+---
+interface Props {
+  duration?: string;
+  accessTime?: string;
+  certificate?: string;
+}
+
+const { duration, accessTime, certificate } = Astro.props;
+
+const confirmedItems = [
+  { label: 'Curso online em vídeo', icon: 'play' },
+  { label: 'Cartilha prática', icon: 'booklet' },
+  { label: 'Hotmart', icon: 'platform' },
+];
+
+const optionalItems = [
+  duration && { label: duration, icon: 'clock' },
+  accessTime && { label: accessTime, icon: 'access' },
+  certificate && { label: certificate, icon: 'certificate' },
+].filter(Boolean) as { label: string; icon: string }[];
+
+const items = [...confirmedItems, ...optionalItems];
+---
+
+<aside class="product-info-bar" aria-label="Informações do treinamento">
+  {items.map((item) => (
+    <div class="product-info-item">
+      <span class="product-info-icon" aria-hidden="true">
+        {item.icon === 'play' && (
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3V9Z"/></svg>
+        )}
+        {item.icon === 'booklet' && (
+          <svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5v-16Z"/></svg>
+        )}
+        {item.icon === 'platform' && (
+          <svg viewBox="0 0 24 24"><path d="M12 3 4 7v10l8 4 8-4V7l-8-4Z"/><path d="m4 7 8 4 8-4M12 11v10"/></svg>
+        )}
+        {item.icon === 'clock' && (
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        )}
+        {item.icon === 'access' && (
+          <svg viewBox="0 0 24 24"><path d="M5 10V7a7 7 0 0 1 14 0v3"/><rect x="3" y="10" width="18" height="11" rx="3"/></svg>
+        )}
+        {item.icon === 'certificate' && (
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8 14-1 7 5-3 5 3-1-7"/></svg>
+        )}
+      </span>
+      <span>{item.label}</span>
+    </div>
+  ))}
+</aside>
+
+<style>
+  .product-info-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    overflow: hidden;
+    color: var(--color-white);
+    background: var(--color-navy-700);
+    border: 1px solid rgba(56, 211, 229, 0.28);
+    border-radius: var(--radius-card);
+    box-shadow: 0 16px 36px -28px rgba(2, 11, 39, 0.8);
+  }
+
+  .product-info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 82px;
+    padding: 18px 20px;
+    gap: 12px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .product-info-item + .product-info-item {
+    border-left: 1px solid rgba(56, 211, 229, 0.18);
+  }
+
+  .product-info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    color: var(--color-cyan-400);
+    background: rgba(24, 181, 200, 0.1);
+    border: 1px solid rgba(56, 211, 229, 0.2);
+    border-radius: 10px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .product-info-icon svg path[d*='m10 9'] {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  @media (max-width: 680px) {
+    .product-info-bar {
+      grid-template-columns: 1fr;
+    }
+
+    .product-info-item {
+      justify-content: flex-start;
+      min-height: 62px;
+      padding: 13px 18px;
+      text-align: left;
+    }
+
+    .product-info-item + .product-info-item {
+      border-top: 1px solid rgba(56, 211, 229, 0.18);
+      border-left: 0;
+    }
+  }
+</style>

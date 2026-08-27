@@ -16,12 +16,18 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     />
 
     <p class="footer-copyright reveal reveal-soft delay-2">
-      © 2026 Nome da Empresa. <span>Todos os direitos reservados.</span>
+      © 2026 Apneia na Prática. <span>Todos os direitos reservados.</span>
     </p>
 
-    <p class="footer-contact reveal reveal-soft delay-3">
-      Nome do Profissional - Área de Atuação - contato@email.com.br
+    <p class="footer-disclaimer reveal reveal-soft delay-3">
+      Conteúdo educacional. Sinais isolados não estabelecem diagnóstico de apneia do sono.
     </p>
+
+    <nav class="footer-links reveal reveal-soft delay-3" aria-label="Links institucionais em definição">
+      <span>Política de privacidade</span>
+      <span>Termos de uso</span>
+      <span>Suporte</span>
+    </nav>
   </div>
 </footer>
 
@@ -31,18 +37,16 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    min-height: 175.1px;
-    gap: 20px;
     color: #FFFFFF;
-    background: #050A18;
+    background: linear-gradient(180deg, #12345A 0%, #0A203D 42%, #061328 100%);
   }
 
   .footer-divider {
     flex: 0 0 auto;
     width: 100%;
-    height: 3px;
-    opacity: 0.7;
-    background: linear-gradient(90deg, rgba(46, 173, 194, 0), #2EADC2 50%, rgba(46, 173, 194, 0));
+    height: 2px;
+    opacity: 0.66;
+    background: linear-gradient(90deg, rgba(46, 173, 194, 0), rgba(56, 211, 229, 0.82) 50%, rgba(46, 173, 194, 0));
   }
 
   .footer-divider.reveal {
@@ -53,93 +57,120 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   }
 
   .footer-divider.reveal.is-visible {
-    opacity: 0.7;
+    opacity: 0.66;
     transform: scaleX(1);
   }
 
   .footer-content {
     display: flex;
-    flex: 0 0 auto;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 8px;
-    padding: 12px 12px 20px;
+    max-width: 880px;
+    gap: 10px;
+    margin: 0 auto;
+    padding: 30px 20px 34px;
   }
 
   .footer-logo {
     display: block;
     width: 132px;
-    height: 64.1px;
+    height: 64px;
+    margin-bottom: 2px;
     object-fit: contain;
-    filter: drop-shadow(0 2.03px 6.09px rgba(12, 38, 88, 0.05));
+    filter: drop-shadow(0 5px 14px rgba(2, 11, 39, 0.18));
   }
 
   .footer-copyright,
-  .footer-contact {
+  .footer-disclaimer,
+  .footer-links {
     margin: 0;
     text-align: center;
   }
 
   .footer-copyright {
     color: #FFFFFF;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14.4px;
+    font-family: var(--font-primary);
+    font-size: 13.5px;
     font-weight: 700;
-    line-height: 22.32px;
-    white-space: nowrap;
+    line-height: 1.5;
   }
 
   .footer-copyright span {
-    text-decoration: underline;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
+    color: rgba(248, 250, 252, 0.82);
+    font-weight: 500;
   }
 
-  .footer-contact {
-    width: 100%;
-    color: rgba(226, 232, 240, 0.85);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13.76px;
-    font-weight: 400;
-    line-height: normal;
+  .footer-disclaimer {
+    max-width: 660px;
+    color: rgba(226, 232, 240, 0.78);
+    font-family: var(--font-secondary);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 0;
+    color: rgba(226, 232, 240, 0.7);
+    font-family: var(--font-secondary);
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  .footer-links span {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .footer-links span + span::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    margin: 0 10px;
+    background: rgba(56, 211, 229, 0.54);
+    border-radius: 50%;
   }
 
   @media (max-width: 767px) {
-    .site-footer {
-      min-height: 158.7px;
-      gap: 10px;
-    }
-
     .footer-divider {
-      height: 2.5px;
-      opacity: 0.76;
+      height: 2px;
+      opacity: 0.7;
     }
 
     .footer-content {
-      width: calc(100% - 44px);
-      max-width: 346px;
-      margin: 0 auto;
-      gap: 7.1px;
-      padding: 6px 17.74px 20px;
+      width: calc(100% - 36px);
+      max-width: 390px;
+      gap: 9px;
+      padding: 24px 0 28px;
     }
 
     .footer-logo {
-      width: 115.33px;
-      height: 56.01px;
-      filter: drop-shadow(0 1.77px 5.32px rgba(12, 38, 88, 0.05));
+      width: 116px;
+      height: 56px;
     }
 
     .footer-copyright {
-      font-size: 12.42px;
-      line-height: 19.8px;
+      font-size: 12px;
     }
 
-    .footer-contact {
-      max-width: 310.51px;
-      font-size: 12.21px;
-      line-height: normal;
+    .footer-disclaimer {
+      max-width: 330px;
+      font-size: 11.5px;
+    }
+
+    .footer-links {
+      max-width: 340px;
+      font-size: 10.75px;
+    }
+
+    .footer-links span + span::before {
+      margin: 0 8px;
     }
   }
 </style>

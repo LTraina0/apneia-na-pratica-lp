@@ -1,0 +1,562 @@
+---
+interface LearningCard {
+  label: string;
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const learningCards: LearningCard[] = [
+  {
+    label: 'TÓPICO 01',
+    title: 'Anamnese mais direcionada',
+    description: 'Aprenda como trazer perguntas relacionadas ao sono para a conversa clínica de maneira mais objetiva.',
+    image: `${baseUrl}assets/learning/01-anamnese-direcionada.webp`,
+  },
+  {
+    label: 'TÓPICO 02',
+    title: 'O que observar na consulta',
+    description: 'Entenda quais sinais, relatos e observações podem justificar uma investigação mais cuidadosa.',
+    image: `${baseUrl}assets/learning/02-observar-consulta.webp`,
+  },
+  {
+    label: 'TÓPICO 03',
+    title: 'Conectar sinais e contexto',
+    description: 'Aprenda a interpretar informações dentro do contexto do paciente, em vez de analisar cada sinal isoladamente.',
+    image: `${baseUrl}assets/learning/03-conectar-sinais-contexto.webp`,
+  },
+  {
+    label: 'TÓPICO 04',
+    title: 'Questionários como apoio',
+    description: 'Entenda como ferramentas e questionários podem complementar a investigação clínica.',
+    image: `${baseUrl}assets/learning/04-questionarios-apoio.webp`,
+  },
+  {
+    label: 'TÓPICO 05',
+    title: 'Evitar conclusões isoladas',
+    description: 'Saiba por que sinais, sintomas e questionários precisam ser interpretados em conjunto antes de qualquer conclusão.',
+    image: `${baseUrl}assets/learning/05-evitar-conclusoes-isoladas.webp`,
+  },
+  {
+    label: 'TÓPICO 06',
+    title: 'Quando aprofundar a investigação',
+    description: 'Reconheça situações em que existem motivos para avançar na investigação ou considerar encaminhamento.',
+    image: `${baseUrl}assets/learning/06-aprofundar-investigacao.webp`,
+  },
+];
+
+const bookletItems = [
+  'perguntas importantes para a anamnese;',
+  'sinais que merecem atenção;',
+  'pontos de observação clínica;',
+  'ferramentas e questionários;',
+  'organização do raciocínio;',
+  'quando considerar aprofundar a investigação.',
+];
+---
+
+<section class="training-overview scene-transition" id="conteudo" aria-labelledby="training-title">
+  <div class="training-orbit training-orbit-left" aria-hidden="true"></div>
+  <div class="training-orbit training-orbit-right" aria-hidden="true"></div>
+
+  <div class="container training-container">
+    <header class="training-header text-center reveal reveal-soft">
+      <span class="eyebrow">O QUE VOCÊ VAI ENCONTRAR NO TREINAMENTO</span>
+      <h2 id="training-title">Um treinamento criado para transformar informações soltas em um raciocínio clínico mais organizado.</h2>
+      <p>
+        O <strong>Apneia na Prática</strong> foi desenvolvido para ajudar o dentista a incorporar perguntas e observações relacionadas ao sono à rotina da consulta de forma objetiva e aplicável.
+      </p>
+    </header>
+
+    <div class="learning-grid" aria-label="O que você vai aprender">
+      {learningCards.map((card, index) => (
+        <article class={`learning-card learning-card-scene-${index + 1} reveal reveal-soft delay-${Math.min(index + 1, 5)}`}>
+          <div class:list={['learning-card-media', { 'has-image': card.image }]} aria-hidden="true">
+            {card.image && <img src={card.image} alt="" loading="lazy" />}
+            <div class="photo-fallback"></div>
+          </div>
+          <div class="learning-card-overlay" aria-hidden="true"></div>
+          <div class="learning-card-content">
+            <span class="learning-label">{card.label}</span>
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <article class="booklet-card reveal reveal-soft" aria-labelledby="booklet-title">
+      <div class="booklet-visual" aria-hidden="true">
+        <div class="booklet-shadow"></div>
+        <div class="booklet-page booklet-page-back"></div>
+        <div class="booklet-page booklet-cover">
+          <span>APNEIA NA PRÁTICA</span>
+          <strong>CARTILHA<br />PRÁTICA</strong>
+          <div class="booklet-mark"></div>
+          <small>GUIA DE APOIO PARA A CONSULTA</small>
+        </div>
+      </div>
+
+      <div class="booklet-copy">
+        <span class="section-kicker">MATERIAL COMPLEMENTAR</span>
+        <h2 id="booklet-title">Cartilha prática para uso no consultório</h2>
+        <p>Um material complementar desenvolvido para ajudar você a consultar os principais pontos do treinamento e levar o conteúdo para a rotina clínica.</p>
+        <ul>
+          {bookletItems.map((item) => (
+            <li><span aria-hidden="true">✓</span>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .training-overview {
+    position: relative;
+    padding: clamp(72px, 8vw, 108px) 0 clamp(76px, 8vw, 104px);
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(241, 245, 249, 0.68), rgba(255, 255, 255, 0.98) 48%, rgba(241, 245, 249, 0.72)),
+      var(--bg-surface-soft);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .training-orbit {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    pointer-events: none;
+    border: 1px solid rgba(24, 181, 200, 0.07);
+    border-radius: 50%;
+  }
+
+  .training-orbit::before,
+  .training-orbit::after {
+    content: '';
+    position: absolute;
+    inset: 68px;
+    border: 1px solid rgba(33, 120, 159, 0.055);
+    border-radius: inherit;
+  }
+
+  .training-orbit::after {
+    inset: 148px;
+  }
+
+  .training-orbit-left {
+    top: 480px;
+    left: -400px;
+  }
+
+  .training-orbit-right {
+    right: -420px;
+    bottom: 120px;
+  }
+
+  .training-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .training-header {
+    max-width: 880px;
+    margin: 0 auto clamp(40px, 5vw, 56px);
+  }
+
+  .training-header h2 {
+    margin: 16px auto 18px;
+    color: var(--color-navy-700);
+  }
+
+  .training-header p {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--color-text-body);
+  }
+
+  .learning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .learning-card {
+    --scene-x: 72%;
+    --scene-y: 26%;
+    --scene-light: rgba(195, 229, 235, 0.68);
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: flex-end;
+    min-height: 330px;
+    overflow: hidden;
+    color: var(--color-white);
+    background: var(--color-navy-800);
+    border: 1px solid rgba(24, 181, 200, 0.2);
+    border-radius: var(--radius-card);
+    box-shadow: 0 18px 42px -32px rgba(2, 11, 39, 0.76);
+    transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  }
+
+  .learning-card-scene-2 { --scene-x: 32%; --scene-y: 24%; --scene-light: rgba(179, 214, 224, 0.72); }
+  .learning-card-scene-3 { --scene-x: 78%; --scene-y: 36%; --scene-light: rgba(163, 202, 214, 0.7); }
+  .learning-card-scene-4 { --scene-x: 26%; --scene-y: 36%; --scene-light: rgba(196, 221, 227, 0.66); }
+  .learning-card-scene-5 { --scene-x: 70%; --scene-y: 18%; --scene-light: rgba(166, 207, 218, 0.72); }
+  .learning-card-scene-6 { --scene-x: 38%; --scene-y: 22%; --scene-light: rgba(190, 224, 231, 0.68); }
+
+  .learning-card-media,
+  .learning-card-media img,
+  .photo-fallback,
+  .learning-card-overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .learning-card-media {
+    overflow: hidden;
+    opacity: 0.82;
+    transform: scale(1.015);
+    transition: opacity var(--transition-smooth), transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .learning-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.72) contrast(0.94);
+  }
+
+  .photo-fallback {
+    background:
+      linear-gradient(112deg, rgba(241, 245, 249, 0.04) 0 28%, transparent 29% 100%),
+      radial-gradient(ellipse 42% 56% at var(--scene-x) var(--scene-y), var(--scene-light) 0%, rgba(126, 175, 190, 0.34) 30%, transparent 66%),
+      radial-gradient(ellipse 34% 70% at calc(var(--scene-x) - 24%) calc(var(--scene-y) + 34%), rgba(12, 38, 88, 0.26), transparent 68%),
+      linear-gradient(145deg, #B2C7CE 0%, #6D8E9B 44%, #25465B 100%);
+    filter: saturate(0.68) contrast(0.92) blur(0.25px);
+  }
+
+  .photo-fallback::before {
+    content: '';
+    position: absolute;
+    width: 54%;
+    height: 112%;
+    top: -12%;
+    left: calc(var(--scene-x) - 28%);
+    background: linear-gradient(100deg, rgba(245, 250, 252, 0.28), rgba(224, 239, 243, 0.04));
+    border-radius: 46% 54% 34% 66%;
+    filter: blur(18px);
+    transform: rotate(-7deg);
+  }
+
+  .photo-fallback::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+    background-image: repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 5px);
+    mix-blend-mode: soft-light;
+  }
+
+  .learning-card-media.has-image .photo-fallback {
+    display: none;
+  }
+
+  .learning-card-overlay {
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(2, 11, 39, 0.08) 0%, rgba(2, 11, 39, 0.24) 34%, rgba(2, 11, 39, 0.9) 76%, #020B27 100%),
+      linear-gradient(90deg, rgba(2, 11, 39, 0.18), transparent 74%);
+    pointer-events: none;
+  }
+
+  .learning-card-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 28px;
+  }
+
+  .learning-label {
+    display: inline-flex;
+    padding: 5px 10px;
+    margin-bottom: 14px;
+    color: var(--color-cyan-400);
+    font-family: var(--font-primary);
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    background: rgba(2, 11, 39, 0.38);
+    border: 1px solid rgba(56, 211, 229, 0.28);
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+  }
+
+  .learning-card h3 {
+    max-width: 300px;
+    margin-bottom: 12px;
+    color: var(--color-white);
+    font-size: clamp(19px, 1.8vw, 23px);
+    line-height: 1.16;
+    text-shadow: 0 2px 18px rgba(2, 11, 39, 0.28);
+  }
+
+  .learning-card p {
+    max-width: 36ch;
+    color: rgba(248, 250, 252, 0.86);
+    font-size: 14px;
+    line-height: 1.48;
+  }
+
+  .booklet-card {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+    width: 100%;
+    max-width: 1040px;
+    min-height: 390px;
+    margin: clamp(72px, 8vw, 96px) auto 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(24, 181, 200, 0.18);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 18px 48px -38px rgba(2, 11, 39, 0.34);
+  }
+
+  .booklet-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 390px;
+    overflow: hidden;
+    background: linear-gradient(155deg, #12386A 0%, var(--color-navy-800) 58%, var(--color-navy-950) 100%);
+  }
+
+  .booklet-visual::before {
+    content: '';
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: -130px;
+    left: -120px;
+    background: rgba(56, 211, 229, 0.12);
+    border-radius: 50%;
+    filter: blur(24px);
+  }
+
+  .booklet-shadow {
+    position: absolute;
+    width: 180px;
+    height: 30px;
+    bottom: 52px;
+    background: rgba(2, 11, 39, 0.58);
+    border-radius: 50%;
+    filter: blur(14px);
+  }
+
+  .booklet-page {
+    position: absolute;
+    width: 164px;
+    height: 232px;
+    border-radius: 7px 10px 10px 7px;
+  }
+
+  .booklet-page-back {
+    background: #E5EDF1;
+    transform: translate(16px, 5px) rotate(6deg);
+    box-shadow: 0 20px 36px rgba(2, 11, 39, 0.3);
+  }
+
+  .booklet-cover {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 18px 17px;
+    color: var(--color-white);
+    background: linear-gradient(150deg, rgba(56, 211, 229, 0.13), transparent 52%), var(--color-navy-700);
+    border: 1px solid rgba(56, 211, 229, 0.28);
+    transform: translate(-4px, -4px) rotate(-2deg);
+    box-shadow: 0 22px 42px rgba(2, 11, 39, 0.36);
+  }
+
+  .booklet-cover > span,
+  .booklet-cover small {
+    font-family: var(--font-primary);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--color-cyan-400);
+  }
+
+  .booklet-cover strong {
+    margin-top: 15px;
+    font-family: var(--font-primary);
+    font-size: 21px;
+    line-height: 0.98;
+  }
+
+  .booklet-mark {
+    position: relative;
+    width: 96px;
+    height: 42px;
+    margin: auto 0;
+    border-top: 2px solid var(--color-cyan-400);
+    border-radius: 50%;
+  }
+
+  .booklet-mark::before,
+  .booklet-mark::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    width: 13px;
+    height: 13px;
+    border: 2px solid var(--color-cyan-400);
+    border-radius: 50%;
+  }
+
+  .booklet-mark::before { left: 20px; }
+  .booklet-mark::after { right: 20px; }
+
+  .booklet-cover small {
+    color: rgba(248, 250, 252, 0.7);
+    line-height: 1.35;
+  }
+
+  .booklet-copy {
+    align-self: center;
+    padding: clamp(34px, 4.6vw, 52px);
+  }
+
+  .section-kicker {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--color-teal-600);
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .booklet-copy h2 {
+    margin-bottom: 16px;
+    color: var(--color-navy-700);
+  }
+
+  .booklet-copy > p {
+    max-width: 58ch;
+    margin-bottom: 22px;
+    color: var(--color-text-body);
+  }
+
+  .booklet-copy ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 22px;
+    list-style: none;
+  }
+
+  .booklet-copy li {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 7px;
+    color: var(--color-text-muted);
+    font-size: 13.5px;
+    line-height: 1.42;
+  }
+
+  .booklet-copy li span {
+    color: var(--color-cyan-500);
+    font-family: var(--font-primary);
+    font-weight: 800;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .learning-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 211, 229, 0.42);
+      box-shadow: 0 28px 54px -34px rgba(2, 11, 39, 0.78);
+    }
+
+    .learning-card:hover .learning-card-media {
+      opacity: 0.94;
+      transform: scale(1.045);
+    }
+  }
+
+  @media (max-width: 920px) {
+    .learning-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .booklet-card {
+      grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+    }
+
+    .booklet-copy ul {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .training-overview {
+      padding: 64px 0 68px;
+    }
+
+    .training-header {
+      margin-bottom: 34px;
+    }
+
+    .training-header h2 {
+      margin-top: 14px;
+    }
+
+    .learning-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .learning-card {
+      min-height: 310px;
+    }
+
+    .learning-card-media {
+      opacity: 0.88;
+      transform: scale(1.025);
+    }
+
+    .learning-card-content {
+      padding: 24px;
+    }
+
+    .learning-card p {
+      max-width: 38ch;
+    }
+
+    .booklet-card {
+      grid-template-columns: 1fr;
+      margin-top: 64px;
+    }
+
+    .booklet-visual {
+      min-height: 304px;
+    }
+
+    .booklet-shadow {
+      bottom: 34px;
+    }
+
+    .booklet-copy {
+      padding: 30px 24px 34px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .learning-card,
+    .learning-card-media {
+      transition: none;
+    }
+  }
+</style>

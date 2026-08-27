@@ -1,0 +1,193 @@
+---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const credentials: string[] = [];
+---
+
+<section class="expert-section scene-transition" id="especialista" aria-labelledby="expert-title">
+  <div class="expert-orbit" aria-hidden="true"></div>
+
+  <div class="container expert-shell">
+    <figure class="expert-photo reveal reveal-scale">
+      <img
+        src={`${baseUrl}assets/professor-eduardo-rollo.webp`}
+        alt="Prof. Dr. Eduardo Rollo durante uma explicação clínica"
+        width="1200"
+        height="2133"
+        loading="lazy"
+      />
+    </figure>
+
+    <div class="expert-copy reveal reveal-soft delay-1">
+      <span class="eyebrow">QUEM CONDUZ O TREINAMENTO</span>
+      <h2 id="expert-title">Prof. Dr. Eduardo Rollo</h2>
+
+      {credentials.length > 0 && (
+        <ul class="expert-credentials" aria-label="Credenciais profissionais">
+          {credentials.slice(0, 3).map((credential) => <li>{credential}</li>)}
+        </ul>
+      )}
+
+      <p>Eduardo Rollo conduz o Apneia na Prática trazendo o tema da investigação de possíveis sinais de apneia para situações que fazem parte da rotina clínica do dentista.</p>
+      <p>Ao longo do treinamento, ele apresenta uma forma mais organizada de relacionar anamnese, sintomas, observações clínicas e ferramentas de apoio para compreender quando uma investigação merece ser aprofundada.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .expert-section {
+    position: relative;
+    padding: clamp(72px, 8vw, 108px) 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F6FBFC 52%, #EEF7FA 100%);
+    border-bottom: 1px solid rgba(24, 181, 200, 0.12);
+  }
+
+  .expert-orbit {
+    position: absolute;
+    right: -230px;
+    bottom: -290px;
+    width: 560px;
+    height: 560px;
+    pointer-events: none;
+    border: 1px solid rgba(24, 181, 200, 0.08);
+    border-radius: 50%;
+  }
+
+  .expert-orbit::before,
+  .expert-orbit::after {
+    content: '';
+    position: absolute;
+    inset: 76px;
+    border: 1px solid rgba(33, 120, 159, 0.06);
+    border-radius: inherit;
+  }
+
+  .expert-orbit::after {
+    inset: 164px;
+  }
+
+  .expert-shell {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(240px, 0.82fr) minmax(0, 1.18fr);
+    align-items: center;
+    gap: clamp(48px, 7vw, 92px);
+    max-width: 1030px;
+  }
+
+  .expert-photo {
+    position: relative;
+    width: min(100%, 340px);
+    margin: 0 auto;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #DCE9ED;
+    border: 1px solid rgba(24, 181, 200, 0.22);
+    border-radius: var(--radius-card);
+    box-shadow: 0 28px 52px -38px rgba(2, 11, 39, 0.52);
+  }
+
+  .expert-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 58%, rgba(2, 11, 39, 0.12));
+  }
+
+  .expert-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 34%;
+  }
+
+  .expert-copy {
+    position: relative;
+    padding-left: clamp(26px, 3vw, 38px);
+  }
+
+  .expert-copy::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    bottom: 4px;
+    left: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-cyan-400), rgba(24, 181, 200, 0.08));
+    border-radius: 999px;
+  }
+
+  .expert-copy h2 {
+    margin: 15px 0 22px;
+    color: var(--color-navy-700);
+  }
+
+  .expert-copy p {
+    max-width: 62ch;
+    color: var(--color-text-body);
+    line-height: 1.66;
+  }
+
+  .expert-copy p + p {
+    margin-top: 15px;
+  }
+
+  .expert-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -8px 0 20px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .expert-credentials li {
+    padding: 6px 11px;
+    color: var(--color-teal-600);
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(24, 181, 200, 0.08);
+    border: 1px solid rgba(24, 181, 200, 0.16);
+    border-radius: 999px;
+  }
+
+  @media (max-width: 720px) {
+    .expert-section {
+      padding: 68px 0 72px;
+    }
+
+    .expert-shell {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .expert-photo {
+      width: min(86vw, 350px);
+    }
+
+    .expert-copy {
+      padding: 26px 0 0;
+      text-align: center;
+    }
+
+    .expert-copy::before {
+      top: 0;
+      right: 38%;
+      bottom: auto;
+      left: 38%;
+      width: auto;
+      height: 2px;
+    }
+
+    .expert-copy h2 {
+      margin-top: 14px;
+    }
+
+    .expert-credentials {
+      justify-content: center;
+    }
+  }
+</style>

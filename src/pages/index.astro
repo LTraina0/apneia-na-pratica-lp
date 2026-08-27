@@ -2,17 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Identification from '../components/Identification.astro';
-import Comparison from '../components/Comparison.astro';
+import ClinicalProcess from '../components/Comparison.astro';
+import TrainingOverview from '../components/TrainingOverview.astro';
+import Expert from '../components/Expert.astro';
+import Guarantee from '../components/Guarantee.astro';
+import Faq from '../components/Faq.astro';
 import Offer from '../components/Offer.astro';
 import Footer from '../components/Footer.astro';
+import LeadCaptureModal from '../components/LeadCaptureModal.astro';
 ---
 
 <Layout>
   <main>
     <Hero />
     <Identification />
-    <Comparison />
+    <ClinicalProcess />
+    <TrainingOverview />
     <Offer />
+    <Expert />
+    <Guarantee />
+    <Faq />
   </main>
   <Footer />
+  <LeadCaptureModal />
 </Layout>
