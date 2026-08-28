@@ -5,7 +5,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <section class="offer-section scene-transition" id="oferta" data-node-id="147:526" data-name="section#oferta">
-  <div class="offer-divider reveal reveal-line" aria-hidden="true"></div>
   <div class="offer-glow offer-glow-top" aria-hidden="true"></div>
   <div class="offer-glow offer-glow-bottom" aria-hidden="true"></div>
 
@@ -61,29 +60,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     background: linear-gradient(180deg, #F8FBFD 0%, #EEF6FF 48%, #F4F8FB 100%);
   }
 
-
-  .offer-divider {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: min(1919px, 100%);
-    height: 2.5px;
-    transform: translateX(-50%);
-    opacity: 0.7;
-    background: linear-gradient(90deg, rgba(46, 173, 194, 0), #2EADC2 50%, rgba(46, 173, 194, 0));
-  }
-
-  .offer-divider.reveal {
-    opacity: 0;
-    transform: scaleX(0.18);
-    transform-origin: center;
-    filter: none;
-  }
-
-  .offer-divider.reveal.is-visible {
-    opacity: 0.7;
-    transform: scaleX(1);
-  }
 
   .offer-glow {
     display: none;
@@ -291,11 +267,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       padding: 84px 20px 84.41px;
     }
 
-    .offer-divider {
-      width: 100%;
-      opacity: 0.76;
-    }
-
     .offer-glow-top {
       top: -243.64px;
       width: 944px;
@@ -310,7 +281,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     .offer-card {
       width: min(402px, 100%);
       min-height: 698.592px;
-      padding: 20px 40px;
+      padding: 20px 24px;
       gap: 12px;
       border-color: rgba(24, 181, 200, 0.3);
       border-radius: 22px;
@@ -354,8 +325,9 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
     .offer-description h3 {
       font-size: 23px;
-      line-height: 26px;
-      letter-spacing: -0.76px;
+      line-height: 28px;
+      letter-spacing: -0.45px;
+      text-wrap: balance;
     }
 
     .offer-details-desktop {
@@ -366,8 +338,9 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       display: block;
       max-width: none;
       font-size: 14px;
-      line-height: 17px;
+      line-height: 20px;
       letter-spacing: -0.14px;
+      text-wrap: pretty;
     }
 
     :global(.offer-figma-cta) {
@@ -391,26 +364,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       gap: 7.1px !important;
     }
 
-    :global(.offer-figma-cta .master-btn) {
-      min-height: 44px !important;
-      padding: 7.72px 19.3px !important;
-      border-radius: 4.58px !important;
-    }
-
-    :global(.offer-figma-cta .master-btn-content) {
-      gap: 8.07px !important;
-    }
-
-    :global(.offer-figma-cta .master-hand-icon) {
-      width: 16.9px !important;
-      height: 20.17px !important;
-    }
-
-    :global(.offer-figma-cta .master-btn-text) {
-      font-size: 13.11px !important;
-      line-height: 13.61px !important;
-      white-space: nowrap;
-    }
 
     :global(.offer-figma-cta .cta-microcopy) {
       font-size: 8.59px !important;

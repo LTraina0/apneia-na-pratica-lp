@@ -1,4 +1,4 @@
-<dialog id="lead-capture-modal" class="lead-dialog" aria-labelledby="lead-modal-title" aria-describedby="lead-modal-description">
+<dialog id="lead-capture-modal" class="lead-dialog" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title" aria-describedby="lead-modal-description">
   <form class="lead-modal" id="lead-capture-form" novalidate>
     <header class="lead-modal__header">
       <div class="lead-modal__title-row">
@@ -11,10 +11,23 @@
       <p id="lead-modal-description">preencha seus dados para continuar para o pagamento</p>
     </header>
     <div class="lead-modal__fields">
-      <label><span class="sr-only">Nome completo</span><input id="lead-name" name="name" type="text" autocomplete="name" placeholder="Digite seu nome completo" required /></label>
-      <label><span class="sr-only">E-mail</span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="Seu melhor e-mail" required /></label>
-      <label><span class="sr-only">WhatsApp com DDD</span><input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp (com DDD)" maxlength="15" required /></label>
+      <label for="lead-name">
+        <span class="sr-only">Nome completo</span>
+        <input id="lead-name" name="name" type="text" autocomplete="name" placeholder="Digite seu nome completo" required aria-required="true" aria-invalid="false" aria-describedby="lead-name-error" />
+        <span id="lead-name-error" class="sr-only lead-modal__field-error"></span>
+      </label>
+      <label for="lead-email">
+        <span class="sr-only">E-mail</span>
+        <input id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Seu melhor e-mail" required aria-required="true" aria-invalid="false" aria-describedby="lead-email-error" />
+        <span id="lead-email-error" class="sr-only lead-modal__field-error"></span>
+      </label>
+      <label for="lead-whatsapp">
+        <span class="sr-only">WhatsApp com DDD</span>
+        <input id="lead-whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp (com DDD)" maxlength="15" required aria-required="true" aria-invalid="false" aria-describedby="lead-whatsapp-error" />
+        <span id="lead-whatsapp-error" class="sr-only lead-modal__field-error"></span>
+      </label>
     </div>
+    <div id="lead-form-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
     <button class="lead-modal__continue" type="submit">CONTINUAR</button>
   </form>
 </dialog>
@@ -27,21 +40,43 @@
     const nameInput = form?.elements.namedItem('name') as HTMLInputElement | null;
     const emailInput = form?.elements.namedItem('email') as HTMLInputElement | null;
     const phoneInput = form?.elements.namedItem('whatsapp') as HTMLInputElement | null;
-    if (!dialog || !form || !closeButton || !nameInput || !emailInput || !phoneInput) return;
+    const nameError = document.querySelector<HTMLElement>('#lead-name-error');
+    const emailError = document.querySelector<HTMLElement>('#lead-email-error');
+    const phoneError = document.querySelector<HTMLElement>('#lead-whatsapp-error');
+    const formStatus = document.querySelector<HTMLElement>('#lead-form-status');
+    const focusableSelector = [
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'a[href]',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+    if (!dialog || !form || !closeButton || !nameInput || !emailInput || !phoneInput || !nameError || !emailError || !phoneError || !formStatus) return;
     let activeTrigger: HTMLAnchorElement | null = null;
+    const setFieldError = (input: HTMLInputElement, error: HTMLElement, message: string) => {
+      input.setCustomValidity(message);
+      input.setAttribute('aria-invalid', message ? 'true' : 'false');
+      error.textContent = message;
+    };
+    const clearErrors = () => {
+      setFieldError(nameInput, nameError, '');
+      setFieldError(emailInput, emailError, '');
+      setFieldError(phoneInput, phoneError, '');
+      formStatus.textContent = '';
+    };
+    const getFocusableElements = () => Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector))
+      .filter((element) => !element.hasAttribute('hidden') && element.getClientRects().length > 0);
     const closeModal = () => {
-      dialog.close();
+      if (dialog.open) dialog.close();
       document.body.classList.remove('lead-modal-open');
-      activeTrigger?.focus();
+      activeTrigger?.focus({ preventScroll: true });
     };
     const openModal = (trigger: HTMLAnchorElement) => {
       activeTrigger = trigger;
       form.reset();
-      nameInput.setCustomValidity('');
-      phoneInput.setCustomValidity('');
+      clearErrors();
       document.body.classList.add('lead-modal-open');
       dialog.showModal();
-      requestAnimationFrame(() => nameInput.focus());
+      nameInput.focus({ preventScroll: true });
     };
     const continueToCheckout = () => {
       if (!activeTrigger) return;
@@ -70,9 +105,17 @@
     });
     phoneInput.addEventListener('input', () => {
       phoneInput.value = formatPhone(phoneInput.value);
-      phoneInput.setCustomValidity('');
+      setFieldError(phoneInput, phoneError, '');
+      formStatus.textContent = '';
     });
-    nameInput.addEventListener('input', () => nameInput.setCustomValidity(''));
+    nameInput.addEventListener('input', () => {
+      setFieldError(nameInput, nameError, '');
+      formStatus.textContent = '';
+    });
+    emailInput.addEventListener('input', () => {
+      setFieldError(emailInput, emailError, '');
+      formStatus.textContent = '';
+    });
     closeButton.addEventListener('click', closeModal);
     dialog.addEventListener('cancel', (event) => {
       event.preventDefault();
@@ -81,16 +124,50 @@
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) closeModal();
     });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      const focusableElements = getFocusableElements();
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      } else if (!dialog.contains(document.activeElement)) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    });
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const completeName = nameInput.value.trim().split(/\s+/).filter(Boolean).length >= 2;
       const phoneDigits = phoneInput.value.replace(/\D/g, '');
-      nameInput.setCustomValidity(completeName ? '' : 'Digite seu nome completo.');
-      phoneInput.setCustomValidity(phoneDigits.length >= 10 && phoneDigits.length <= 11 ? '' : 'Digite um WhatsApp válido com DDD.');
+      const nameMessage = completeName ? '' : 'Digite seu nome completo.';
+      const emailMessage = emailInput.validity.valueMissing
+        ? 'Digite seu e-mail.'
+        : emailInput.validity.typeMismatch
+          ? 'Digite um e-mail válido.'
+          : '';
+      const phoneMessage = phoneDigits.length >= 10 && phoneDigits.length <= 11
+        ? ''
+        : 'Digite um WhatsApp válido com DDD.';
+      setFieldError(nameInput, nameError, nameMessage);
+      setFieldError(emailInput, emailError, emailMessage);
+      setFieldError(phoneInput, phoneError, phoneMessage);
       if (!form.checkValidity()) {
+        formStatus.textContent = 'Revise os campos indicados antes de continuar.';
+        const firstInvalid = form.querySelector<HTMLInputElement>('[aria-invalid="true"]');
+        firstInvalid?.focus({ preventScroll: true });
         form.reportValidity();
         return;
       }
+      formStatus.textContent = '';
       const leadEvent = new CustomEvent('apneia:lead-submit', {
         bubbles: true,
         cancelable: true,
@@ -129,8 +206,12 @@
     line-height: 28.8px; letter-spacing: 0; text-align: center; white-space: nowrap;
   }
   .lead-modal__close {
-    display: inline-flex; align-items: center; justify-content: center; padding: 0; color: #64748B;
+    position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 0; color: #64748B;
     background: #F1F5F9; border: 0; border-radius: 12px; cursor: pointer;
+  }
+  .lead-modal__close::after {
+    content: ''; position: absolute; top: 50%; left: 50%; width: 44px; height: 44px;
+    border-radius: inherit; transform: translate(-50%, -50%);
   }
   .lead-modal__close svg { width: 10px; height: 10px; }
   .lead-modal__close path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
@@ -139,15 +220,18 @@
     font-weight: 400; line-height: 18.2px; text-align: center;
   }
   .lead-modal__fields { display: flex; flex-direction: column; gap: 12px; width: 100%; }
-  .lead-modal__fields label { display: block; width: 100%; }
+  .lead-modal__fields label { position: relative; display: block; width: 100%; }
+  .lead-modal__fields label::after {
+    content: ''; position: absolute; z-index: 0; inset: -2px 0; border-radius: 8px;
+  }
   .lead-modal__fields input {
-    display: block; width: 100%; min-width: 0; padding: 12px 16px; color: #1E293B;
+    position: relative; z-index: 1; display: block; width: 100%; min-width: 0; padding: 12px 16px; color: #1E293B;
     font-family: var(--font-arimo), var(--font-secondary); font-size: 14px; font-weight: 400;
     line-height: normal; background: transparent; border: 1px solid #E2E8F0; border-radius: 8px; outline: none;
   }
   .lead-modal__fields input::placeholder { color: #64748B; opacity: 1; }
   .lead-modal__fields input:focus { border-color: #0982A2; box-shadow: 0 0 0 3px rgba(24, 181, 200, 0.16); }
-  .lead-modal__fields input:user-invalid { border-color: #B42318; }
+  .lead-modal__fields input:user-invalid, .lead-modal__fields input[aria-invalid='true'] { border-color: #B42318; }
   .lead-modal__continue {
     display: flex; align-items: center; justify-content: center; width: 100%; padding: 18.017px 33.69px;
     color: var(--color-white); font-family: var(--font-arimo), var(--font-primary); font-size: 16px;

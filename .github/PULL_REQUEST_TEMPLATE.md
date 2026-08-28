@@ -23,7 +23,7 @@
 ## Checklist de Guardrails & Qualidade
 
 - [ ] **Guardrail Clínico:** Nenhuma promessa de cura, diagnóstico autônomo na consulta ou invenção de estatísticas.
-- [ ] **Precedência de Copy:** Textos alinhados rigorosamente com `docs/specs/COPY.md`.
-- [ ] **Tokens Visuais:** Respeita a paleta e tipografia de `docs/specs/DESIGN-TOKENS.json`.
+- [ ] **Precedência de Copy:** Textos alinhados rigorosamente com `docs/product/COPY.md`.
+- [ ] **Tokens Visuais:** Respeita a paleta e tipografia de `docs/design/DESIGN-TOKENS.json`.
 - [ ] **Build:** O comando `npm run build` executa com sucesso sem erros.
 - [ ] **Changelog:** Atualizado em `CHANGELOG.md` se houver impacto de versão.

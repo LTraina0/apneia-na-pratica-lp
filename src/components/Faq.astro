@@ -38,6 +38,32 @@ const faqItems = [
   </div>
 </section>
 
+<script>
+  const initializeFaqKeyboardNavigation = () => {
+    const summaries = Array.from(document.querySelectorAll<HTMLElement>('.faq-item > summary'));
+
+    summaries.forEach((summary, index) => {
+      if (summary.dataset.arrowNavigation === 'true') return;
+      summary.dataset.arrowNavigation = 'true';
+
+      summary.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+
+        event.preventDefault();
+        const direction = event.key === 'ArrowDown' ? 1 : -1;
+        const nextIndex = (index + direction + summaries.length) % summaries.length;
+        summaries[nextIndex]?.focus();
+      });
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeFaqKeyboardNavigation, { once: true });
+  } else {
+    initializeFaqKeyboardNavigation();
+  }
+</script>
+
 <style>
   .faq-section {
     padding: clamp(66px, 7vw, 92px) 0 clamp(72px, 8vw, 104px);
@@ -86,7 +112,7 @@ const faqItems = [
   }
 
   .faq-item summary:focus-visible {
-    outline: 2px solid var(--color-cyan-500);
+    outline: 2px solid var(--color-blue-600);
     outline-offset: 5px;
     border-radius: 4px;
   }

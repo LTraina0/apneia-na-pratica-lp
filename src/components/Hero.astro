@@ -58,6 +58,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         text="QUERO ACESSAR O TREINAMENTO"
         href="#oferta"
         showIcon={true}
+        className="offer-figma-cta hero-mobile-cta"
         microcopy="Acesso pela Hotmart • 7 dias de garantia"
       />
     </div>
@@ -268,6 +269,10 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     .mockup-image-frame {
       max-width: 520px;
       width: 100%;
+    }
+
+    :global(#inicio .cta-master-container.hero-mobile-cta .master-btn) {
+      width: clamp(227.1px, calc(67.5714vw + 10.8714px), 274.4px) !important;
     }
   }
 </style>

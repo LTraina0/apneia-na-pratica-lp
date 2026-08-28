@@ -34,10 +34,10 @@ Qualquer agente que gerar código, copy, metadados ou testes **DEVE** respeitar 
 
 Se houver divergência entre arquivos de documentação, siga rigorosamente esta hierarquia:
 
-1. `docs/specs/COPY.md` (Copy comercial travada)
-2. `docs/specs/PROJECT-CONTEXT.md` (Contexto do produto e diretrizes estratégicas)
-3. `docs/specs/DESIGN.md` (Diretrizes de layout e UI)
-4. `docs/specs/DESIGN-TOKENS.json` (Variáveis de estilo e cores)
+1. `docs/product/COPY.md` (Copy comercial travada)
+2. `docs/product/PROJECT-CONTEXT.md` (Contexto do produto e diretrizes estratégicas)
+3. `docs/design/DESIGN.md` (Diretrizes de layout e UI)
+4. `docs/design/DESIGN-TOKENS.json` (Variáveis de estilo e cores)
 5. `docs/references/` (Ativos e referências visuais aprovadas)
 6. Histórico de conversas ou outros arquivos.
 

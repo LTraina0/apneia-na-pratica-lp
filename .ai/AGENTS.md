@@ -1,6 +1,6 @@
 # AGENTS.md — Regras Mestres de Inteligência Artificial & Governança
 
-Consulte o arquivo mestre na raiz do projeto: [`/AGENTS.md`](../../AGENTS.md).
+Consulte o arquivo mestre na raiz do projeto: [`/AGENTS.md`](../AGENTS.md).
 
 Este diretório `.ai/` contém as instruções e prompts especializados por papel:
 - [01-frontend-developer.md](./prompts/01-frontend-developer.md)

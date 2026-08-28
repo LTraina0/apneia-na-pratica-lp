@@ -9,12 +9,12 @@ Consulte `AGENTS.md` para o conjunto completo de regras de governança e guardra
 
 ## Arquitetura & Diretórios
 - Código: `src/components/`, `src/layouts/`, `src/pages/`, `src/styles/`
-- Especificações: `docs/specs/`
+- Especificações: `docs/product/ ou docs/design/`
 - Engenharia/SEO: `docs/engineering/`
 - QA/Auditoria: `docs/qa/`
 - Ativos: `public/assets/` e `docs/references/`
 
 ## Regras Críticas
 1. Não inventar dados de saúde, promessas de cura ou diagnóstico definitivo na consulta.
-2. Manter precedência: `docs/specs/COPY.md` > `docs/specs/PROJECT-CONTEXT.md` > `docs/specs/DESIGN.md`.
+2. Manter precedência: `docs/product/COPY.md` > `docs/product/PROJECT-CONTEXT.md` > `docs/design/DESIGN.md`.
 3. Validar sempre com `npm run build` antes de finalizar.

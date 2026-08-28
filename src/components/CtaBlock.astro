@@ -207,46 +207,61 @@ const {
   /* Mobile Overrides (Exact Node 136:3) */
   @media (max-width: 767px) {
     .cta-master-container {
-      padding: 6px 20px;
-      gap: 10px;
-      max-width: 390px;
+      width: 291.33px;
+      max-width: 100%;
+      padding: 8.09px 13.48px 5.77px;
+      gap: 8.09px;
     }
 
     .price-anchor {
-      font-size: 20px;
-      line-height: 38.4px;
+      font-size: 13.75px;
+      line-height: 22px;
+    }
+
+    .price-green {
+      font-size: 24px;
+      line-height: 22px;
     }
 
     .cta-inner-wrapper {
-      gap: 10px;
-      max-width: 350px;
+      gap: 7.1px;
+      max-width: 279.6px;
     }
 
-    .master-btn {
-      width: 100%;
-      max-width: 350px;
-      min-height: 72px;
-      padding: 16px 20px;
+    .cta-master-container .master-btn {
+      flex: 0 0 auto !important;
+      width: clamp(217.1px, calc(67.5714vw + 0.8714px), 264.4px) !important;
+      max-width: none !important;
+      height: clamp(42px, calc(13.1429vw - 0.0571px), 51.2px) !important;
+      min-height: 0 !important;
+      padding: clamp(5.198px, calc(3.6043vw - 6.3357px), 7.721px)
+        clamp(12.995px, calc(9.0114vw - 15.8415px), 19.303px) !important;
+      border-radius: clamp(3.761px, 1.1757vw, 4.584px) !important;
+      box-shadow:
+        inset 0 clamp(0.705px, 0.22vw, 0.859px) 0 rgba(92, 255, 168, 0.51),
+        clamp(0.47px, 0.1471vw, 0.573px) clamp(7.992px, 2.4971vw, 9.74px) clamp(4.701px, 1.47vw, 5.73px) rgba(0, 11, 10, 0.2) !important;
     }
 
-    .master-btn-content {
-      gap: 14px;
+    .cta-master-container .master-btn-content {
+      gap: clamp(6.619px, 2.0686vw, 8.067px) !important;
     }
 
-    .master-hand-icon {
-      width: 28px;
-      height: 33.5px;
+    .cta-master-container .master-hand-icon {
+      width: clamp(13.863px, 4.3314vw, 16.895px) !important;
+      height: clamp(16.548px, 5.17vw, 20.167px) !important;
     }
 
-    .master-btn-text {
-      font-size: 19px;
-      line-height: 24px;
+    .cta-master-container .master-btn-text {
+      font-size: clamp(10.76px, calc(3.3571vw + 0.0171px), 13.11px) !important;
+      line-height: clamp(11.17px, calc(3.49vw + 0.002px), 13.613px) !important;
+      letter-spacing: 0 !important;
+      white-space: nowrap !important;
     }
 
     .cta-microcopy {
-      font-size: 13px;
-      line-height: 18.2px;
-      max-width: 350px;
+      font-size: 8.59px;
+      line-height: 10.43px;
+      max-width: 279.6px;
     }
   }
 </style>

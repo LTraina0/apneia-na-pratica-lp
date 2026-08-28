@@ -3,136 +3,90 @@
 [![Live Demo](https://img.shields.io/badge/demo-GitHub%20Pages-success.svg)](https://ltraina0.github.io/apneia-na-pratica-lp/)
 [![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](./CHANGELOG.md)
 [![Framework](https://img.shields.io/badge/framework-Astro%205.x-orange.svg)](https://astro.build)
-[![Multi-AI](https://img.shields.io/badge/AI%20Governance-AGENTS.md-purple.svg)](./AGENTS.md)
-[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](#)
+[![AI Governance](https://img.shields.io/badge/AI%20Governance-AGENTS.md-purple.svg)](./AGENTS.md)
 
-> 🌐 **Deploy em Produção (GitHub Pages):** [https://ltraina0.github.io/apneia-na-pratica-lp/](https://ltraina0.github.io/apneia-na-pratica-lp/)
+> 🌐 **URL Oficial da LP (GitHub Pages):** [https://ltraina0.github.io/apneia-na-pratica-lp/](https://ltraina0.github.io/apneia-na-pratica-lp/)
 
-Repositório oficial da Landing Page de alta conversão para o treinamento e cartilha prática **"Apneia na Prática"**, voltado para cirurgiões-dentistas que desejam identificar sinais de distúrbios respiratórios do sono na consulta clínica e estabelecer critérios seguros de encaminhamento.
+## 🎯 O que é o projeto
 
----
+Este repositório contém a Landing Page de alta conversão para o treinamento e cartilha prática **"Apneia na Prática"**, ministrado pelo Prof. Dr. Eduardo Rollo. A LP é voltada para cirurgiões-dentistas e foca em ensiná-los a identificar sinais de possíveis distúrbios respiratórios do sono na consulta clínica e estabelecer critérios seguros de encaminhamento.
 
-## 🧭 Sumário
+## 🛠️ Stack Tecnológica
 
-- [Visão Geral & Proposta de Valor](#-visão-geral--proposta-de-valor)
-- [Arquitetura do Repositório](#-arquitetura-do-repositório)
-- [Colaboração com Agentes de IA](#-colaboração-com-agentes-de-ia)
-- [Controle de Versão & SemVer](#-controle-de-versão--semver)
-- [Guia de Início Rápido](#-guia-de-início-rápido)
-- [Central de Documentação (`docs/`)](#-central-de-documentação-docs)
-- [Guardrails Clínicos e Comerciais](#-guardrails-clínicos-e-comerciais)
+- **Framework:** Astro 5.x (Static site generation)
+- **Estilização:** CSS nativo com variáveis CSS (Design Tokens) escopadas por componente
+- **Tipografia:** Rubik (primária) e Arial (secundária)
+- **Validação & Testes:** Playwright/A11y (auditorias W3C)
 
 ---
 
-## 🎯 Visão Geral & Proposta de Valor
-
-- **Produto:** Treinamento online em vídeo + Cartilha Prática de Consulta Odontológica.
-- **Público:** Dentistas (clínicos e especialistas).
-- **Oferta:** R$ 47,00 (Low ticket).
-- **Especialista:** Prof. Dr. Eduardo Rollo.
-- **Garantia:** 7 dias incondicionais.
-- **Mecanismo Central:** *Perguntar → Observar → Organizar → Decidir o próximo passo*.
-
----
-
-## 📁 Arquitetura do Repositório
-
-```text
-├── .ai/                       # Configurações e Prompts por papel de IA
-│   ├── AGENTS.md              # Índice de governança para IA
-│   ├── CLAUDE.md              # Instruções rápidas para Claude Code
-│   ├── GEMINI.md              # Instruções rápidas para Gemini/Antigravity
-│   ├── .cursorrules           # Configuração de contexto para Cursor IDE
-│   └── prompts/               # 5 prompts de personas autônomas
-├── .github/                   # CI/CD, Workflows e Templates de Colaboração
-│   ├── ISSUE_TEMPLATE/        # Templates para tarefas de IA, bugs e features
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows/ci.yml       # Validação automatizada via GitHub Actions
-├── docs/                      # Central de Documentação do Projeto
-│   ├── specs/                 # Copy, Design Tokens, Contexto e Anti-Patterns
-│   ├── engineering/           # Segurança, Tracking, SEO e Configurações
-│   ├── qa/                    # Checklists de Auditoria e Testes
-│   └── references/            # Manifesto de Ativos e Referências Visuais
-├── public/                    # Ativos estáticos públicos (logos, mockups, imagens)
-├── src/                       # Código-fonte Astro
-│   ├── components/            # Componentes modulares das 5 dobras
-│   ├── layouts/               # Layout base com SEO e OpenGraph
-│   ├── pages/                 # Rotas da aplicação (index.astro)
-│   └── styles/                # CSS global e variáveis de design
-├── AGENTS.md                  # Regras mestres de IA na raiz
-├── CHANGELOG.md               # Histórico de alterações por versão
-├── README.md                  # Documento principal
-└── VERSIONING.md              # Guia de SemVer e estratégias de branch
-```
-
----
-
-## 🤖 Colaboração com Agentes de IA
-
-Este repositório foi arquitetado especificamente para trabalho contínuo com múltiplos agentes autônomos de Inteligência Artificial.
-
-Cada agente possui um papel restrito e especializado:
-
-| Agente | Responsabilidade | Documento de Referência |
-|---|---|---|
-| **Frontend Agent** | Construção de componentes Astro, fidelidade de UI e CSS | [Prompt](./.ai/prompts/01-frontend-developer.md) |
-| **Copy & Compliance Agent** | Redação, tom de voz clínico e alinhamento ético | [Prompt](./.ai/prompts/02-copy-and-compliance.md) |
-| **QA & Auditor Agent** | Validação de links, responsividade e build check | [Prompt](./.ai/prompts/03-qa-and-audit.md) |
-| **SEO & Tracking Agent** | Metatags, Schema.org, Meta Pixel e GA4 | [Prompt](./.ai/prompts/04-seo-and-tracking.md) |
-| **Release Manager Agent** | Governança de versões SemVer e Changelog | [Prompt](./.ai/prompts/05-release-manager.md) |
-
-Consulte o arquivo [`AGENTS.md`](./AGENTS.md) antes de qualquer sessão de trabalho com IA.
-
----
-
-## 🏷️ Controle de Versão & SemVer
-
-Adotamos o padrão **Semantic Versioning 2.0.0** (`vMAJOR.MINOR.PATCH`):
-- `MAJOR`: Mudanças estruturais na oferta ou redesign total.
-- `MINOR`: Adição de novas seções, bônus ou integrações sem quebra.
-- `PATCH`: Ajustes finos de CSS, correções ortográficas e melhorias de performance.
-
-Para detalhes completos de branching e commits, consulte [`VERSIONING.md`](./VERSIONING.md).
-
----
-
-## 🚀 Guia de Início Rápido
+## 🚀 Como instalar e executar
 
 ### Pré-requisitos
-- Node.js 20+ instalado
-- Git configurado
+- Node.js v20 ou superior
+- Gerenciador de pacotes npm
 
-### Instalação & Execução Local
-
+### 1. Instalar as dependências
 ```bash
-# 1. Clone o repositório
-git clone https://github.com/LTraina0/apneia-na-pratica-lp.git
-cd apneia-na-pratica-lp
-
-# 2. Instale as dependências
 npm install
+```
 
-# 3. Inicie o servidor de desenvolvimento local
+### 2. Executar o ambiente de desenvolvimento local
+```bash
 npm run dev
+```
+O servidor será iniciado localmente e abrirá a janela do navegador em: `http://localhost:4321/apneia-na-pratica-lp/`
 
-# 4. Compile para produção
+### 3. Fazer o build de produção
+Para validar estaticamente o projeto e compilar a versão final de produção:
+```bash
 npm run build
+```
+O build de produção será gerado na pasta `dist/`.
+
+### 4. Visualizar o build de produção localmente
+```bash
+npm run preview
 ```
 
 ---
 
-## 📚 Central de Documentação (`docs/`)
+## 📁 Estrutura de Diretórios
 
-- [`docs/specs/PROJECT-CONTEXT.md`](./docs/specs/PROJECT-CONTEXT.md) — Visão estratégica e transformação educacional.
-- [`docs/specs/COPY.md`](./docs/specs/COPY.md) — Textos oficiais travados de todas as 5 dobras.
-- [`docs/specs/DESIGN.md`](./docs/specs/DESIGN.md) — Diretrizes visuais, grids, hierarquia e espaçamentos.
-- [`docs/specs/DESIGN-TOKENS.json`](./docs/specs/DESIGN-TOKENS.json) — Tokens de cor, tipografia e sombras.
-- [`docs/engineering/PUBLICATION-CONFIG.md`](./docs/engineering/PUBLICATION-CONFIG.md) — URLs de checkout, suporte e domínios.
-- [`docs/engineering/TRACKING-ANALYTICS.md`](./docs/engineering/TRACKING-ANALYTICS.md) — Configurações de Pixel, GA4 e GTM.
-- [`docs/qa/QA.md`](./docs/qa/QA.md) — Checklist de auditoria antes da publicação.
+### Componentes (`src/components/`)
+Os componentes do Astro representam as dobras e elements interativos da LP:
+- [`Hero.astro`](./src/components/Hero.astro): Dobra 1 (promessa, mockup, CTA)
+- [`Identification.astro`](./src/components/Identification.astro): Dobra 2 (grid de sinais clínicos)
+- [`Comparison.astro`](./src/components/Comparison.astro): Dobra 3 (comparativo de investigações)
+- [`TrainingOverview.astro`](./src/components/TrainingOverview.astro): Seção de cards explicativos de aprendizado
+- [`Offer.astro`](./src/components/Offer.astro): Dobra 4 (preço, garantia, CTA de compra)
+- [`Expert.astro`](./src/components/Expert.astro): Dobra 5 (professor e especialista)
+- [`Guarantee.astro`](./src/components/Guarantee.astro): Dobra 5 (garantia de 7 dias)
+- [`Faq.astro`](./src/components/Faq.astro): Dobra 5 (perguntas frequentes estruturadas)
+- [`Footer.astro`](./src/components/Footer.astro): Aviso clínico legal e créditos do rodapé
+- [`LeadCaptureModal.astro`](./src/components/LeadCaptureModal.astro): Modal de captura de dados de lead com focus trap acessível
+
+### Assets (`public/assets/`)
+Contém apenas imagens e SVGs utilizados diretamente no runtime da Landing Page:
+- `logo.png` e `hero-bg.jpg`
+- `mockup.png` e `product-mockup.png`
+- `professor-eduardo-rollo.webp` e `7-dias-garantia.webp`
+- `identification/` e `learning/` (subdiretórios de ícones e cards)
+
+### Central de Documentação (`docs/`)
+Repositório central de especificações ativas e canônicas da página:
+- [**docs/product/**](./docs/product/): Contexto comercial ([`PROJECT-CONTEXT.md`](./docs/product/PROJECT-CONTEXT.md)) e cópia definitiva da página ([`COPY.md`](./docs/product/COPY.md)).
+- [**docs/design/**](./docs/design/): Diretrizes visuais ([`DESIGN.md`](./docs/design/DESIGN.md)), paletas de cores ([`DESIGN-TOKENS.json`](./docs/design/DESIGN-TOKENS.json)) e padrões aceitos ([`ANTI-PATTERNS.md`](./docs/design/ANTI-PATTERNS.md)).
+- [**docs/engineering/**](./docs/engineering/): Configurações de checkout ([`PUBLICATION-CONFIG.md`](./docs/engineering/PUBLICATION-CONFIG.md)), tracking ([`TRACKING-ANALYTICS.md`](./docs/engineering/TRACKING-ANALYTICS.md)) e integrações técnicas.
+- [**docs/qa/**](./docs/qa/): Lista de verificação técnica ([`QA.md`](./docs/qa/QA.md)) e régua de qualidade ([`QUALITY-BAR.md`](./docs/qa/QUALITY-BAR.md)).
+- [**docs/references/**](./docs/references/): Referências visuais do layout e manifesto de ativos ([`ASSET-MANIFEST.md`](./docs/references/ASSET-MANIFEST.md)).
 
 ---
 
-## 🛡️ Guardrails Clínicos e Comerciais
+## 🌐 Publicação (Deploy)
 
-> **AVISO OBRIGATÓRIO:** É expressamente proibido alterar o posicionamento da página para prometer diagnóstico autônomo na consulta, cura de distúrbios respiratórios ou inventar estatísticas/depoimentos não validados pelo especialista.
+A publicação da Landing Page é automatizada e servida diretamente pelo **GitHub Pages**.
+O deploy final atualiza a branch `gh-pages` a partir do resultado do comando `npm run build` executado na branch `main`.
+
+Acesse o histórico de versões em [`CHANGELOG.md`](./CHANGELOG.md) e regras de versionamento em [`VERSIONING.md`](./VERSIONING.md).
+Para regras e diretrizes de agentes de IA, consulte [`AGENTS.md`](./AGENTS.md).

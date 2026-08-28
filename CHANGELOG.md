@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.1.0] - 2026-08-27
+
+### Adicionado
+- **Remediação de Acessibilidade W3C/WAI:** Inclusão de Skip-Link para navegação por teclado direta ao conteúdo principal, focus trapping acessível e validação robusta de erros de formulário no `LeadCaptureModal`, e navegação por teclado com setas direcionais no `Faq`.
+- **Reorganização Física do Repositório:** Reestruturação das especificações técnicas dividindo a documentação monolítica em pastas dedicadas por área de especialidade (`docs/product/`, `docs/design/`, `docs/engineering/`, `docs/qa/`).
+- **Arquivamento de Histórico Externo:** Saneamento de arquivos obsoletos de rascunhos, testes e assets de alta definição brutos salvos externamente fora do repositório Git do projeto.
+
+### Removido
+- **Duplicatas de Assets:** Eliminação de 4 duplicatas binárias exatas nas referências do repositório.
+
+---
+
 ## [1.0.2] - 2026-08-23
 
 ### Modificado
@@ -38,5 +50,5 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
   - `Footer.astro`: Rodapé legal com links institucionais e direitos reservados.
 - **Sistema de Design e Tokens:** `DESIGN-TOKENS.json` e `src/styles/global.css` com tipografia Rubik/Arial e paleta de alto contraste.
 - **Governança Multi-Agentes:** Sistema completo de regras (`AGENTS.md`, `.ai/`, `CLAUDE.md`, `GEMINI.md`, `.cursorrules`) com 5 personas especializadas.
-- **Documentação Centralizada:** Pastas `docs/specs/`, `docs/engineering/`, `docs/qa/` e `docs/references/` contendo todas as 17 especificações técnicas e de compliance.
+- **Documentação Centralizada:** Pastas de especificações técnicas, de produto, de design, de engenharia, de qa e referências de ativos.
 - **Workflows e Templates:** GitHub Actions CI para validação de build e templates de Pull Request e Issues para agentes e humanos.

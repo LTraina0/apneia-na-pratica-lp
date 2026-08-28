@@ -17,7 +17,7 @@ assignees: ''
 <!-- Descreva o que o agente deve realizar -->
 
 ## 📋 Arquivos de Referência Envolvidos
-- `docs/specs/...`
+- `docs/product/ ou docs/design/...`
 - `src/...`
 
 ## 🔒 Restrições & Guardrails
