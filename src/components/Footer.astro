@@ -1,5 +1,10 @@
 ---
+import { getSupportHref, hasPublicationValue, publication } from '../config/publication';
+
 const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const supportHref = getSupportHref();
+const hasPrivacy = hasPublicationValue(publication.legal.privacy);
+const hasTerms = hasPublicationValue(publication.legal.terms);
 ---
 
 <footer class="site-footer" data-node-id="148:610" data-name="Footer - Rodapé institucional">
@@ -23,10 +28,10 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       Conteúdo educacional. Sinais isolados não estabelecem diagnóstico de apneia do sono.
     </p>
 
-    <nav class="footer-links reveal reveal-soft delay-3" aria-label="Links institucionais em definição">
-      <span>Política de privacidade</span>
-      <span>Termos de uso</span>
-      <span>Suporte</span>
+    <nav class="footer-links reveal reveal-soft delay-3" aria-label="Links institucionais">
+      {hasPrivacy && <a href={publication.legal.privacy}>Política de privacidade</a>}
+      {hasTerms && <a href={publication.legal.terms}>Termos de uso</a>}
+      {supportHref && <a href={supportHref}>Suporte</a>}
     </nav>
   </div>
 </footer>
@@ -122,13 +127,21 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     line-height: 1.4;
   }
 
-  .footer-links span {
+  .footer-links a {
     display: inline-flex;
     align-items: center;
+    color: inherit;
+    text-decoration: none;
     white-space: nowrap;
   }
 
-  .footer-links span + span::before {
+  .footer-links a:hover,
+  .footer-links a:focus-visible {
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+
+  .footer-links a + a::before {
     content: '';
     width: 3px;
     height: 3px;
@@ -169,7 +182,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       font-size: 10.75px;
     }
 
-    .footer-links span + span::before {
+    .footer-links a + a::before {
       margin: 0 8px;
     }
   }
