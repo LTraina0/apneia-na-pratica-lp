@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Gtm from '../integrations/Gtm.astro';
+import { assertPublicationReady } from '../config/publication';
 
 interface Props {
   title?: string;
@@ -11,12 +13,15 @@ const {
   description = "Aprenda a reconhecer sinais de possível apneia antes que passem despercebidos na sua consulta. Treinamento para dentistas com cartilha prática para uso no consultório."
 } = Astro.props;
 
+assertPublicationReady();
+
 const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <Gtm placement="head" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
@@ -37,6 +42,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     <link rel="icon" type="image/png" href={`${baseUrl}assets/logo.png`} />
   </head>
   <body>
+    <Gtm placement="body" />
     <a class="skip-link" href="#main">Pular para o conteúdo principal</a>
     <slot />
 
