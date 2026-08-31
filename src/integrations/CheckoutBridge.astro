@@ -1,0 +1,33 @@
+---
+import { hasPublicationValue, publication } from '../config/publication';
+
+const enabled = hasPublicationValue(publication.checkout.url);
+---
+
+{enabled && (
+  <script>
+    import { withCheckoutAttribution } from './checkout';
+    import { pushTrackingEvent } from './tracking';
+
+    const initializeCheckoutBridge = () => {
+      document.querySelectorAll<HTMLAnchorElement>('[data-lead-capture="true"]').forEach((trigger) => {
+        trigger.href = withCheckoutAttribution(trigger.href, window.location.href);
+
+        trigger.addEventListener('click', () => {
+          pushTrackingEvent({
+            event: 'cta_checkout_click',
+            cta_location: trigger.dataset.ctaLocation || 'offer',
+            cta_text: trigger.textContent?.trim() || 'QUERO ACESSAR AGORA',
+            page_path: window.location.pathname,
+          });
+        });
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeCheckoutBridge, { once: true });
+    } else {
+      initializeCheckoutBridge();
+    }
+  </script>
+)}
