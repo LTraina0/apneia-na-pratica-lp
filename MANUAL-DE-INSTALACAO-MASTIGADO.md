@@ -1,470 +1,583 @@
-# Manual de Deploy, Tracking e Checkout — Apneia na Prática
+# Manual de Instalação Mastigado — Apneia na Prática
 
-> Guia operacional direto para publicação comercial da Landing Page.
+> Este arquivo foi feito para execução **Ctrl C + Ctrl V**.
 >
-> Este arquivo existe para responder à pergunta: **“qual dado eu recebo, onde eu coloco e o que preciso testar?”**
+> A ideia aqui é simples: **abra o arquivo indicado, procure o trecho indicado, cole o bloco indicado e teste exatamente o que está descrito.**
 >
-> A documentação técnica completa continua em `docs/engineering/`, mas para o deploy e instalação de rastreamento siga este arquivo.
+> Não precisa ler o restante da documentação para fazer o deploy e instalar tracking. Se surgir dúvida técnica específica, os documentos completos continuam em `docs/engineering/`.
 
 ---
 
-## 1. Objetivo
+# PASSO 0 — ANTES DE COMEÇAR, PEGUE ESTES DADOS
 
-Antes de liberar tráfego comercial, a pessoa responsável pelo deploy deve configurar:
+Não comece a instalação sem ter os dados reais abaixo.
 
-- URL final da Landing Page;
-- checkout final da Hotmart;
-- Google Tag Manager (GTM);
-- Google Analytics 4 (GA4);
-- Meta Pixel;
-- Google Ads / Conversion Tracking;
-- integrações de conversão da Hotmart;
-- propagação de UTMs da LP até o checkout;
-- Política de Privacidade e Termos;
-- canal de suporte;
-- consentimento/cookies compatível com os trackers ativados;
-- QA final de tracking e conversão.
+Copie esta lista, preencha e deixe aberta do lado:
 
-Não inventar valores. Se algum ID, URL ou dado comercial ainda não existir, ele continua pendente.
+```txt
+SITE_URL=
+CHECKOUT_URL=
 
----
+GTM_ID=
+GA4_ID=
+META_PIXEL_ID=
+GOOGLE_ADS_ID=
+GOOGLE_ADS_CONVERSION_LABEL=
+HOTMART_ANALYTICS_CODE=
 
-# 2. Resumo: pegue X e coloque em Y
+PRIVACY_URL=
+TERMS_URL=
 
-| Você recebe | Exemplo de formato | Onde colocar / configurar |
-|---|---|---|
-| URL final da LP | `https://dominio.com/` | `src/config/site.ts` → `siteUrl` e configuração de domínio/deploy |
-| Checkout Hotmart | `https://pay.hotmart.com/...` | `src/config/site.ts` → `checkoutUrl` |
-| GTM | `GTM-XXXXXXX` | `src/config/site.ts` → `gtmId`; carregar globalmente em `src/layouts/Layout.astro` |
-| GA4 | `G-XXXXXXXXXX` | `src/config/site.ts` → `ga4Id`; configurar dentro do GTM |
-| Meta Pixel | ID numérico | `src/config/site.ts` → `metaPixelId`; configurar dentro do GTM |
-| Google Ads | `AW-XXXXXXXXX` | `src/config/site.ts` → `googleAdsId`; configurar dentro do GTM |
-| Conversion Label do Google Ads | valor fornecido pelo Google Ads | configurar na respectiva conversão dentro do GTM |
-| Hotmart Analytics / integrações | código/IDs fornecidos pela operação | `src/config/site.ts` quando aplicável + configurações nativas da Hotmart |
-| Política de Privacidade | URL publicada | `src/config/site.ts` → `privacyUrl` e `Footer.astro` |
-| Termos de Uso | URL publicada | `src/config/site.ts` → `termsUrl` e `Footer.astro` |
-| E-mail de suporte | `suporte@...` | `src/config/site.ts` → `supportEmail` |
-| WhatsApp de suporte | número internacional | `src/config/site.ts` → `supportWhatsapp` |
-| Página de suporte | URL publicada | `src/config/site.ts` → `supportPageUrl` |
-| CMP / consentimento | ferramenta e estratégia adotadas | GTM + `Layout.astro`, conforme arquitetura escolhida |
+SUPPORT_EMAIL=
+SUPPORT_WHATSAPP=
+SUPPORT_PAGE_URL=
+
+LEAD_WEBHOOK_URL=
+
+CONSENT_PLATFORM=
+CONSENT_MODE=
+```
+
+Se algum campo não for utilizado pela operação, deixe identificado como `NAO_USADO`.
+
+Se algum campo ainda não foi fornecido, pare naquele ponto e peça o dado real. **Não invente ID, URL, telefone ou e-mail.**
 
 ---
 
-# 3. Primeiro passo obrigatório: criar a configuração central
+# PASSO 1 — CRIAR O ARQUIVO CENTRAL DE CONFIGURAÇÃO
 
-Criar o arquivo:
+## 1.1 Crie esta pasta se ainda não existir
+
+```txt
+src/config/
+```
+
+## 1.2 Dentro dela, crie este arquivo
 
 ```txt
 src/config/site.ts
 ```
 
-Estrutura recomendada:
+## 1.3 Copie e cole o arquivo inteiro abaixo
 
 ```ts
 export const siteConfig = {
-  siteUrl: '',
-  checkoutUrl: '',
+  siteUrl: 'COLE_AQUI_SITE_URL',
+  checkoutUrl: 'COLE_AQUI_CHECKOUT_URL',
 
-  privacyUrl: '',
-  termsUrl: '',
+  privacyUrl: 'COLE_AQUI_PRIVACY_URL',
+  termsUrl: 'COLE_AQUI_TERMS_URL',
 
-  supportEmail: '',
-  supportWhatsapp: '',
+  supportEmail: 'COLE_AQUI_SUPPORT_EMAIL',
+  supportWhatsapp: 'COLE_AQUI_SUPPORT_WHATSAPP',
+  supportPageUrl: 'COLE_AQUI_SUPPORT_PAGE_URL',
+
+  gtmId: 'COLE_AQUI_GTM_ID',
+  ga4Id: 'COLE_AQUI_GA4_ID',
+  metaPixelId: 'COLE_AQUI_META_PIXEL_ID',
+  googleAdsId: 'COLE_AQUI_GOOGLE_ADS_ID',
+  googleAdsConversionLabel: 'COLE_AQUI_GOOGLE_ADS_CONVERSION_LABEL',
+  hotmartAnalyticsCode: 'COLE_AQUI_HOTMART_ANALYTICS_CODE',
+
+  leadWebhookUrl: 'COLE_AQUI_LEAD_WEBHOOK_URL',
+
+  consentPlatform: 'COLE_AQUI_CONSENT_PLATFORM',
+  consentMode: 'COLE_AQUI_CONSENT_MODE',
+} as const;
+```
+
+## 1.4 Agora faça Ctrl H neste arquivo e substitua
+
+```txt
+COLE_AQUI_SITE_URL
+```
+
+pelo valor de:
+
+```txt
+SITE_URL
+```
+
+Depois faça o mesmo para todos os demais `COLE_AQUI_...`.
+
+## 1.5 Resultado esperado
+
+O arquivo deve ficar parecido com isto:
+
+```ts
+export const siteConfig = {
+  siteUrl: 'https://seudominio.com.br',
+  checkoutUrl: 'https://pay.hotmart.com/XXXXXXXX',
+
+  privacyUrl: 'https://seudominio.com.br/privacidade',
+  termsUrl: 'https://seudominio.com.br/termos',
+
+  supportEmail: 'suporte@seudominio.com.br',
+  supportWhatsapp: '5514999999999',
   supportPageUrl: '',
 
-  gtmId: '',
-  ga4Id: '',
-  metaPixelId: '',
-  googleAdsId: '',
+  gtmId: 'GTM-XXXXXXX',
+  ga4Id: 'G-XXXXXXXXXX',
+  metaPixelId: '123456789012345',
+  googleAdsId: 'AW-XXXXXXXXX',
+  googleAdsConversionLabel: 'XXXXXXXXXXXX',
   hotmartAnalyticsCode: '',
+
+  leadWebhookUrl: '',
 
   consentPlatform: '',
   consentMode: '',
-};
+} as const;
 ```
 
-## Regra
-
-A página deve consumir esses valores a partir de uma única fonte.
-
-Não espalhar pelo projeto:
-
-```astro
-href="https://pay.hotmart.com/..."
-```
-
-ou IDs como:
-
-```txt
-GTM-XXXXXXX
-G-XXXXXXXXXX
-AW-XXXXXXXXX
-```
-
-em vários componentes.
+Não use os valores acima como valores reais. São só exemplos de formato.
 
 ---
 
-# 4. Checkout Hotmart
+# PASSO 2 — COLOCAR O CHECKOUT REAL DA HOTMART
 
-## Dado necessário
-
-Receber a URL definitiva do checkout da Hotmart.
-
-Exemplo:
-
-```txt
-https://pay.hotmart.com/XXXXXXXX
-```
-
-## Onde colocar
-
-```txt
-src/config/site.ts → checkoutUrl
-```
-
-## Onde conectar
-
-O componente de compra principal está em:
+## 2.1 Abra
 
 ```txt
 src/components/Offer.astro
 ```
 
-No código atual, o CTA da oferta ainda utiliza a URL genérica:
+## 2.2 No topo do arquivo, procure
+
+```astro
+---
+import CtaBlock from './CtaBlock.astro';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+```
+
+## 2.3 Substitua por
+
+```astro
+---
+import CtaBlock from './CtaBlock.astro';
+import { siteConfig } from '../config/site';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+```
+
+## 2.4 Ainda em `Offer.astro`, procure exatamente
 
 ```astro
 href="https://pay.hotmart.com"
 ```
 
-Substituir por uma referência à configuração central, por exemplo:
+## 2.5 Apague e cole
 
 ```astro
----
-import { siteConfig } from '../config/site';
----
+href={siteConfig.checkoutUrl}
+```
 
+## 2.6 O bloco final do CTA deve ficar parecido com
+
+```astro
 <CtaBlock
-  ...
+  showPrice={true}
+  text="QUERO ACESSAR AGORA"
   href={siteConfig.checkoutUrl}
+  target="_blank"
+  leadCapture={true}
+  showIcon={true}
+  microcopy="Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos."
+  className="offer-figma-cta reveal reveal-cta delay-5"
 />
 ```
 
-## Regra para os demais CTAs
+## 2.7 Teste agora
 
-O componente mestre dos botões é:
+Rode:
 
-```txt
-src/components/CtaBlock.astro
+```bash
+npm run dev
 ```
 
-Atualmente alguns CTAs intermediários levam para `#oferta`. Isso pode ser mantido caso o fluxo comercial seja:
+Abra a LP, vá até a oferta e clique no CTA.
+
+Resultado esperado:
 
 ```txt
-CTA intermediário → seção de oferta → modal → checkout
+CTA abre o modal de lead.
+Após enviar o modal, o fluxo continua para o CHECKOUT_URL configurado.
 ```
 
-Se a decisão comercial for transformar algum CTA em compra direta, ele deve usar a mesma `checkoutUrl` centralizada.
+Se ainda abrir `https://pay.hotmart.com` sem o código do produto, volte ao passo 2.4.
 
 ---
 
-# 5. Google Tag Manager — GTM
+# PASSO 3 — INSTALAR O GTM GLOBALMENTE
 
-## Dado necessário
-
-```txt
-GTM-XXXXXXX
-```
-
-## Onde colocar
-
-```txt
-src/config/site.ts → gtmId
-```
-
-## Onde carregar na página
-
-Arquivo global:
+## 3.1 Abra
 
 ```txt
 src/layouts/Layout.astro
 ```
 
-Instalar o snippet oficial do GTM:
+## 3.2 No topo do arquivo, procure
 
-1. parte `<script>` dentro de `<head>`;
-2. parte `<noscript>` imediatamente após a abertura de `<body>`.
-
-Não instalar o GTM dentro de `Hero.astro`, `Offer.astro`, `Footer.astro` ou outros componentes isolados.
-
-## Arquitetura adotada neste manual
-
-Usar o **GTM como camada principal de gerenciamento de tags**:
-
-```txt
-Landing Page
-    ↓
-   GTM
- ┌──┼─────────┐
- ↓  ↓         ↓
-GA4 Meta   Google Ads
+```astro
+---
+import '../styles/global.css';
 ```
 
-Assim, alterações futuras de tracking podem ser feitas no GTM sem espalhar scripts pela aplicação.
+## 3.3 Logo abaixo, cole
+
+```astro
+import { siteConfig } from '../config/site';
+```
+
+O começo do arquivo deve ficar assim:
+
+```astro
+---
+import '../styles/global.css';
+import { siteConfig } from '../config/site';
+```
+
+## 3.4 Agora procure a abertura de `<head>`
+
+```html
+<head>
+```
+
+## 3.5 Imediatamente depois de `<head>`, cole este bloco inteiro
+
+```astro
+{siteConfig.gtmId && siteConfig.gtmId !== 'NAO_USADO' && (
+  <script is:inline define:vars={{ gtmId: siteConfig.gtmId }}>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer',gtmId);
+  </script>
+)}
+```
+
+## 3.6 Agora procure
+
+```html
+<body>
+```
+
+## 3.7 Imediatamente depois de `<body>`, cole
+
+```astro
+{siteConfig.gtmId && siteConfig.gtmId !== 'NAO_USADO' && (
+  <noscript>
+    <iframe
+      src={`https://www.googletagmanager.com/ns.html?id=${siteConfig.gtmId}`}
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+    ></iframe>
+  </noscript>
+)}
+```
+
+## 3.8 Não coloque GTM em nenhum outro arquivo
+
+Não instalar novamente em:
+
+```txt
+Hero.astro
+Offer.astro
+Footer.astro
+index.astro
+LeadCaptureModal.astro
+```
+
+GTM entra **uma única vez** no `Layout.astro`.
+
+## 3.9 Teste
+
+Rode:
+
+```bash
+npm run build
+npm run preview
+```
+
+Depois abra o GTM → Preview / Tag Assistant e informe a URL da página.
+
+Resultado esperado:
+
+```txt
+O container GTM deve conectar uma única vez.
+```
 
 ---
 
-# 6. GA4
+# PASSO 4 — CONFIGURAR GA4 DENTRO DO GTM
 
-## Dado necessário
+Não coloque `gtag.js` manualmente na LP se o GA4 for gerenciado pelo GTM.
+
+## 4.1 Abra o Google Tag Manager
+
+Entre no container correspondente ao:
+
+```txt
+GTM_ID
+```
+
+## 4.2 Clique
+
+```txt
+Tags
+→ New
+→ Tag Configuration
+→ Google tag
+```
+
+## 4.3 No campo Tag ID, cole
+
+```txt
+GA4_ID
+```
+
+Formato esperado:
 
 ```txt
 G-XXXXXXXXXX
 ```
 
-## Onde colocar
+## 4.4 Trigger
+
+Escolha:
 
 ```txt
-src/config/site.ts → ga4Id
+Initialization - All Pages
 ```
 
-## Onde instalar
+ou, se a operação já tiver um padrão de consentimento configurado:
 
-Configurar uma Google Tag / GA4 dentro do GTM usando o Measurement ID real.
+```txt
+o trigger de inicialização aprovado pela operação
+```
 
-### Não fazer
+## 4.5 Salve com o nome
 
-Não instalar o mesmo GA4 diretamente no HTML e também pelo GTM sem uma decisão explícita.
+```txt
+GA4 - Google Tag - All Pages
+```
 
-Isso pode duplicar `page_view` e outros eventos.
+## 4.6 Não faça isto
+
+```txt
+❌ GA4 direto no Layout.astro
++
+❌ mesmo GA4 novamente no GTM
+```
+
+Isso pode duplicar pageviews.
+
+## 4.7 Teste
+
+No GTM Preview, abra a página.
+
+Depois abra GA4 → DebugView.
+
+Resultado esperado:
+
+```txt
+1 page_view por carregamento normal de página.
+```
 
 ---
 
-# 7. Meta Pixel
+# PASSO 5 — CONFIGURAR META PIXEL DENTRO DO GTM
 
-## Dado necessário
-
-ID real do Pixel da Meta.
-
-Exemplo conceitual:
+## 5.1 No GTM clique
 
 ```txt
-123456789012345
+Tags
+→ New
+→ Tag Configuration
+→ Custom HTML
 ```
 
-## Onde colocar
+## 5.2 Cole este bloco inteiro
+
+```html
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', 'COLE_AQUI_META_PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
+```
+
+## 5.3 Dentro do bloco acima, substitua
 
 ```txt
-src/config/site.ts → metaPixelId
+COLE_AQUI_META_PIXEL_ID
 ```
 
-## Onde instalar
-
-Configurar pelo GTM.
-
-Não espalhar chamadas `fbq()` pelos componentes Astro quando o GTM for a arquitetura escolhida.
-
-## Eventos
-
-Na Landing Page podem existir eventos como:
+pelo valor real de:
 
 ```txt
-PageView
-ViewContent
-InitiateCheckout
+META_PIXEL_ID
 ```
 
-O mapeamento final deve seguir a estratégia de mídia.
+## 5.4 Trigger
 
-### Regra crítica
+Use:
 
-**Nunca disparar `Purchase` apenas porque o usuário clicou no CTA.**
+```txt
+All Pages
+```
 
-`Purchase` deve representar uma compra confirmada.
+ou o trigger equivalente condicionado ao consentimento da operação.
+
+## 5.5 Nome da tag
+
+```txt
+META - Pixel Base - PageView
+```
+
+## 5.6 Não configure Purchase aqui
+
+Não crie:
+
+```js
+fbq('track', 'Purchase')
+```
+
+no clique do botão da LP.
+
+A compra deve ser confirmada no checkout / Hotmart.
+
+## 5.7 Teste
+
+Abra:
+
+```txt
+Meta Events Manager
+```
+
+Use a área de eventos de teste e abra a LP.
+
+Resultado esperado:
+
+```txt
+PageView aparece uma única vez por carregamento normal.
+```
 
 ---
 
-# 8. Google Ads / Conversion Tracking
+# PASSO 6 — CONFIGURAR GOOGLE ADS
 
-O chamado informalmente de “pixel do Google” deve ser tratado como a infraestrutura de tag/conversão do Google Ads.
+## 6.1 No GTM clique
 
-## Dados necessários
+```txt
+Tags
+→ New
+→ Tag Configuration
+→ Google tag
+```
 
-Normalmente:
+## 6.2 No Tag ID cole
+
+```txt
+GOOGLE_ADS_ID
+```
+
+Formato esperado:
 
 ```txt
 AW-XXXXXXXXX
 ```
 
-E, dependendo da conversão:
+## 6.3 Trigger
 
 ```txt
-Conversion Label
+All Pages
 ```
 
-## Onde colocar
+ou o trigger condicionado ao consentimento da operação.
+
+## 6.4 Salve como
 
 ```txt
-src/config/site.ts → googleAdsId
+GOOGLE ADS - Google Tag - All Pages
 ```
 
-## Onde instalar
+## 6.5 Sobre Conversion Label
 
-Configurar no GTM.
-
-Não confundir:
+Se a operação forneceu:
 
 ```txt
-GA4 = analytics e comportamento
-Google Ads = mídia e conversões de campanha
+GOOGLE_ADS_CONVERSION_LABEL
+```
+
+não associe automaticamente esse label ao clique do CTA como se fosse compra.
+
+Se o label for de compra, configure a conversão no fluxo Hotmart / página de confirmação / integração de venda.
+
+Se o label for explicitamente de clique ou início de checkout, use o evento correspondente definido no passo 8.
+
+## 6.6 Regra simples
+
+```txt
+GA4 = comportamento/analytics
+Google Ads = mídia/conversão
+Purchase = só quando houver compra real
 ```
 
 ---
 
-# 9. Eventos mínimos da Landing Page
+# PASSO 7 — INSTALAR UTM AUTOMÁTICA NO CHECKOUT
 
-Taxonomia mínima recomendada:
-
-```txt
-page_view
-cta_checkout_click
-support_click
-```
-
-Opcional:
+O objetivo é fazer isto:
 
 ```txt
-legal_link_click
+Anúncio
+↓
+LP com ?utm_source=meta&utm_campaign=teste
+↓
+Checkout Hotmart recebe as mesmas UTMs
 ```
 
-## Evento de CTA
-
-Ao clicar em um CTA que efetivamente leva ao checkout, enviar algo semelhante a:
-
-```js
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-  event: 'cta_checkout_click',
-  cta_location: 'offer',
-  cta_text: 'QUERO ACESSAR AGORA',
-  page_path: window.location.pathname,
-});
-```
-
-Valores possíveis de `cta_location`:
-
-```txt
-hero
-identification
-comparison
-offer
-final
-```
-
-## Não enviar dados pessoais
-
-Nunca enviar ao `dataLayer`, GA4, Meta ou Google Ads:
-
-- nome;
-- e-mail;
-- WhatsApp;
-- informação clínica;
-- qualquer outro dado pessoal desnecessário.
-
----
-
-# 10. Modal de Lead
-
-Arquivo:
+## 7.1 Abra
 
 ```txt
 src/components/LeadCaptureModal.astro
 ```
 
-O modal atual já captura:
-
-```txt
-name
-email
-whatsapp
-```
-
-E dispara o evento interno:
-
-```txt
-apneia:lead-submit
-```
-
-O evento também fornece a função:
-
-```txt
-continueToCheckout
-```
-
-## Importante
-
-Hoje o modal **não persiste o lead sozinho em CRM, banco, planilha ou webhook**.
-
-Se a operação quiser armazenar esses leads, deve conectar um listener ao evento `apneia:lead-submit` e enviar os dados para o destino definido pela operação.
-
-Fluxo sugerido:
-
-```txt
-Usuário preenche modal
-        ↓
-apneia:lead-submit
-        ↓
-CRM / webhook / automação
-        ↓
-continueToCheckout()
-        ↓
-Hotmart
-```
-
-Não usar GTM/GA4/Meta como banco de dados de leads.
-
----
-
-# 11. UTMs e atribuição
-
-Preservar, quando presentes:
-
-```txt
-utm_source
-utm_medium
-utm_campaign
-utm_term
-utm_content
-```
-
-Fluxo esperado:
-
-```txt
-Anúncio
-  ↓
-Landing Page
-?utm_source=meta&utm_campaign=...
-  ↓
-Checkout Hotmart
-?utm_source=meta&utm_campaign=...
-```
-
-## Implementação
-
-Criar uma função pequena e isolada que:
-
-1. leia os parâmetros da URL atual;
-2. aceite somente as UTMs aprovadas;
-3. crie a URL a partir de `siteConfig.checkoutUrl`;
-4. use `URL` e `URLSearchParams`;
-5. preserve parâmetros que já existam no checkout;
-6. retorne a URL final com as UTMs;
-7. em caso de erro, utilize a `checkoutUrl` original.
-
-Exemplo conceitual:
+## 7.2 Procure a função
 
 ```ts
-const allowedParams = [
+const initializeLeadModal = () => {
+```
+
+## 7.3 Dentro dessa função, depois da validação inicial dos elementos, procure esta linha
+
+```ts
+if (!dialog || !form || !closeButton || !nameInput || !emailInput || !phoneInput || !nameError || !emailError || !phoneError || !formStatus) return;
+```
+
+## 7.4 Imediatamente abaixo dela, cole
+
+```ts
+const allowedUtmParams = [
   'utm_source',
   'utm_medium',
   'utm_campaign',
@@ -472,91 +585,455 @@ const allowedParams = [
   'utm_content',
 ];
 
-const checkout = new URL(siteConfig.checkoutUrl);
-const current = new URL(window.location.href);
+const applyUtmToCheckoutLinks = () => {
+  try {
+    const currentUrl = new URL(window.location.href);
 
-allowedParams.forEach((key) => {
-  const value = current.searchParams.get(key);
-  if (value) checkout.searchParams.set(key, value);
+    document
+      .querySelectorAll<HTMLAnchorElement>('[data-lead-capture="true"]')
+      .forEach((link) => {
+        const checkoutUrl = new URL(link.href);
+
+        allowedUtmParams.forEach((key) => {
+          const value = currentUrl.searchParams.get(key);
+          if (value) checkoutUrl.searchParams.set(key, value);
+        });
+
+        link.href = checkoutUrl.toString();
+      });
+  } catch (error) {
+    console.warn('Não foi possível propagar UTMs para o checkout.', error);
+  }
+};
+
+applyUtmToCheckoutLinks();
+```
+
+## 7.5 Não faça concatenação manual
+
+Não faça isto:
+
+```ts
+checkout + '?utm_source=' + source + '&utm_campaign=' + campaign
+```
+
+O bloco acima já usa `URL` e `URLSearchParams`.
+
+## 7.6 Teste
+
+Abra localmente uma URL parecida com:
+
+```txt
+http://localhost:4321/apneia-na-pratica-lp/?utm_source=meta&utm_medium=cpc&utm_campaign=teste
+```
+
+Clique no CTA, envie o modal e observe a URL do checkout.
+
+Resultado esperado:
+
+```txt
+utm_source=meta
+utm_medium=cpc
+utm_campaign=teste
+```
+
+devem aparecer na URL do checkout.
+
+---
+
+# PASSO 8 — DISPARAR `cta_checkout_click` NO DATALAYER
+
+## 8.1 Ainda em
+
+```txt
+src/components/LeadCaptureModal.astro
+```
+
+## 8.2 Procure este bloco
+
+```ts
+document.querySelectorAll<HTMLAnchorElement>('[data-lead-capture="true"]').forEach((trigger) => {
+  trigger.addEventListener('click', (event) => {
+    event.preventDefault();
+    openModal(trigger);
+  });
 });
-
-const checkoutUrlWithAttribution = checkout.toString();
 ```
 
-Não concatenar query strings manualmente com `?` e `&`.
+## 8.3 Substitua o bloco inteiro por
+
+```ts
+document.querySelectorAll<HTMLAnchorElement>('[data-lead-capture="true"]').forEach((trigger) => {
+  trigger.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cta_checkout_click',
+      cta_location: 'offer',
+      cta_text: trigger.textContent?.trim() || 'QUERO ACESSAR AGORA',
+      page_path: window.location.pathname,
+    });
+
+    openModal(trigger);
+  });
+});
+```
+
+## 8.4 Se o TypeScript reclamar que `dataLayer` não existe
+
+Logo antes do bloco, cole:
+
+```ts
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+```
+
+Se o projeto já possuir essa declaração global em outro arquivo, não duplique.
+
+## 8.5 O que este evento pode enviar
+
+Pode enviar:
+
+```txt
+cta_location
+cta_text
+page_path
+```
+
+## 8.6 O que NÃO pode enviar
+
+Não envie:
+
+```txt
+nome
+e-mail
+WhatsApp
+telefone
+dados clínicos
+```
+
+para `dataLayer`, GA4, Meta ou Google Ads.
 
 ---
 
-# 12. Hotmart + eventos de conversão
+# PASSO 9 — CRIAR O EVENTO `cta_checkout_click` NO GA4 VIA GTM
 
-A Hotmart deve ser configurada separadamente da Landing Page.
-
-Quando os IDs estiverem disponíveis, revisar dentro da própria Hotmart as integrações usadas pela operação:
-
-- GA4;
-- Meta Pixel;
-- Google Ads;
-- eventos de checkout;
-- eventos de venda;
-- opções Web/API disponíveis.
-
-## Fronteira correta do funil
+## 9.1 No GTM clique
 
 ```txt
-LANDING PAGE
-PageView
-CTA click
-      ↓
-HOTMART
-Checkout / begin_checkout
-Purchase confirmado
+Tags
+→ New
+→ Tag Configuration
+→ Google Analytics: GA4 Event
 ```
 
-A LP sabe com segurança que houve visualização e clique.
+Se a interface atual do GTM mostrar o fluxo novo de Google Tag + Event, use a opção equivalente de evento GA4 vinculada à Google Tag criada no passo 4.
 
-A Hotmart é a fonte mais adequada para confirmar checkout e venda.
-
-## Deduplicação
-
-Se uma compra for enviada por mais de uma origem, por exemplo:
+## 9.2 Nome do evento
 
 ```txt
-Meta browser pixel
-+
-Hotmart / API
+cta_checkout_click
 ```
 
-implementar estratégia de deduplicação para não registrar duas compras para uma venda real.
+## 9.3 Parâmetros
+
+Adicione:
+
+```txt
+cta_location = {{DLV - cta_location}}
+cta_text = {{DLV - cta_text}}
+page_path = {{DLV - page_path}}
+```
+
+## 9.4 Antes, crie as Data Layer Variables
+
+No GTM:
+
+```txt
+Variables
+→ New
+→ Data Layer Variable
+```
+
+Crie três:
+
+```txt
+DLV - cta_location
+Data Layer Variable Name: cta_location
+```
+
+```txt
+DLV - cta_text
+Data Layer Variable Name: cta_text
+```
+
+```txt
+DLV - page_path
+Data Layer Variable Name: page_path
+```
+
+## 9.5 Trigger
+
+Crie:
+
+```txt
+Triggers
+→ New
+→ Custom Event
+```
+
+Event name:
+
+```txt
+cta_checkout_click
+```
+
+Nome do trigger:
+
+```txt
+CE - cta_checkout_click
+```
+
+Associe esse trigger à tag de evento GA4.
+
+## 9.6 Teste
+
+GTM Preview → clique no CTA.
+
+Resultado esperado:
+
+```txt
+1 evento cta_checkout_click
+```
+
+com:
+
+```txt
+cta_location=offer
+cta_text=...
+page_path=...
+```
 
 ---
 
-# 13. Política de Privacidade, Termos e Suporte
+# PASSO 10 — META: MAPEAR CLIQUE DE CHECKOUT, SE A OPERAÇÃO QUISER
 
-## Dados necessários
+Este passo é opcional.
 
-```txt
-privacyUrl
-termsUrl
-supportEmail
-supportWhatsapp
-supportPageUrl
+Se a operação quiser considerar o clique de saída como `InitiateCheckout`:
+
+## 10.1 GTM → Tags → New → Custom HTML
+
+Cole:
+
+```html
+<script>
+  fbq('track', 'InitiateCheckout');
+</script>
 ```
 
-## Onde colocar
+## 10.2 Trigger
+
+Use:
 
 ```txt
-src/config/site.ts
+CE - cta_checkout_click
 ```
 
-## Onde conectar
+## 10.3 Nome
 
-Arquivo:
+```txt
+META - InitiateCheckout - CTA Checkout Click
+```
+
+## 10.4 Importante
+
+Se a operação preferir considerar `InitiateCheckout` somente quando o usuário chegar de fato ao checkout Hotmart, **não crie esta tag na LP**. Deixe o evento para a Hotmart.
+
+Em qualquer cenário:
+
+```txt
+NÃO disparar Purchase no clique.
+```
+
+---
+
+# PASSO 11 — LEAD DO MODAL: ENVIAR PARA CRM/WEBHOOK
+
+Este passo só deve ser executado se existir um endpoint real e seguro fornecido pela operação.
+
+Se não existir:
+
+```txt
+LEAD_WEBHOOK_URL=NAO_USADO
+```
+
+E pule este passo.
+
+## 11.1 Abra
+
+```txt
+src/components/LeadCaptureModal.astro
+```
+
+## 11.2 No final do `<script>`, antes de `</script>`, cole
+
+```ts
+document.addEventListener('apneia:lead-submit', async (event) => {
+  const leadEvent = event as CustomEvent<{
+    lead: {
+      name: string;
+      email: string;
+      whatsapp: string;
+    };
+    continueToCheckout: () => void;
+  }>;
+
+  const webhookUrl = 'COLE_AQUI_LEAD_WEBHOOK_URL';
+
+  if (!webhookUrl || webhookUrl === 'NAO_USADO') return;
+
+  leadEvent.preventDefault();
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(leadEvent.detail.lead),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Webhook respondeu ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Falha ao enviar lead para o webhook.', error);
+  } finally {
+    leadEvent.detail.continueToCheckout();
+  }
+});
+```
+
+## 11.3 Substitua
+
+```txt
+COLE_AQUI_LEAD_WEBHOOK_URL
+```
+
+pelo endpoint real.
+
+## 11.4 Atenção
+
+Este endpoint precisa aceitar requisição do navegador e estar preparado para receber:
+
+```json
+{
+  "name": "Nome da pessoa",
+  "email": "email@exemplo.com",
+  "whatsapp": "14999999999"
+}
+```
+
+Não use GA4, Meta Pixel ou GTM como armazenamento de lead.
+
+---
+
+# PASSO 12 — INSTALAR LINKS REAIS DE PRIVACIDADE, TERMOS E SUPORTE
+
+## 12.1 Abra
 
 ```txt
 src/components/Footer.astro
 ```
 
-Hoje o Footer contém os textos:
+## 12.2 No topo do arquivo, procure
+
+```astro
+---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+```
+
+## 12.3 Substitua por
+
+```astro
+---
+import { siteConfig } from '../config/site';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const supportHref =
+  siteConfig.supportPageUrl && siteConfig.supportPageUrl !== 'NAO_USADO'
+    ? siteConfig.supportPageUrl
+    : siteConfig.supportEmail && siteConfig.supportEmail !== 'NAO_USADO'
+      ? `mailto:${siteConfig.supportEmail}`
+      : siteConfig.supportWhatsapp && siteConfig.supportWhatsapp !== 'NAO_USADO'
+        ? `https://wa.me/${siteConfig.supportWhatsapp.replace(/\D/g, '')}`
+        : '';
+---
+```
+
+## 12.4 Agora procure este bloco
+
+```astro
+<nav class="footer-links reveal reveal-soft delay-3" aria-label="Links institucionais em definição">
+  <span>Política de privacidade</span>
+  <span>Termos de uso</span>
+  <span>Suporte</span>
+</nav>
+```
+
+## 12.5 Substitua pelo bloco abaixo
+
+```astro
+<nav class="footer-links reveal reveal-soft delay-3" aria-label="Links institucionais">
+  <a href={siteConfig.privacyUrl}>Política de privacidade</a>
+  <a href={siteConfig.termsUrl}>Termos de uso</a>
+  {supportHref && <a href={supportHref}>Suporte</a>}
+</nav>
+```
+
+## 12.6 Como o CSS atual estiliza `span`, acrescente também estas regras
+
+Procure:
+
+```css
+.footer-links span {
+```
+
+Troque por:
+
+```css
+.footer-links a {
+```
+
+Depois procure:
+
+```css
+.footer-links span + span::before {
+```
+
+Troque por:
+
+```css
+.footer-links a + a::before {
+```
+
+E dentro do bloco `.footer-links a`, adicione:
+
+```css
+color: inherit;
+text-decoration: none;
+```
+
+## 12.7 Teste
+
+Clique em:
 
 ```txt
 Política de privacidade
@@ -564,40 +1041,72 @@ Termos de uso
 Suporte
 ```
 
-como elementos visuais, ainda sem links finais.
+Resultado esperado:
 
-Transformar em links reais consumindo a configuração central.
-
-Exemplo conceitual:
-
-```astro
-<a href={siteConfig.privacyUrl}>Política de privacidade</a>
-<a href={siteConfig.termsUrl}>Termos de uso</a>
+```txt
+Nenhum link abre #.
+Nenhum link abre docs internos do GitHub.
+Todos apontam para URLs/canais reais.
 ```
-
-Para suporte, exibir apenas o canal realmente adotado.
-
-Não publicar `#`, link fictício, e-mail inventado ou WhatsApp de teste.
 
 ---
 
-# 14. Consentimento e cookies
+# PASSO 13 — CONFIGURAR HOTMART
 
-Antes de ativar trackers em produção, definir a estratégia de consentimento.
+Este passo é dentro da Hotmart, não no Astro.
 
-Se existir CMP/banner de cookies, ele precisa controlar efetivamente as tags.
+Na área de ferramentas/rastreamento do produto/checkout, configure somente integrações reais adotadas pela operação.
 
-Não fazer:
+Confirme:
 
 ```txt
-Banner aparece
-+
-GA4 / Meta / Ads carregam tudo antes da escolha
+[ ] GA4
+[ ] Meta Pixel
+[ ] Google Ads
+[ ] eventos de checkout
+[ ] evento de venda/purchase
+[ ] integrações Web/API, se usadas
 ```
 
-Quando Google tags forem utilizadas, preparar implementação compatível com Consent Mode quando aplicável.
+## Regra do funil
 
-Estados relevantes podem incluir:
+Na Landing Page:
+
+```txt
+page_view
+cta_checkout_click
+```
+
+No checkout/Hotmart:
+
+```txt
+checkout / begin_checkout
+purchase
+```
+
+## Não faça
+
+```txt
+❌ Purchase no clique da LP
+❌ Purchase via GTM da LP + Purchase Hotmart sem deduplicação
+❌ dois pixels Meta iguais disparando Purchase para a mesma venda
+```
+
+---
+
+# PASSO 14 — CONSENTIMENTO / COOKIES
+
+Se Google/Meta/Ads estiverem ativos, a estratégia de consentimento precisa estar definida pela operação.
+
+Se existir CMP/banner de cookies:
+
+```txt
+O banner PRECISA controlar as tags.
+```
+
+Não basta mostrar um botão "Aceitar" enquanto os pixels já carregaram antes.
+
+Para Google, os estados normalmente relevantes são:
 
 ```txt
 analytics_storage
@@ -606,109 +1115,301 @@ ad_user_data
 ad_personalization
 ```
 
-A decisão jurídica sobre consentimento, base legal e política de privacidade deve vir da operação responsável.
+No GTM, condicione as tags aos estados de consentimento adotados pela operação.
 
----
-
-# 15. Ordem recomendada de implementação
-
-Executar nesta ordem:
+Se ainda não existe uma decisão jurídica/técnica sobre consentimento:
 
 ```txt
-1. Receber todos os IDs e URLs reais
-2. Criar src/config/site.ts
-3. Inserir SITE_URL / checkout / legal / suporte
-4. Conectar checkout ao Offer.astro
-5. Conectar links ao Footer.astro
-6. Instalar GTM globalmente em Layout.astro
-7. Configurar GA4 no GTM
-8. Configurar Meta Pixel no GTM
-9. Configurar Google Ads no GTM
-10. Implementar eventos da LP
-11. Implementar propagação de UTMs
-12. Configurar integrações da Hotmart
-13. Configurar consentimento/CMP
-14. Executar QA completo
-15. Somente depois liberar tráfego comercial
+NÃO marque o projeto como liberado para tráfego comercial.
 ```
 
 ---
 
-# 16. Checklist final de QA
+# PASSO 15 — TESTE COPY/PASTE: UM POR UM
 
-Antes de considerar a página pronta para campanha:
+Execute exatamente nesta ordem.
+
+## 15.1 Build
+
+```bash
+npm install
+npm run build
+```
+
+Esperado:
 
 ```txt
-[ ] URL final da LP configurada
-[ ] Checkout Hotmart definitivo configurado
-[ ] Nenhum CTA de compra aponta para URL genérica ou placeholder
-[ ] Todos os CTAs relevantes testados
-[ ] GTM instalado uma única vez
-[ ] GTM Preview / Tag Assistant funcionando
-[ ] GA4 recebendo page_view
-[ ] GA4 sem page_view duplicado
-[ ] Meta Pixel detectado
-[ ] Meta Events Manager recebendo eventos esperados
-[ ] Google Ads tag detectada
-[ ] cta_checkout_click dispara uma única vez
-[ ] cta_checkout_click contém somente parâmetros permitidos
-[ ] Nenhum dado pessoal aparece no dataLayer
-[ ] UTMs chegam corretamente ao checkout
-[ ] URLs com UTMs e sem UTMs funcionam
-[ ] LeadCaptureModal funciona
-[ ] Integração de CRM/webhook funciona, se adotada
-[ ] Purchase NÃO dispara no clique do CTA
-[ ] Compra de teste confirma Purchase corretamente
-[ ] Purchase não está duplicado entre browser/API/Hotmart
-[ ] Política de Privacidade abre corretamente
-[ ] Termos de Uso abrem corretamente
-[ ] Canal de suporte funciona
+build termina sem erro
+```
+
+## 15.2 Preview
+
+```bash
+npm run preview
+```
+
+Abra a URL mostrada no terminal.
+
+## 15.3 GTM
+
+Abra GTM Preview / Tag Assistant.
+
+Esperado:
+
+```txt
+container conectado
+1 carregamento do GTM
+```
+
+## 15.4 GA4
+
+Abra GA4 DebugView.
+
+Recarregue a LP uma vez.
+
+Esperado:
+
+```txt
+1 page_view
+```
+
+Clique no CTA uma vez.
+
+Esperado:
+
+```txt
+1 cta_checkout_click
+```
+
+## 15.5 Meta
+
+Abra Meta Events Manager → Test Events.
+
+Recarregue a LP.
+
+Esperado:
+
+```txt
+1 PageView
+```
+
+Clique no CTA.
+
+Se o passo 10 foi adotado:
+
+```txt
+1 InitiateCheckout
+```
+
+Se o passo 10 NÃO foi adotado:
+
+```txt
+nenhum InitiateCheckout na LP
+```
+
+## 15.6 UTM
+
+Abra:
+
+```txt
+SUA_URL?utm_source=meta&utm_medium=cpc&utm_campaign=teste&utm_content=criativo01
+```
+
+Clique no CTA, envie o modal e confira a URL da Hotmart.
+
+Esperado:
+
+```txt
+utm_source=meta
+utm_medium=cpc
+utm_campaign=teste
+utm_content=criativo01
+```
+
+## 15.7 Purchase
+
+Faça uma compra de teste real no checkout.
+
+Esperado:
+
+```txt
+Purchase aparece somente após a compra confirmada.
+```
+
+Não deve aparecer Purchase apenas por clicar no CTA.
+
+## 15.8 Footer
+
+Clique nos três links.
+
+Esperado:
+
+```txt
+Política abre
+Termos abre
+Suporte abre
+```
+
+## 15.9 Lead
+
+Se webhook/CRM estiver configurado:
+
+Preencha o modal.
+
+Esperado:
+
+```txt
+lead chega ao destino
+checkout abre depois
+```
+
+Se webhook/CRM NÃO estiver configurado:
+
+Esperado:
+
+```txt
+modal valida os campos
+checkout abre normalmente
+```
+
+---
+
+# PASSO 16 — CHECKLIST FINAL. NÃO PULE NENHUM
+
+Copie esta lista para a entrega e marque item por item:
+
+```txt
+[ ] SITE_URL real configurada
+[ ] CHECKOUT_URL Hotmart real configurada
+[ ] src/config/site.ts criado
+[ ] Offer.astro usa siteConfig.checkoutUrl
+[ ] nenhum CTA de compra usa https://pay.hotmart.com genérico
+
+[ ] GTM instalado em Layout.astro
+[ ] GTM não está duplicado
+[ ] Tag Assistant conecta
+
+[ ] GA4 configurado pelo GTM
+[ ] GA4 recebe 1 page_view
+[ ] GA4 não duplica page_view
+
+[ ] Meta Pixel configurado
+[ ] Meta recebe PageView
+[ ] InitiateCheckout definido conforme estratégia
+[ ] Purchase NÃO dispara no clique
+
+[ ] Google Ads base tag configurada
+[ ] Conversion Label usado somente na conversão correta
+
+[ ] cta_checkout_click configurado
+[ ] cta_checkout_click dispara 1 vez por clique
+[ ] dataLayer NÃO contém nome
+[ ] dataLayer NÃO contém e-mail
+[ ] dataLayer NÃO contém WhatsApp
+
+[ ] UTMs são preservadas até a Hotmart
+[ ] URL com UTM funciona
+[ ] URL sem UTM funciona
+
+[ ] Hotmart configurada com integrações reais
+[ ] Purchase testado com compra real
+[ ] Purchase não está duplicado
+
+[ ] Política de Privacidade funciona
+[ ] Termos funcionam
+[ ] Suporte funciona
+
+[ ] Lead modal funciona
+[ ] CRM/webhook funciona, se adotado
+
 [ ] Consentimento aceito testado
 [ ] Consentimento negado testado
-[ ] Navegação anônima testada
-[ ] Ad blocker testado
+
 [ ] Desktop testado
 [ ] Mobile testado
+[ ] Navegação anônima testada
 [ ] DevTools Network revisado
-[ ] Performance revisada após ativação dos scripts de terceiros
+
+[ ] npm run build passa
+[ ] produção só será liberada depois de todos os itens obrigatórios acima
 ```
 
 ---
 
-# 17. O que NÃO fazer
+# PASSO 17 — RESPOSTA QUE A PESSOA DO DEPLOY DEVE ENTREGAR NO FINAL
 
-Não fazer nenhuma das seguintes coisas:
+Copie e preencha:
 
 ```txt
-❌ inventar IDs de tracking
-❌ colocar URL de checkout diferente em cada botão
-❌ instalar GA4 direto e pelo GTM sem saber que está duplicando
-❌ disparar Purchase no clique do CTA
-❌ mandar nome/e-mail/WhatsApp para dataLayer ou analytics
-❌ concatenar UTMs manualmente com strings
-❌ instalar Meta/Google em vários componentes Astro
-❌ publicar links legais como #
-❌ criar banner de cookies que não controla as tags
-❌ liberar tráfego antes do QA
+DEPLOY / TRACKING — RELATÓRIO FINAL
+
+SITE_URL:
+CHECKOUT_URL:
+
+GTM_ID:
+Status GTM:
+
+GA4_ID:
+Status GA4:
+
+META_PIXEL_ID:
+Status Meta:
+
+GOOGLE_ADS_ID:
+Status Google Ads:
+
+Eventos da LP instalados:
+- page_view:
+- cta_checkout_click:
+- support_click:
+
+Eventos deixados para Hotmart:
+- begin_checkout:
+- purchase:
+
+UTM chegando ao checkout: SIM / NÃO
+
+LeadCaptureModal integrado a CRM/Webhook: SIM / NÃO / NÃO UTILIZADO
+
+Política de Privacidade: OK / PENDENTE
+Termos: OK / PENDENTE
+Suporte: OK / PENDENTE
+
+Consentimento/CMP:
+
+Teste GTM Preview: OK / ERRO
+Teste GA4 DebugView: OK / ERRO
+Teste Meta Events Manager: OK / ERRO
+Teste checkout: OK / ERRO
+Teste compra real: OK / ERRO
+Teste mobile: OK / ERRO
+
+Pendências restantes:
+- 
 ```
 
 ---
 
-# 18. Arquivos que a pessoa do deploy realmente precisa conhecer
+# NÃO INVENTE. NÃO IMPROVISE. NÃO DUPLIQUE.
 
-Para esta etapa, os arquivos principais são:
+Resumo de 10 segundos:
 
 ```txt
-README-DEPLOY-TRACKING.md        ← este manual
-src/config/site.ts               ← criar / configuração central
-src/layouts/Layout.astro         ← GTM e infraestrutura global
-src/components/CtaBlock.astro    ← componente mestre de CTA
-src/components/Offer.astro       ← checkout final
-src/components/LeadCaptureModal.astro ← captura de lead / saída para checkout
-src/components/Footer.astro      ← legal + suporte
+1. preenche site.ts
+2. liga checkout no Offer.astro
+3. instala GTM no Layout.astro
+4. coloca GA4 dentro do GTM
+5. coloca Meta dentro do GTM
+6. coloca Google Ads dentro do GTM
+7. propaga UTM
+8. cria cta_checkout_click
+9. configura Hotmart para checkout/purchase
+10. liga legal/suporte no Footer
+11. testa tudo
+12. só então libera tráfego
 ```
 
-Documentação de referência, caso seja necessário aprofundar:
+Documentação técnica completa, caso precise aprofundar:
 
 ```txt
 docs/engineering/PUBLICATION-CONFIG.md
@@ -716,44 +1417,3 @@ docs/engineering/TRACKING-ANALYTICS.md
 docs/engineering/CHECKOUT-SUPPORT.md
 docs/engineering/LEGAL-PRIVACY-TERMS.md
 ```
-
----
-
-# 19. Relatório de entrega esperado
-
-Ao concluir, responder com:
-
-```txt
-Arquitetura escolhida: GTM como gerenciador principal de tags
-
-SITE_URL:
-CHECKOUT_URL:
-
-GTM instalado:
-GA4 instalado:
-Meta Pixel instalado:
-Google Ads instalado:
-Hotmart configurada:
-
-Eventos da LP:
-Eventos delegados à Hotmart:
-
-Propagação de UTMs:
-Integração do LeadCaptureModal:
-Estratégia de consentimento:
-
-Política de Privacidade:
-Termos:
-Suporte:
-
-Testes realizados:
-Pendências restantes:
-```
-
----
-
-## Regra final
-
-A página pode estar tecnicamente online e ainda **não estar pronta para publicação comercial**.
-
-Só liberar tráfego depois que checkout, tracking, consentimento, links legais e QA estiverem concluídos e validados.
