@@ -1,6 +1,6 @@
 # Substituição da Hero e remoção da cartilha ilustrada
 
-## Estado atual — v1.3.0
+## Estado atual — v1.3.2
 
 Por solicitação explícita do usuário em 18/09/2026, a Hero antiga e o card
 ilustrado da cartilha foram excluídos do código ativo, não apenas ocultados.
@@ -14,7 +14,7 @@ A cartilha continua fazendo parte da oferta e das menções comerciais.
 ## Integração
 
 - Composição, imagens e textos da Hero fornecida pelo usuário preservados.
-- CSS e tokens limitados ao componente Astro; Inter aplicada somente à nova Hero.
+- CSS e tokens limitados ao componente Astro; desktop refinado pelos frames Figma 378:99 e 378:102, com Inter no título e Arimo no corpo/CTA. Mobile/tablet preservados da integração original.
 - Botão adaptado de `#comprar` (sem destino no projeto de origem) para `#oferta`, preservando o fluxo da landing page. Não foram criados links de checkout.
 - Quatro retratos PNG idênticos da origem consolidados em `src/assets/hero/expert.png`; Astro gera WebP responsivo sem mudar a composição.
 - Bases de assets derivadas de `import.meta.env.BASE_URL`, sem depender de caminhos do repositório de teste.

@@ -7,6 +7,17 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.2] - 2026-09-18
+
+### Corrigido
+- Hero desktop alinhada aos frames Figma 378:99 (1440px) e 378:102 (1920px): logo centralizada, padding, agrupamento e espaçamento do conteúdo.
+- Título Inter 700; descrição, CTA e segurança em Arimo, com quebras e destaque inline correspondentes à referência.
+- Retrato com recorte não destrutivo, proporção original e sombras alpha; glow e ícone do botão provenientes do Figma.
+
+### Preservado
+- Hero mobile/tablet, copy, destino do CTA, demais seções, grades e hover aprovados.
+- Ajuste anterior da altura em desktop largo, sem retornar a faixa excedente.
+
 ## [1.3.1] - 2026-09-18
 
 ### Corrigido
