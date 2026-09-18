@@ -500,3 +500,19 @@ Antes da aprovação, fazer o teste:
 > Se eu retirar a logo e trocar o nome do produto por outra oferta médica/educacional, esta página ainda pareceria exatamente igual?
 
 Se sim, a identidade está genérica. Corrigir com decisões específicas da marca: paleta real, uso da logo, mockup real, ritmo próprio, copy real e composição conectada ao tema de investigação clínica.
+
+## 15. Grade compartilhada de cards — refinamento v1.2.2
+
+Por solicitação de 18/09/2026, os cards de identificação, método e treinamento
+seguem a geometria do método aprovado em v1.2.1. Para essas três grades,
+esta regra substitui os grids históricos de três colunas descritos acima.
+
+- Implementação única em `src/components/CardGrid.astro`; não criar limites de largura ou breakpoints locais por seção.
+- Mobile até 767px: uma coluna, máximo de 400px e margem lateral mínima de 20px.
+- Tablet de 768px até 1099px: duas colunas, grade de até 760px e margem lateral mínima de 32px.
+- Desktop a partir de 1100px: quatro colunas, grade de até 1076px; último par centralizado quando há seis itens, sem esticar os cards.
+- Intervalos de 20px no mobile/tablet e 16px no desktop.
+- Tokens herdados: padding vertical de 20px, horizontal de 20px (16px no desktop), raio de 12px e intervalo interno de 18px quando aplicável.
+- Alturas seguem o conteúdo, com alinhamento por linha. Não usar altura fixa, truncamento ou limite de linhas para simular uniformidade.
+- Imagens, tipografia e tratamentos de superfície continuam específicos de cada seção; o método mantém o visual aprovado.
+- Oferta, cartilha, professor e blocos singulares não são itens dessa grade.

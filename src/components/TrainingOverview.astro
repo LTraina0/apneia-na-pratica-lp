@@ -1,4 +1,6 @@
 ---
+import CardGrid from './CardGrid.astro';
+
 interface LearningCard {
   label: string;
   title: string;
@@ -70,7 +72,7 @@ const bookletItems = [
       </p>
     </header>
 
-    <div class="learning-grid" aria-label="O que você vai aprender">
+    <CardGrid aria-label="O que você vai aprender">
       {learningCards.map((card, index) => (
         <article class={`learning-card learning-card-scene-${index + 1} reveal reveal-soft delay-${Math.min(index + 1, 5)}`}>
           <div class:list={['learning-card-media', { 'has-image': card.image }]} aria-hidden="true">
@@ -85,7 +87,7 @@ const bookletItems = [
           </div>
         </article>
       ))}
-    </div>
+    </CardGrid>
 
     <article class="booklet-card reveal reveal-soft" aria-labelledby="booklet-title">
       <div class="booklet-visual" aria-hidden="true">
@@ -177,12 +179,6 @@ const bookletItems = [
     color: var(--color-text-body);
   }
 
-  .learning-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-  }
-
   .learning-card {
     --scene-x: 72%;
     --scene-y: 26%;
@@ -196,7 +192,7 @@ const bookletItems = [
     color: var(--color-white);
     background: var(--color-navy-800);
     border: 1px solid rgba(24, 181, 200, 0.2);
-    border-radius: var(--radius-card);
+    border-radius: var(--card-radius);
     box-shadow: 0 18px 42px -32px rgba(2, 11, 39, 0.76);
     transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
   }
@@ -276,7 +272,8 @@ const bookletItems = [
     position: relative;
     z-index: 2;
     width: 100%;
-    padding: 28px;
+    /* Reserve visible photo space; longer copy can still grow the card. */
+    padding: 112px var(--card-padding-inline) var(--card-padding-block);
   }
 
   .learning-label {
@@ -487,10 +484,6 @@ const bookletItems = [
   }
 
   @media (max-width: 920px) {
-    .learning-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .booklet-card {
       grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
     }
@@ -513,11 +506,6 @@ const bookletItems = [
       margin-top: 14px;
     }
 
-    .learning-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
     .learning-card {
       min-height: 310px;
     }
@@ -525,10 +513,6 @@ const bookletItems = [
     .learning-card-media {
       opacity: 0.88;
       transform: scale(1.025);
-    }
-
-    .learning-card-content {
-      padding: 24px;
     }
 
     .learning-card p {

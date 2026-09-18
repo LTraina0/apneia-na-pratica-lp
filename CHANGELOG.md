@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.2.2] - 2026-09-18
+
+### Corrigido
+- Larguras, intervalos e breakpoints dos cards de identificação, método e conteúdo unificados pelo componente `CardGrid`, usando o método aprovado como referência.
+- Cards de identificação sem largura máxima isolada ou altura fixa que limite o conteúdo; alturas acompanham o texto e se igualam por linha.
+- Seções com seis cards usam quatro colunas no desktop com o último par centralizado, mantendo a mesma largura dos cards de método.
+- Padding e cantos compartilhados; cards de treinamento preservam as fotos e reservam espaço para elas mesmo quando o texto cresce.
+
+### Preservado
+- Dimensões, proporções, espaçamento interno e conteúdo dos cards ilustrados aprovados em v1.2.1.
+- Copy, oferta, CTAs e demais seções fora do escopo.
+
 ## [1.2.1] - 2026-09-18
 
 ### Corrigido
