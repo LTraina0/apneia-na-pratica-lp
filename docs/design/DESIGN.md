@@ -501,16 +501,17 @@ Antes da aprovação, fazer o teste:
 
 Se sim, a identidade está genérica. Corrigir com decisões específicas da marca: paleta real, uso da logo, mockup real, ritmo próprio, copy real e composição conectada ao tema de investigação clínica.
 
-## 15. Grade compartilhada de cards — refinamento v1.2.2
+## 15. Grade compartilhada de cards — refinamento v1.2.4
 
 Por solicitação de 18/09/2026, os cards de identificação, método e treinamento
-seguem a geometria do método aprovado em v1.2.1. Para essas três grades,
-esta regra substitui os grids históricos de três colunas descritos acima.
+compartilham margens, intervalos e comportamento mobile/tablet do método aprovado
+em v1.2.1. A correção v1.2.4 mantém a composição desktop própria de cada seção:
+seis itens em 3×2 e quatro etapas do método em 4×1.
 
 - Implementação única em `src/components/CardGrid.astro`; não criar limites de largura ou breakpoints locais por seção.
 - Mobile até 767px: uma coluna, máximo de 400px e margem lateral mínima de 20px.
 - Tablet de 768px até 1099px: duas colunas, grade de até 760px e margem lateral mínima de 32px.
-- Desktop a partir de 1100px: quatro colunas, grade de até 1076px; último par centralizado quando há seis itens, sem esticar os cards.
+- Desktop a partir de 1100px: grade de até 1076px; identificação e treinamento usam `desktopColumns={3}` (3×2), enquanto método usa o padrão de quatro colunas (4×1). As bordas externas das grades permanecem alinhadas, sem impor a mesma largura individual a conteúdos com contagens diferentes.
 - Intervalos de 20px no mobile/tablet e 16px no desktop.
 - Tokens herdados: padding vertical de 20px, horizontal de 20px (16px no desktop), raio de 12px e intervalo interno de 18px quando aplicável.
 - Alturas seguem o conteúdo, com alinhamento por linha. Não usar altura fixa, truncamento ou limite de linhas para simular uniformidade.
