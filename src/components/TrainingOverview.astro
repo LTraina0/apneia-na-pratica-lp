@@ -1,6 +1,12 @@
 ---
 import CardGrid from './CardGrid.astro';
 
+interface Props {
+  showBooklet?: boolean;
+}
+
+const { showBooklet = true } = Astro.props;
+
 interface LearningCard {
   label: string;
   title: string;
@@ -89,6 +95,7 @@ const bookletItems = [
       ))}
     </CardGrid>
 
+    {showBooklet && (
     <article class="booklet-card reveal reveal-soft" aria-labelledby="booklet-title">
       <div class="booklet-visual" aria-hidden="true">
         <div class="booklet-shadow"></div>
@@ -112,6 +119,7 @@ const bookletItems = [
         </ul>
       </div>
     </article>
+    )}
   </div>
 </section>
 
