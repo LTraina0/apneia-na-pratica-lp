@@ -7,6 +7,12 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.1] - 2026-09-18
+
+### Corrigido
+- Altura da Hero em desktop largo acompanha a composição, removendo a faixa de fundo excedente abaixo da foto entre 1680px e 1919px.
+- Foto, textos, botão, demais breakpoints e espaçamento da seção seguinte preservados.
+
 ## [1.3.0] - 2026-09-18
 
 ### Modificado

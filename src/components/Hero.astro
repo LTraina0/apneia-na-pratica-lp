@@ -783,14 +783,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
    ========================================================================== */
 @media (min-width: 1680px) {
   .hero-section {
+    /* Follow the artwork height without clipping content if it grows. */
+    --hero-stage-height: clamp(723px, calc(828px - (1920px - 100vw) * 0.4375), 828px);
     display: block;
-    height: 828px;
+    height: auto;
+    min-height: var(--hero-stage-height);
   }
 
   .hero-visual-viewport {
     position: absolute;
     inset: 0;
-    height: 828px;
+    height: 100%;
     margin-top: 0;
   }
 
@@ -799,7 +802,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     right: clamp(0px, calc(20px - (1920px - 100vw) * 0.08), 20px);
     top: -2px;
     width: clamp(830px, calc(950px - (1920px - 100vw) * 0.5), 950px);
-    height: clamp(723px, calc(828px - (1920px - 100vw) * 0.4375), 828px);
+    height: var(--hero-stage-height);
   }
 
   .hero-logoform-img {
