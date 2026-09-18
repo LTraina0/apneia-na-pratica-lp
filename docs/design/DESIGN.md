@@ -517,3 +517,12 @@ seis itens em 3×2 e quatro etapas do método em 4×1.
 - Alturas seguem o conteúdo, com alinhamento por linha. Não usar altura fixa, truncamento ou limite de linhas para simular uniformidade.
 - Imagens, tipografia e tratamentos de superfície continuam específicos de cada seção; o método mantém o visual aprovado.
 - Oferta, cartilha, professor e blocos singulares não são itens dessa grade.
+
+## 16. Nova Hero — v1.3.0
+
+A pedido explícito do usuário em 18/09/2026, a Hero fornecida no repositório
+HeroLP-testing substitui o conceito antigo da primeira dobra. Sua composição
+assimétrica no desktop, composição vertical no mobile, imagens e fonte Inter
+são preservadas como exceção restrita à Hero; não modificar a tipografia das
+outras seções. A referência antiga de mockup centralizado passa a ser histórica.
+Detalhes em `../engineering/SECTION-VISIBILITY.md`.

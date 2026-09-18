@@ -1,24 +1,30 @@
-# Visibilidade temporária de seções
+# Substituição da Hero e remoção da cartilha ilustrada
 
-A pedido do usuário, a partir de v1.2.3, a Hero original e o card da cartilha
-não são renderizados na página. Não há espaço vazio, elementos focáveis
-ocultos nem exclusão do material original.
+## Estado atual — v1.3.0
 
-## Controle
+Por solicitação explícita do usuário em 18/09/2026, a Hero antiga e o card
+ilustrado da cartilha foram excluídos do código ativo, não apenas ocultados.
+A cartilha continua fazendo parte da oferta e das menções comerciais.
 
-Arquivo: `src/config/page-sections.ts`.
+- `Hero.astro` contém somente a nova Hero de [HeroLP-testing](https://github.com/LTraina0/HeroLP-testing), commit `22e69a4b31bf0cf8a25ddcc848af34e96d326dd1`.
+- `TrainingOverview.astro` contém apenas os seis tópicos aprovados.
+- As flags `pageSections`, a prop `showBooklet` e o H1 provisório foram removidos.
+- `public/assets/hero-bg.jpg` e `public/assets/mockup.png` eram exclusivos da Hero anterior e foram removidos. Logo e mockup da oferta permanecem.
 
-- `hero: false`: mantém `Hero.astro` e seus assets intactos, mas não monta a primeira dobra.
-- `booklet: false`: passa `showBooklet={false}` para `TrainingOverview.astro`, omitindo somente o card complementar. Os seis tópicos do treinamento permanecem.
-- Para restaurar qualquer bloco, alterar apenas sua flag para `true`, validar e publicar novamente.
+## Integração
 
-A página mantém um H1 acessível com o nome do produto enquanto a Hero está
-desativada. Ao reativá-la, esse H1 de apoio deixa de ser renderizado,
-preservando um único H1.
+- Composição, imagens e textos da Hero fornecida pelo usuário preservados.
+- CSS e tokens limitados ao componente Astro; Inter aplicada somente à nova Hero.
+- Botão adaptado de `#comprar` (sem destino no projeto de origem) para `#oferta`, preservando o fluxo da landing page. Não foram criados links de checkout.
+- Quatro retratos PNG idênticos da origem consolidados em `src/assets/hero/expert.png`; Astro gera WebP responsivo sem mudar a composição.
+- Bases de assets derivadas de `import.meta.env.BASE_URL`, sem depender de caminhos do repositório de teste.
+- Área mínima do CTA de 44px, foco visível e movimento reduzido preservados.
+- Layouts das grades, hover do método, modal, FAQ e demais seções não foram alterados.
+- Configuração comercial/checkout pendente é preexistente; esta integração não representa validação para lançamento de campanhas.
 
-## Limites
+## Histórico
 
-- A ocultação da cartilha é visual/editorial: não remove a cartilha dos entregáveis ou das menções à oferta.
-- Não alterar a grade compartilhada ou as demais seções durante a troca da Hero.
-- A nova Hero deve ser um componente independente; manter a original até haver uma decisão explícita de descarte.
-- O estado anterior completo permanece registrado na tag `v1.2.2`.
+As versões antigas podem ser recuperadas pelo Git (tag `v1.2.5` para o
+código oculto, `v1.2.2` para a página com os dois blocos visíveis).
+O relatório de ocultação em `docs/qa/SECTION-VISIBILITY-2026-09-18.md`
+é histórico; suas instruções de restauração por flag não se aplicam mais.

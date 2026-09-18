@@ -1,7 +1,17 @@
 # ASSET MANIFEST — Apneia na Prática
 
 ## Status
-Atualizado após verificação dos arquivos presentes no build pack.
+Atualização v1.3.0: a Hero atual vem de HeroLP-testing por solicitação do usuário.
+Os conceitos e o mockup da Hero anterior descritos abaixo são referências históricas.
+
+## Ativos da Hero atual
+
+- Origem: https://github.com/LTraina0/HeroLP-testing, commit 22e69a4b31bf0cf8a25ddcc848af34e96d326dd1.
+- Fundos, marcas e logoforms responsivos em `public/assets/hero/`, copiados sem alteração.
+- Retrato em `src/assets/hero/expert.png`: original único, idêntico aos quatro PNGs da origem; WebP responsivo gerado pelo Astro.
+- Nenhuma imagem gerada, recolorida ou substituída; composição original preservada.
+- `public/assets/hero-bg.jpg` e `public/assets/mockup.png` removidos por serem exclusivos da Hero antiga.
+- Logo compartilhada e `product-mockup.png` da oferta permanecem.
 
 ## Ativos disponíveis
 

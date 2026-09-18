@@ -55,7 +55,7 @@ npm run preview
 
 ### Componentes (`src/components/`)
 Os componentes do Astro representam as dobras e elements interativos da LP:
-- [`Hero.astro`](./src/components/Hero.astro): Dobra 1 (promessa, mockup, CTA)
+- [`Hero.astro`](./src/components/Hero.astro): Dobra 1 (nova composição com professor, importada de HeroLP-testing)
 - [`Identification.astro`](./src/components/Identification.astro): Dobra 2 (grid de sinais clínicos)
 - [`Comparison.astro`](./src/components/Comparison.astro): Dobra 3 (comparativo de investigações)
 - [`TrainingOverview.astro`](./src/components/TrainingOverview.astro): Seção de cards explicativos de aprendizado
@@ -68,8 +68,8 @@ Os componentes do Astro representam as dobras e elements interativos da LP:
 
 ### Assets (`public/assets/`)
 Contém apenas imagens e SVGs utilizados diretamente no runtime da Landing Page:
-- `logo.png` e `hero-bg.jpg`
-- `mockup.png` e `product-mockup.png`
+- `logo.png` e `product-mockup.png`
+- `hero/` (fundos, marcas e composição responsiva da nova Hero; o retrato está em `src/assets/hero/` e é otimizado pelo Astro)
 - `professor-eduardo-rollo.webp` e `7-dias-garantia.webp`
 - `identification/` e `learning/` (subdiretórios de ícones e cards)
 
