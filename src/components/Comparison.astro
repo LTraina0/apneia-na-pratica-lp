@@ -63,14 +63,30 @@ const layouts = [
     background: linear-gradient(180deg, rgba(255, 255, 255, 0), #eef6ff);
     box-shadow: 0 3.563px 17.813px -1.781px rgba(15, 23, 42, 0.05), 0 1.781px 5.344px -0.891px rgba(15, 23, 42, 0.03);
     min-width: 0;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   }
   /* All four originals are 1448 × 1086 (4:3). A shared image slot keeps
      the titles aligned and avoids stretching/cropping individual steps. */
-  .process-image { width: 100%; max-width: 280px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 8px; }
+  .process-image { width: 100%; max-width: 280px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 8px; transition: transform var(--transition-fast); }
   .process-image :global(img) { display: block; width: 100%; height: 100%; object-fit: contain; }
   .process-card-copy { display: flex; flex-direction: column; gap: 8px; width: 100%; min-width: 0; }
   .process-card-copy h3 { font-size: 14px; font-weight: 800; line-height: 20px; letter-spacing: 0.4px; color: var(--color-navy-700); }
   .process-card-copy p { font-size: 14px; line-height: 21px; text-wrap: pretty; }
+
+  /* Match Identification's hover without introducing sticky touch states. */
+  @media (hover: hover) and (pointer: fine) {
+    .process-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(24, 181, 200, 0.35);
+    }
+    .process-card:hover .process-image { transform: scale(1.05); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process-card:hover,
+    .process-card:hover .process-image { transform: none; }
+  }
 
   :global(#metodomobile .method-cta) { padding: 0; width: 100%; margin-top: 12px; }
   :global(#metodomobile .cta-inner-wrapper) { gap: 12px; }
