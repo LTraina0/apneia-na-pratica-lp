@@ -2,17 +2,20 @@
 
 > Regra: usar esta copy como fonte textual da landing page. Não reescrever, resumir ou inventar novas promessas sem aprovação.
 
-## DOBRA 1 — HERO
+## DOBRA 1 — HERO (v1.3.0)
 
-# Reconheça sinais de possível apneia antes que passem despercebidos na consulta.
+> Fonte: HeroLP-testing, fornecido pelo usuário para integração em 18/09/2026.
+> Esta seção substitui a Hero antiga; os textos abaixo foram importados sem criação de novas alegações pelo implementador.
 
-Aprenda o que perguntar, o que observar e como organizar melhor as informações para entender quando a investigação do sono merece avançar.
+# Aprenda a tratar Apneia do sono no seu consultório
 
-**Treinamento para dentistas por R$ 47,00, com cartilha prática para uso no consultório.**
+Saiba o que observar, quais perguntas fazer e quando o sono merece uma investigação mais aprofundada.
 
-**CTA:** QUERO ACESSAR O TREINAMENTO
+**Treinamento para dentistas por R$ 47,00, com cartilha prática para o uso no consultório.**
 
-**Microcopy:** Acesso pela Hotmart • 7 dias de garantia
+**CTA:** QUERO ACESSAR AGORA
+
+**Microcopy:** Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos.
 
 ---
 

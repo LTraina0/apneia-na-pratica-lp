@@ -1,278 +1,903 @@
 ---
-import CtaBlock from './CtaBlock.astro';
-const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+// Imported from HeroLP-testing; provenance and integration notes in SECTION-VISIBILITY.md.
+import { Image } from 'astro:assets';
+import expertPortrait from '../assets/hero/expert.png';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<section class="hero-section" id="inicio" data-node-id="129:10" data-name="section#inicio">
-  <!-- Camada de Fundo Sutil Clínico -->
-  <div class="hero-bg-layer" style={`background-image: url('${baseUrl}assets/hero-bg.jpg');`} aria-hidden="true" data-node-id="129:12" data-name="Camada de Fundo Sutil Clínico:mask-group"></div>
+<header class="hero-section" id="hero">
+  <!-- Background Layer -->
+  <div class="hero-background" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 359px)" srcset={`${base}/assets/hero/background/background-mobile-compact.png`} />
+      <source media="(max-width: 1023px)" srcset={`${base}/assets/hero/background/background-mobile.png`} />
+      <source media="(max-width: 1679px)" srcset={`${base}/assets/hero/background/background-desktop.png`} />
+      <img
+        src={`${base}/assets/hero/background/background-desktop-wide.png`}
+        alt=""
+        class="hero-background-img"
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
+  </div>
 
-  <div class="container hero-container" data-node-id="129:19" data-name="div.container">
-    
-    <!-- Logo Real Oficial -->
-    <div class="logo-wrapper reveal delay-1" data-node-id="129:22" data-name="Logo Real Oficial">
-      <div class="brand-logo-frame" data-node-id="129:23" data-name="Apneia na Prática">
-        <img 
-          src={`${baseUrl}assets/logo.png`} 
-          alt="Apneia na Prática" 
-          width="154" 
-          height="75" 
-          class="brand-logo"
+  <!-- Semantic Content Flow -->
+  <div class="hero-content">
+    <!-- Brand Logo -->
+    <div class="hero-brand-logo">
+      <picture>
+        <source media="(max-width: 359px)" srcset={`${base}/assets/hero/brand/brand-mobile-compact.png`} />
+        <source media="(max-width: 1023px)" srcset={`${base}/assets/hero/brand/brand-mobile.png`} />
+        <source media="(max-width: 1679px)" srcset={`${base}/assets/hero/brand/brand-desktop.png`} />
+        <img
+          src={`${base}/assets/hero/brand/brand-desktop-wide.png`}
+          alt="Apneia na Prática"
+          width="109"
+          height="43"
           loading="eager"
+          decoding="async"
         />
-      </div>
+      </picture>
     </div>
 
-    <!-- Headline e Subheadline (Frame 4211) -->
-    <div class="hero-text-frame reveal delay-2" data-node-id="133:1306">
-      <h1 class="hero-title" data-node-id="133:1307">
-        <span class="hero-title-line">Reconheça sinais de possível apneia antes que</span>
-        <span class="hero-title-line">passem despercebidos na consulta.</span>
-      </h1>
+    <!-- Main Headline -->
+    <h1 class="hero-headline">
+      <span>Aprenda a tratar</span>
+      <span>Apneia do sono no seu</span>
+      <span>consultório</span>
+    </h1>
 
-      <p class="hero-subtitle" data-node-id="133:1308">
-        <span class="subtitle-text">Aprenda o que perguntar, o que observar e como organizar melhor as informações para entender quando a investigação do sono merece avançar. </span>
-        <strong class="subtitle-bold">Treinamento para dentistas por R$ 47,00, com cartilha prática para uso no consultório.</strong>
+    <!-- Description with inline semantic highlight -->
+    <p class="hero-description">
+      Saiba o que observar, quais perguntas fazer e quando o sono merece uma investigação mais aprofundada. <mark class="offer-highlight">Treinamento para dentistas por R$ 47,00, com cartilha prática para o uso no consultório.</mark>
+    </p>
+
+    <!-- Action Group -->
+    <div class="hero-actions">
+      <a href="#oferta" id="hero-cta-btn" class="btn-cta-primary">
+        <img
+          src={`${base}/assets/hero/icons/icon-cta-tap.png`}
+          alt=""
+          class="btn-cta-icon"
+          aria-hidden="true"
+        />
+        <span>QUERO ACESSAR AGORA</span>
+      </a>
+      <p class="security-note">
+        Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos.
       </p>
     </div>
+  </div>
 
-    <!-- Mockup Real Oficial -->
-    <div class="mockup-wrapper reveal delay-3" data-node-id="129:48" data-name="Mockup Real Oficial">
-      <div class="mockup-ambient-glow" aria-hidden="true" data-node-id="129:50" data-name="div.mockup-ambient-glow"></div>
-      <div class="mockup-image-frame" data-node-id="129:53" data-name="Mockup do treinamento Apneia na Prática exibido em notebook, tablet e smartphone">
-        <img 
-          src={`${baseUrl}assets/mockup.png`} 
-          alt="Mockup do treinamento Apneia na Prática exibido em notebook, tablet e smartphone" 
-          width="520" 
-          height="345" 
-          class="hero-mockup"
+  <!-- Visual Viewport (FULL-ANCHOR Clipping Boundary) -->
+  <div class="hero-visual-viewport" aria-hidden="true">
+    <div class="hero-visual-stage">
+      <!-- Art-directed Precomposed Logoform with intentional bleed -->
+      <picture>
+        <source media="(max-width: 359px)" srcset={`${base}/assets/hero/logoform/logoform-mobile-compact.png`} />
+        <source media="(max-width: 1023px)" srcset={`${base}/assets/hero/logoform/logoform-mobile.png`} />
+        <source media="(max-width: 1679px)" srcset={`${base}/assets/hero/logoform/logoform-desktop.png`} />
+        <img
+          src={`${base}/assets/hero/logoform/logoform-desktop-wide.png`}
+          alt=""
+          class="hero-logoform-img"
           loading="eager"
+          decoding="async"
         />
-      </div>
-    </div>
+      </picture>
 
-    <!-- Bloco de Preço e CTA Master (Container 136:2 / 136:3) -->
-    <div class="reveal delay-4">
-      <CtaBlock
-        showPrice={true}
-        text="QUERO ACESSAR O TREINAMENTO"
-        href="#oferta"
-        showIcon={true}
-        className="offer-figma-cta hero-mobile-cta"
-        microcopy="Acesso pela Hotmart • 7 dias de garantia"
+      <!-- Expert Glow Effect -->
+      <div class="hero-expert-glow"></div>
+
+      <!-- One source portrait; Astro generates responsive WebP images. -->
+      <Image
+        src={expertPortrait}
+        alt=""
+        class="hero-expert-img"
+        widths={[320, 640, 1000, 1300]}
+        sizes="(max-width: 359px) 235px, (max-width: 1023px) 316px, (max-width: 1679px) 498px, 622px"
+        format="webp"
+        quality={85}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
       />
     </div>
-
   </div>
-</section>
+</header>
 
 <style>
+.hero-section {
+  /* Color Tokens - Exact Figma values */
+  --color-brand-950: #0a1f47;
+  --color-text-body: #000000;
+  --color-text-highlight: #050a18;
+  --color-white: #ffffff;
+  --color-azure-47: #64748b;
+  --color-offer-highlight: rgba(255, 200, 27, 0.35);
+  --color-cta-gradient-start: #089F4E;
+  --color-cta-gradient-end: #06C05D;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Typography - Mobile Compact (319px) */
+  --font-size-headline-compact: 26.79px;
+  --line-height-headline-compact: 27.20px;
+  --letter-spacing-headline-compact: -0.902px;
+
+  --font-size-body-compact: 13.00px;
+  --line-height-body-compact: 17.80px;
+  --letter-spacing-body-compact: -0.733px;
+
+  --cta-radius-compact: 4.039px;
+
+  /* Typography - Mobile (390px) */
+  --font-size-headline-mobile: 32.81px;
+  --line-height-headline-mobile: 33.31px;
+  --letter-spacing-headline-mobile: -1.104px;
+
+  --font-size-body-mobile: 15.92px;
+  --line-height-body-mobile: 21.80px;
+  --letter-spacing-body-mobile: -0.897px;
+
+  --cta-radius-mobile: 4.947px;
+
+  /* Typography - Desktop (1440px) */
+  --font-size-headline-desktop: 47.07px;
+  --line-height-headline-desktop: 49.07px;
+  --letter-spacing-headline-desktop: -2.454px;
+
+  --font-size-body-desktop: 17.99px;
+  --line-height-body-desktop: 22.08px;
+  --letter-spacing-body-desktop: -1.027px;
+
+  --cta-radius-desktop: 5.221px;
+
+  /* Typography - Desktop Wide (1920px) */
+  --font-size-headline-wide: 55.46px;
+  --line-height-headline-wide: 57.82px;
+  --letter-spacing-headline-wide: -2.891px;
+
+  --font-size-body-wide: 21.20px;
+  --line-height-body-wide: 26.02px;
+  --letter-spacing-body-wide: -1.210px;
+
+  --cta-radius-wide: 6.1518507px;
+}
+
+/* Base Hero Container */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #ffffff;
+  font-family: var(--font-sans);
+  color: var(--color-brand-950);
+  box-sizing: border-box;
+}
+
+.hero-section *,
+.hero-section *::before,
+.hero-section *::after {
+  box-sizing: border-box;
+}
+
+/* Background Layer */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-background-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  user-select: none;
+}
+
+/* Visual Viewport (FULL-ANCHOR clipping boundary) */
+.hero-visual-viewport {
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-logoform-img {
+  position: absolute;
+  display: block;
+  user-select: none;
+}
+
+.hero-expert-glow {
+  position: absolute;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(157, 244, 255, 0.68) 0%, rgba(157, 244, 255, 0) 70%);
+  filter: blur(28px);
+  mix-blend-mode: plus-lighter;
+  transform: rotate(5.54deg);
+  opacity: 0.67;
+  pointer-events: none;
+}
+
+.hero-expert-img {
+  position: absolute;
+  display: block;
+  user-select: none;
+}
+
+/* Content Flow */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brand Logo Component - Unclipped, transparent, pixel-perfect */
+.hero-brand-logo {
+  display: block;
+  filter: drop-shadow(0.3px 0.6px 1.4px rgba(0, 0, 0, 0.15)) drop-shadow(3px 5px 3.5px rgba(0, 0, 0, 0.08));
+}
+
+.hero-brand-logo picture,
+.hero-brand-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-headline {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  color: var(--color-brand-950, #0a1f47);
+  margin: 0;
+}
+
+.hero-headline span {
+  display: inline;
+}
+
+.hero-description {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--color-text-body, #000000);
+  margin: 0;
+}
+
+.offer-highlight {
+  background-color: var(--color-offer-highlight, rgba(255, 200, 27, 0.35));
+  color: var(--color-text-highlight, #050a18);
+  font-weight: 700;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.btn-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(169.34deg, var(--color-cta-gradient-start) 0.84%, var(--color-cta-gradient-end) 99.16%);
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform 180ms ease, filter 150ms ease;
+  width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-cta-primary:hover {
+    transform: scale(1.025);
+    filter: brightness(1.04);
+  }
+}
+
+.btn-cta-primary:focus-visible {
+  outline: 2px solid #089f4e;
+  outline-offset: 2px;
+}
+
+/* CTA Tap Microinteraction (tight continuous loop, no long idle pause) */
+@keyframes cta-icon-tap {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    transform: translateY(1.5px) scale(0.95);
+  }
+  45% {
+    transform: translateY(0.4px) scale(0.985);
+  }
+  70% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.btn-cta-icon {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  transform-origin: center center;
+  animation: cta-icon-tap 900ms cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-cta-icon {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+.security-note {
+  font-family: var(--font-sans);
+  color: var(--color-azure-47, #64748b);
+  font-weight: 400;
+  margin: 0;
+  width: 100%;
+}
+
+/* ==========================================================================
+   SMARTPHONE HERO SECTION & CONTENT CONSOLIDATION (< 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
   .hero-section {
-    padding-top: 40px;
-    padding-bottom: 60px;
-    position: relative;
-    overflow: hidden;
-    background-color: var(--bg-page);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin-inline: auto;
+    margin-top: clamp(24px, 6.31vw, 24.61px);
+    margin-bottom: 0;
+    padding-inline: clamp(20px, 6.15vw, 24px);
+    gap: clamp(10px, 3.08vw, 12px);
+  }
+
+  .hero-headline {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    font-size: clamp(24px, 8.4vw, 32.81px);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+    color: #0a1f47;
+    margin: 0;
+  }
+
+  .hero-headline span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero-description {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    font-size: clamp(13px, 4.08vw, 15.92px);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin: 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(9.38px, 2.94vw, 11.48px);
+    margin-top: 0;
     width: 100%;
   }
 
-  .hero-bg-layer {
+  .btn-cta-primary {
+    width: 100%;
+    max-width: clamp(239.46px, 75vw, 293.23px);
+    height: clamp(43.54px, 13.67vw, 53.32px);
+    border-radius: clamp(3.75px, 1.17vw, 4.58px);
+    font-size: clamp(11.47px, 3.6vw, 14.04px);
+    line-height: 1;
+    gap: clamp(7.06px, 2.2vw, 8.64px);
+    box-shadow: inset 0px 0.927px 0px 0px rgba(92, 255, 168, 0.51), 0.618px 10.512px 6.183px rgba(0, 11, 10, 0.2);
+  }
+
+  .btn-cta-icon {
+    width: clamp(14.78px, 4.64vw, 18.10px);
+    height: clamp(17.64px, 5.54vw, 21.61px);
+  }
+
+  .security-note {
+    width: 100%;
+    max-width: clamp(238.86px, 75vw, 292.51px);
+    text-align: center;
+    font-size: clamp(7.07px, 2.22vw, 8.66px);
+    line-height: 1.2;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .hero-visual-viewport {
+    margin-top: 0;
+  }
+}
+
+/* Large-Mobile Content Width Bridge (480px – 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .hero-content {
+    max-width: 520px;
+  }
+}
+
+/* Smartphone Visual Stage: Compact (< 360px) */
+@media (max-width: 359px) {
+  .hero-brand-logo {
+    width: 63.17px;
+    height: 38px;
+    margin: 0 auto;
+  }
+
+  .hero-visual-viewport {
+    position: relative;
+    width: 100%;
+    height: 298px;
+  }
+
+  .hero-visual-stage {
+    position: relative;
+    width: 319px;
+    height: 298px;
+    left: calc(50% - 159.5px);
+    top: 0;
+  }
+
+  .hero-logoform-img {
+    left: -15px;
+    top: 30.18px;
+    width: 466.39px;
+    height: 267.89px;
+  }
+
+  .hero-expert-glow {
+    left: 107px;
+    top: 52.61px;
+    width: 106.91px;
+    height: 191.92px;
+  }
+
+  .hero-expert-img {
+    left: 42px;
+    top: -4.78px;
+    width: 235px;
+    height: 303px;
+  }
+}
+
+/* Smartphone Visual Stage: Standard (360px – 767px) */
+@media (min-width: 360px) and (max-width: 767px) {
+  .hero-brand-logo {
+    width: 78.19px;
+    height: 48px;
+    margin: 0 auto;
+  }
+
+  .hero-visual-viewport {
+    position: relative;
+    width: 100%;
+    height: 408px;
+  }
+
+  .hero-visual-stage {
+    position: relative;
+    width: 608.03px;
+    height: 408px;
+    left: calc(50% - 221px);
+    top: 0;
+  }
+
+  .hero-logoform-img {
+    left: 0;
+    top: 55.75px;
+    width: 608.03px;
+    height: 349.25px;
+  }
+
+  .hero-expert-glow {
+    left: 140.57px;
+    top: 16.59px;
+    width: 175.26px;
+    height: 282.42px;
+  }
+
+  .hero-expert-img {
+    left: 63px;
+    top: 0;
+    width: 316px;
+    height: 408px;
+  }
+}
+
+/* ==========================================================================
+   RANGE 4: Tablet (768px – 1023px) — BALANCED VERTICAL COMPOSITION
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-content {
+    margin-inline: auto;
+    margin-top: 32px;
+    width: min(100% - 80px, 520px);
+    gap: 12px;
+    align-items: center;
+  }
+
+  .hero-brand-logo {
+    width: 82px;
+    height: 50px;
+    margin: 0 auto;
+  }
+
+  .hero-headline {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    font-size: clamp(34px, 4.5vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -1.6px;
+    color: #0a1f47;
+    margin: 0;
+  }
+
+  .hero-description {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    font-size: clamp(15.5px, 2vw, 17px);
+    line-height: 1.4;
+    letter-spacing: -1px;
+    color: #000000;
+    margin: 0;
+  }
+
+  .hero-actions {
+    align-items: center;
+    justify-content: center;
+    gap: 11.5px;
+    margin-top: 0;
+  }
+
+  .btn-cta-primary {
+    max-width: 340px;
+    height: 53.32px;
+    border-radius: var(--cta-radius-desktop);
+    font-size: 15px;
+    line-height: 15.5px;
+    gap: 9px;
+    box-shadow: inset 0px 0.979px 0px 0px rgba(92, 255, 168, 0.51), 0.653px 11.095px 6.527px rgba(0, 11, 10, 0.2);
+  }
+
+  .btn-cta-icon {
+    width: 19px;
+    height: 23px;
+  }
+
+  .security-note {
+    max-width: 340px;
+    text-align: center;
+    font-size: 9px;
+    line-height: 11.5px;
+    color: #64748b;
+  }
+
+  /* Content ↔ Visual Stage gap interpolated naturally (24px) */
+  .hero-visual-viewport {
+    position: relative;
+    width: 100%;
+    height: 408px;
+    margin-top: 24px;
+  }
+
+  .hero-visual-stage {
+    position: relative;
+    width: 608.03px;
+    height: 408px;
+    left: calc(50% - 221px);
+    top: 0;
+  }
+
+  .hero-logoform-img {
+    left: 0;
+    top: 55.75px;
+    width: 608.03px;
+    height: 349.25px;
+  }
+
+  .hero-expert-glow {
+    left: 140.57px;
+    top: 16.59px;
+    width: 175.26px;
+    height: 282.42px;
+  }
+
+  .hero-expert-img {
+    left: 63px;
+    top: 0;
+    width: 316px;
+    height: 408px;
+  }
+}
+
+/* ==========================================================================
+   RANGE 5: Desktop (1024px – 1679px) — CANONICAL ANCHOR 3 (1440px: Node 378:99)
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1679px) {
+  .hero-section {
+    display: block;
+    height: 679px;
+  }
+
+  .hero-visual-viewport {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    background-position: center top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.6;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 65%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 65%, rgba(0, 0, 0, 0) 100%);
-    pointer-events: none;
-    z-index: 0;
+    height: 679px;
+    margin-top: 0;
   }
 
-  .hero-container {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 1200px;
-    padding-left: 32px;
-    padding-right: 32px;
-    gap: 16px;
-  }
-
-  /* Logo */
-  .logo-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 74.77px;
-    width: 100%;
-  }
-
-  .brand-logo-frame {
-    max-width: 154px;
-    aspect-ratio: 154 / 74.77;
-    filter: drop-shadow(0px 2px 6px rgba(12, 38, 88, 0.05));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .brand-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  /* Text Frame 4211 */
-  .hero-text-frame {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    max-width: 1100px;
-    width: 100%;
-    padding: 12px 20px;
-  }
-
-  .hero-title {
-    font-family: var(--font-primary);
-    font-weight: 700;
-    font-size: 42px;
-    line-height: 50px;
-    letter-spacing: -0.9px;
-    color: var(--primary-dark);
-    margin: 0;
-    max-width: 1040px;
-  }
-
-  .hero-title-line {
-    display: block;
-  }
-
-  .hero-subtitle {
-    font-family: var(--font-secondary);
-    font-size: 19.5px;
-    line-height: 29px;
-    letter-spacing: -0.3px;
-    color: #1E293B;
-    margin: 0;
-    max-width: 960px;
-    text-wrap: balance;
-  }
-
-  .subtitle-bold {
-    font-family: var(--font-primary);
-    font-weight: 700;
-    color: var(--primary-dark);
-  }
-
-  /* Mockup Real Oficial */
-  .mockup-wrapper {
-    max-width: 540px;
-    width: 100%;
-    padding-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-  }
-
-  .mockup-ambient-glow {
+  .hero-visual-stage {
     position: absolute;
-    inset: 18.76% 5% 14.34% 5%;
-    background: radial-gradient(ellipse at center, rgba(24, 181, 200, 0.16) 0%, rgba(33, 120, 159, 0.05) 50%, rgba(33, 120, 159, 0) 80%);
-    filter: blur(12px);
-    pointer-events: none;
-    z-index: 0;
+    right: 0;
+    top: 0;
+    width: clamp(520px, calc(520px + (100vw - 1024px) * 0.5813), 761.84px);
+    height: clamp(453px, calc(453px + (100vw - 1024px) * 0.5072), 664.01px);
   }
 
-  .mockup-image-frame {
-    max-width: 520px;
+  .hero-logoform-img {
+    left: -10.53%;
+    top: -3.26%;
+    width: 163.57%;
+    height: 103.36%;
+  }
+
+  .hero-expert-glow {
+    left: 19.92%;
+    top: 10.95%;
+    width: 34.72%;
+    height: 64.21%;
+  }
+
+  .hero-expert-img {
+    left: -2.31%;
+    top: 3.26%;
+    width: 65.37%;
+    height: 96.86%;
+  }
+
+  .hero-content {
+    margin-left: clamp(48px, calc(200px - (1440px - 100vw) * 0.36), 200px);
+    margin-top: 98.18px;
+    width: min(100% - 96px, 404px);
+    gap: 6.53px;
+    align-items: flex-start;
+  }
+
+  .hero-brand-logo {
+    width: 109.01px;
+    height: 42.99px;
+    margin: 0;
+    align-self: flex-start;
+    filter: drop-shadow(0px 1.3px 3.9px rgba(12, 38, 88, 0.05));
+  }
+
+  .hero-headline {
     width: 100%;
-    aspect-ratio: 520 / 345.47;
-    filter: drop-shadow(0px 14px 32px rgba(12, 38, 88, 0.12));
-    position: relative;
-    z-index: 1;
-    transition: transform var(--transition-smooth);
+    max-width: 390.95px;
+    text-align: left;
+    font-size: clamp(38px, calc(38px + (100vw - 1024px) * 0.0218), 47.07px);
+    line-height: var(--line-height-headline-desktop);
+    letter-spacing: var(--letter-spacing-headline-desktop);
+    color: #0a1f47;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
-  .mockup-image-frame:hover {
-    transform: translateY(-2px) scale(1.01);
-  }
-
-  .hero-mockup {
+  .hero-description {
     width: 100%;
-    height: 100%;
+    max-width: 389.31px;
+    text-align: left;
+    font-size: clamp(16.5px, calc(16.5px + (100vw - 1024px) * 0.0036), 17.99px);
+    line-height: var(--line-height-body-desktop);
+    letter-spacing: var(--letter-spacing-body-desktop);
+    color: #000000;
+    margin-top: 6.55px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12.12px;
+    margin-top: 5.22px;
+  }
+
+  .btn-cta-primary {
+    max-width: 388.25px;
+    height: 53.21px;
+    border-radius: var(--cta-radius-desktop);
+    font-size: 16.09px;
+    line-height: 16.71px;
+    gap: 9.90px;
+    box-shadow: inset 0px 0.979px 0px 0px rgba(92, 255, 168, 0.51), 0.653px 11.095px 6.527px rgba(0, 11, 10, 0.2);
+  }
+
+  .btn-cta-icon {
+    width: 20.74px;
+    height: 24.76px;
+  }
+
+  .security-note {
+    max-width: 388.25px;
+    text-align: center;
+    font-size: 9.79px;
+    line-height: 11.88px;
+    color: #64748b;
+  }
+}
+
+/* ==========================================================================
+   RANGE 6: Wide Desktop (1680px+) — CANONICAL ANCHOR 4 (1920px: Node 378:102)
+   ========================================================================== */
+@media (min-width: 1680px) {
+  .hero-section {
     display: block;
-    object-fit: contain;
+    height: 828px;
   }
 
-  /* Mobile Overrides */
-  @media (max-width: 767px) {
-    .hero-section {
-      padding-top: 28px;
-      padding-bottom: 20px;
-    }
-
-    .hero-container {
-      padding-left: 20px;
-      padding-right: 20px;
-      gap: 12px;
-    }
-
-    .logo-wrapper {
-      height: 63.13px;
-    }
-
-    .brand-logo-frame {
-      max-width: 130px;
-      aspect-ratio: 130 / 63.13;
-    }
-
-    .hero-text-frame {
-      padding: 12px 0;
-      gap: 16px;
-      width: 100%;
-    }
-
-    .hero-title {
-      font-size: 30px;
-      line-height: 33px;
-      letter-spacing: -0.75px;
-      color: #0C2658;
-    }
-
-    .hero-title-line {
-      display: inline;
-    }
-
-    .hero-title-line:first-child {
-      display: block;
-    }
-
-    .hero-subtitle {
-      font-size: 16px;
-      line-height: 19px;
-      letter-spacing: normal;
-    }
-
-    .mockup-wrapper {
-      padding-top: 10px;
-      height: auto;
-    }
-
-    .mockup-image-frame {
-      max-width: 520px;
-      width: 100%;
-    }
-
-    :global(#inicio .cta-master-container.hero-mobile-cta .master-btn) {
-      width: clamp(227.1px, calc(67.5714vw + 10.8714px), 274.4px) !important;
-    }
+  .hero-visual-viewport {
+    position: absolute;
+    inset: 0;
+    height: 828px;
+    margin-top: 0;
   }
+
+  .hero-visual-stage {
+    position: absolute;
+    right: clamp(0px, calc(20px - (1920px - 100vw) * 0.08), 20px);
+    top: -2px;
+    width: clamp(830px, calc(950px - (1920px - 100vw) * 0.5), 950px);
+    height: clamp(723px, calc(828px - (1920px - 100vw) * 0.4375), 828px);
+  }
+
+  .hero-logoform-img {
+    left: -10.53%;
+    top: -3.26%;
+    width: 163.57%;
+    height: 103.36%;
+  }
+
+  .hero-expert-glow {
+    left: 19.92%;
+    top: 10.95%;
+    width: 34.72%;
+    height: 64.21%;
+  }
+
+  .hero-expert-img {
+    left: -2.31%;
+    top: 3.26%;
+    width: 65.37%;
+    height: 96.86%;
+  }
+
+  .hero-content {
+    margin-left: clamp(200px, calc(350px - (1920px - 100vw) * 0.5), 350px);
+    margin-top: 118.85px;
+    width: min(100% - 96px, 476px);
+    gap: 7.69px;
+    align-items: flex-start;
+  }
+
+  .hero-brand-logo {
+    width: 128.44px;
+    height: 50.65px;
+    margin: 0;
+    align-self: flex-start;
+    filter: drop-shadow(0px 1.5px 4.6px rgba(12, 38, 88, 0.05));
+  }
+
+  .hero-headline {
+    width: 100%;
+    max-width: 460.62px;
+    text-align: left;
+    font-size: clamp(47.07px, calc(47.07px + (100vw - 1680px) * 0.035), 55.46px);
+    line-height: var(--line-height-headline-wide);
+    letter-spacing: var(--letter-spacing-headline-wide);
+    color: #0a1f47;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .hero-description {
+    width: 100%;
+    max-width: 458.69px;
+    text-align: left;
+    font-size: clamp(18px, calc(18px + (100vw - 1680px) * 0.0133), 21.20px);
+    line-height: var(--line-height-body-wide);
+    letter-spacing: var(--letter-spacing-body-wide);
+    color: #000000;
+    margin-top: 7.73px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14.28px;
+    margin-top: 6.15px;
+  }
+
+  .btn-cta-primary {
+    max-width: 457.45px;
+    height: 62.69px;
+    border-radius: var(--cta-radius-wide);
+    font-size: 18.96px;
+    line-height: 19.69px;
+    gap: 11.67px;
+    box-shadow: inset 0px 1.153px 0px 0px rgba(92, 255, 168, 0.51), 0.769px 13.073px 7.69px rgba(0, 11, 10, 0.2);
+  }
+
+  .btn-cta-icon {
+    width: 24.44px;
+    height: 29.17px;
+  }
+
+  .security-note {
+    max-width: 457.45px;
+    text-align: center;
+    font-size: 11.54px;
+    line-height: 14px;
+    color: #64748b;
+  }
+}
+
+/* Keep the imported composition independent from global page typography. */
+.hero-section { line-height: normal; }
+.hero-headline, .hero-description, .security-note { text-wrap: wrap; }
+.btn-cta-primary { min-height: 44px; }
+@media (prefers-reduced-motion: reduce) {
+  .btn-cta-primary:hover { transform: none; }
+}
 </style>
