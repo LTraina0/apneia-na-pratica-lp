@@ -1,11 +1,30 @@
 ---
-// Imported from HeroLP-testing; provenance and integration notes in SECTION-VISIBILITY.md.
+// HeroLP-testing mobile + Figma desktop 378:99 / 378:102; see HERO-FIGMA-DESKTOP-2026-09-18.md.
 import { Image } from 'astro:assets';
 import expertPortrait from '../assets/hero/expert.png';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <header class="hero-section" id="hero">
+  <!-- Independent alpha shadows reproduce Figma effects without a rectangular halo. -->
+  <svg class="hero-shadow-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="hero-portrait-shadow" x="-50%" y="-30%" width="220%" height="180%" color-interpolation-filters="sRGB">
+        <feDropShadow in="SourceGraphic" dx="5.239" dy="9.605" stdDeviation="12.2245" flood-opacity=".2" result="near" />
+        <feDropShadow in="SourceGraphic" dx="19.21" dy="39.292" stdDeviation="21.829" flood-opacity=".17" result="middle" />
+        <feDropShadow in="SourceGraphic" dx="43.658" dy="89.063" stdDeviation="29.6875" flood-opacity=".1" result="far" />
+        <feDropShadow in="SourceGraphic" dx="76.839" dy="158.043" stdDeviation="35.363" flood-opacity=".03" result="diffuse" />
+        <feMerge><feMergeNode in="diffuse" /><feMergeNode in="far" /><feMergeNode in="middle" /><feMergeNode in="near" /></feMerge>
+      </filter>
+      <filter id="hero-portrait-shadow-wide" x="-50%" y="-30%" width="220%" height="180%" color-interpolation-filters="sRGB">
+        <feDropShadow in="SourceGraphic" dx="6.533" dy="11.977" stdDeviation="15.2435" flood-opacity=".2" result="near" />
+        <feDropShadow in="SourceGraphic" dx="23.954" dy="48.997" stdDeviation="27.2205" flood-opacity=".17" result="middle" />
+        <feDropShadow in="SourceGraphic" dx="54.441" dy="111.059" stdDeviation="37.02" flood-opacity=".1" result="far" />
+        <feDropShadow in="SourceGraphic" dx="95.816" dy="197.076" stdDeviation="44.097" flood-opacity=".03" result="diffuse" />
+        <feMerge><feMergeNode in="diffuse" /><feMergeNode in="far" /><feMergeNode in="middle" /><feMergeNode in="near" /></feMerge>
+      </filter>
+    </defs>
+  </svg>
   <!-- Background Layer -->
   <div class="hero-background" aria-hidden="true">
     <picture>
@@ -41,6 +60,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </picture>
     </div>
 
+    <div class="hero-body">
+    <div class="hero-copy">
     <!-- Main Headline -->
     <h1 class="hero-headline">
       <span>Aprenda a tratar</span>
@@ -52,21 +73,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <p class="hero-description">
       Saiba o que observar, quais perguntas fazer e quando o sono merece uma investigação mais aprofundada. <mark class="offer-highlight">Treinamento para dentistas por R$ 47,00, com cartilha prática para o uso no consultório.</mark>
     </p>
+    </div>
 
     <!-- Action Group -->
     <div class="hero-actions">
       <a href="#oferta" id="hero-cta-btn" class="btn-cta-primary">
+        <picture class="btn-cta-picture">
+        <source media="(min-width: 1024px)" srcset={`${base}/assets/hero/icons/icon-cta-desktop.svg`} />
         <img
           src={`${base}/assets/hero/icons/icon-cta-tap.png`}
           alt=""
           class="btn-cta-icon"
           aria-hidden="true"
         />
+        </picture>
         <span>QUERO ACESSAR AGORA</span>
       </a>
       <p class="security-note">
         Pagamento 100% seguro processado via Hotmart. Seus dados estão protegidos.
       </p>
+    </div>
     </div>
   </div>
 
@@ -88,9 +114,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </picture>
 
       <!-- Expert Glow Effect -->
-      <div class="hero-expert-glow"></div>
+      <div class="hero-expert-glow">
+        <img src={`${base}/assets/hero/expert-glow.svg`} alt="" class="hero-glow-desktop" />
+      </div>
 
       <!-- One source portrait; Astro generates responsive WebP images. -->
+      <div class="hero-expert-frame">
       <Image
         src={expertPortrait}
         alt=""
@@ -103,6 +132,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         fetchpriority="high"
         decoding="async"
       />
+      </div>
     </div>
   </div>
 </header>
@@ -234,6 +264,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 }
 
 /* Content Flow */
+.hero-body, .hero-copy, .hero-expert-frame { display: contents; }
+.btn-cta-picture { display: flex; flex: none; }
+.hero-glow-desktop { display: none; }
+.hero-shadow-defs { position: absolute; width: 0; height: 0; pointer-events: none; }
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -683,8 +718,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     position: absolute;
     right: 0;
     top: 0;
-    width: clamp(520px, calc(520px + (100vw - 1024px) * 0.5813), 761.84px);
-    height: clamp(453px, calc(453px + (100vw - 1024px) * 0.5072), 664.01px);
+    width: clamp(520px, calc(761.842834px - (1440px - 100vw) * 0.581353), 761.842834px);
+    height: clamp(453px, calc(664.006226px - (1440px - 100vw) * 0.507227), 664.006226px);
   }
 
   .hero-logoform-img {
@@ -701,26 +736,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     height: 64.21%;
   }
 
-  .hero-expert-img {
-    left: -2.31%;
+  .hero-expert-frame {
+    left: -2.315789%;
     top: 3.26%;
-    width: 65.37%;
-    height: 96.86%;
+    width: 65.368421%;
+    height: 96.859904%;
   }
 
   .hero-content {
     margin-left: clamp(48px, calc(200px - (1440px - 100vw) * 0.36), 200px);
     margin-top: 98.18px;
     width: min(100% - 96px, 404px);
-    gap: 6.53px;
-    align-items: flex-start;
+    padding: 6.526647px;
+    gap: 6.526647px;
+    align-items: center;
+    --hero-copy-gap: 12.304275px;
+    --hero-body-gap: 11.747956px;
+    --hero-heading-min-height: 148px;
+    --hero-description-min-height: 111px;
   }
 
   .hero-brand-logo {
-    width: 109.01px;
-    height: 42.99px;
+    width: 109.01403px;
+    height: 42.991451px;
     margin: 0;
-    align-self: flex-start;
+    align-self: center;
     filter: drop-shadow(0px 1.3px 3.9px rgba(12, 38, 88, 0.05));
   }
 
@@ -728,8 +768,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     width: 100%;
     max-width: 390.95px;
     text-align: left;
-    font-size: clamp(38px, calc(38px + (100vw - 1024px) * 0.0218), 47.07px);
-    line-height: var(--line-height-headline-desktop);
+    font-size: clamp(38px, calc(47.074px - (1440px - 100vw) * 0.021813), 47.074px);
+    line-height: 49.073px;
     letter-spacing: var(--letter-spacing-headline-desktop);
     color: #0a1f47;
     margin-top: 0;
@@ -740,18 +780,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     width: 100%;
     max-width: 389.31px;
     text-align: left;
-    font-size: clamp(16.5px, calc(16.5px + (100vw - 1024px) * 0.0036), 17.99px);
-    line-height: var(--line-height-body-desktop);
-    letter-spacing: var(--letter-spacing-body-desktop);
+    font-size: clamp(16.5px, calc(17.993px - (1440px - 100vw) * 0.003589), 17.993px);
+    line-height: 22.083px;
+    letter-spacing: normal;
     color: #000000;
-    margin-top: 6.55px;
+    margin: 0 0 0 1.642px;
   }
 
   .hero-actions {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 12.12px;
-    margin-top: 5.22px;
+    margin-top: 0;
+    padding: 12.120033px 1.34664px;
   }
 
   .btn-cta-primary {
@@ -819,26 +860,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     height: 64.21%;
   }
 
-  .hero-expert-img {
-    left: -2.31%;
+  .hero-expert-frame {
+    left: -2.315789%;
     top: 3.26%;
-    width: 65.37%;
-    height: 96.86%;
+    width: 65.368421%;
+    height: 96.859904%;
   }
 
   .hero-content {
     margin-left: clamp(200px, calc(350px - (1920px - 100vw) * 0.5), 350px);
-    margin-top: 118.85px;
+    margin-top: 118.854805px;
     width: min(100% - 96px, 476px);
-    gap: 7.69px;
-    align-items: flex-start;
+    padding: 7.689813px;
+    gap: 7.689813px;
+    align-items: center;
+    --hero-copy-gap: 14.873108px;
+    --hero-body-gap: 13.841614px;
+    --hero-heading-min-height: 174px;
+    --hero-description-min-height: 131px;
   }
 
   .hero-brand-logo {
-    width: 128.44px;
-    height: 50.65px;
+    width: 128.44226px;
+    height: 50.653286px;
     margin: 0;
-    align-self: flex-start;
+    align-self: center;
     filter: drop-shadow(0px 1.5px 4.6px rgba(12, 38, 88, 0.05));
   }
 
@@ -846,8 +892,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     width: 100%;
     max-width: 460.62px;
     text-align: left;
-    font-size: clamp(47.07px, calc(47.07px + (100vw - 1680px) * 0.035), 55.46px);
-    line-height: var(--line-height-headline-wide);
+    font-size: clamp(47.074px, calc(55.464px - (1920px - 100vw) * 0.034958), 55.464px);
+    line-height: 57.818px;
     letter-spacing: var(--letter-spacing-headline-wide);
     color: #0a1f47;
     margin-top: 0;
@@ -858,25 +904,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     width: 100%;
     max-width: 458.69px;
     text-align: left;
-    font-size: clamp(18px, calc(18px + (100vw - 1680px) * 0.0133), 21.20px);
-    line-height: var(--line-height-body-wide);
-    letter-spacing: var(--letter-spacing-body-wide);
+    font-size: clamp(18px, calc(21.2px - (1920px - 100vw) * 0.013333), 21.2px);
+    line-height: 26.018px;
+    letter-spacing: normal;
     color: #000000;
-    margin-top: 7.73px;
+    margin: 0 0 0 1.930916px;
   }
 
   .hero-actions {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 14.28px;
-    margin-top: 6.15px;
+    margin-top: 0;
+    padding: 14.28px 1.586667px;
   }
 
   .btn-cta-primary {
     max-width: 457.45px;
     height: 62.69px;
     border-radius: var(--cta-radius-wide);
-    font-size: 18.96px;
+    font-size: 18.961px;
     line-height: 19.69px;
     gap: 11.67px;
     box-shadow: inset 0px 1.153px 0px 0px rgba(92, 255, 168, 0.51), 0.769px 13.073px 7.69px rgba(0, 11, 10, 0.2);
@@ -894,6 +941,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     line-height: 14px;
     color: #64748b;
   }
+}
+
+/* Desktop fidelity: Figma 378:99 and 378:102. Mobile flow stays unchanged. */
+@media (min-width: 1024px) {
+  .hero-body, .hero-copy {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .hero-body { gap: var(--hero-body-gap); }
+  .hero-copy { gap: var(--hero-copy-gap); }
+  .hero-headline { font-weight: 700; min-height: var(--hero-heading-min-height); }
+  .hero-description, .security-note, .btn-cta-primary { font-family: 'Arimo', Arial, sans-serif; }
+  .hero-description { min-height: var(--hero-description-min-height); }
+  .offer-highlight { padding: 0; border-radius: 1.636px; box-shadow: 5px 0 rgba(255,200,27,.35), -1.64px 0 rgba(255,200,27,.35); }
+  .btn-cta-primary { background-image: linear-gradient(171.923deg, #089f4e .84281%, #06c05d 99.157%); }
+  .hero-expert-frame { display: block; position: absolute; overflow: hidden; filter: url(#hero-portrait-shadow); }
+  .hero-expert-img { left: -3.06%; top: -2.51%; width: 103.06%; height: 106.39%; max-width: none; }
+  .hero-expert-glow {
+    left: 22.424%; top: 12.457%; width: 29.712%; height: 61.199%;
+    background: none; filter: none; opacity: 1;
+  }
+  .hero-glow-desktop {
+    display: block; position: absolute; max-width: none;
+    left: -97.78%; top: -54.47%; width: 295.56%; height: 208.94%;
+  }
+}
+@media (min-width: 1680px) {
+  .hero-expert-frame { filter: url(#hero-portrait-shadow-wide); }
+  .offer-highlight { box-shadow: 6px 0 rgba(255,200,27,.35), -1.93px 0 rgba(255,200,27,.35); }
 }
 
 /* Keep the imported composition independent from global page typography. */
