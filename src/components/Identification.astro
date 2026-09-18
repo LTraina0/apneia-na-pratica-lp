@@ -1,4 +1,6 @@
 ---
+import CardGrid from './CardGrid.astro';
+
 const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const cards = [
@@ -61,8 +63,7 @@ const cards = [
       Muitas vezes, os sinais aparecem de forma fragmentada durante a consulta. O desafio não é apenas perceber que algo pode estar acontecendo — é saber quais informações merecem atenção e como conectá-las.
     </p>
 
-    <!-- Grid 3x2 (6 Cards) — Figma 208:591 -->
-    <div class="cards-grid">
+    <CardGrid>
       {cards.map((card, index) => (
         <div class={`card-item reveal delay-${(index % 3) + 1}`}>
           <div class={`card-icon card-icon--${card.iconLayout}`} aria-hidden="true">
@@ -77,9 +78,7 @@ const cards = [
           <p class="card-description">{card.description}</p>
         </div>
       ))}
-    </div>
-
-
+    </CardGrid>
   </div>
 </section>
 
@@ -89,10 +88,6 @@ const cards = [
     padding-bottom: clamp(44px, 6vw, 76px);
     background-color: var(--bg-page);
     position: relative;
-  }
-
-  .identification-section .container {
-    padding-inline: 32px;
   }
 
   .identification-eyebrow {
@@ -113,31 +108,19 @@ const cards = [
     color: var(--color-text-body);
   }
 
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 18px;
-    row-gap: 38.5px;
-    margin-bottom: 0;
-    text-align: center;
-  }
-
   .card-item {
     width: 100%;
-    max-width: 346.67px;
-    height: 212px;
-    justify-self: center;
+    min-height: 212px;
     background: linear-gradient(180deg, var(--color-white) 0%, #EEF6FF 100%);
     border: 1px solid rgba(24, 181, 200, 0.3);
-    border-radius: var(--radius-card);
-    padding: 18px 28px;
+    border-radius: var(--card-radius);
+    padding: var(--card-padding-block) var(--card-padding-inline);
     box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 18px;
-    overflow: hidden;
+    gap: var(--card-content-gap);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   }
 
@@ -209,36 +192,4 @@ const cards = [
     text-wrap: pretty;
   }
 
-  @media (max-width: 1024px) {
-    .cards-grid {
-      grid-template-columns: repeat(2, minmax(0, 346.67px));
-      justify-content: center;
-      column-gap: 18px;
-      row-gap: 24px;
-    }
-  }
-
-  @media (max-width: 680px) {
-    .identification-section .container {
-      padding-inline: 20px;
-    }
-
-    .cards-grid {
-      grid-template-columns: minmax(0, 346.67px);
-      gap: 14px;
-      justify-content: center;
-    }
-
-    .card-item {
-      padding-inline: 28px;
-    }
-  }
-
-  @media (max-width: 359px) {
-    .card-item {
-      height: auto;
-      min-height: 212px;
-      padding-block: 22px;
-    }
-  }
 </style>

@@ -1,0 +1,56 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'div'> & {
+  as?: 'div' | 'ol';
+};
+
+const { as: Tag = 'div', class: className, ...attributes } = Astro.props;
+---
+
+<Tag {...attributes} class:list={['card-grid', className]}>
+  <slot />
+</Tag>
+
+<style>
+  /* Geometry from the approved method cards. Each section owns its content
+     and surface treatment; heights remain content-driven. */
+  .card-grid {
+    --card-padding-block: 20px;
+    --card-padding-inline: 20px;
+    --card-radius: 12px;
+    --card-content-gap: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+    list-style: none;
+  }
+
+  .card-grid > :global(*) {
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 760px;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .card-grid {
+      --card-padding-inline: 16px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 1076px;
+    }
+
+    /* Center a final pair without enlarging it or changing reading order. */
+    .card-grid > :global(:nth-child(4n + 1):nth-last-child(2)) {
+      grid-column: 2;
+    }
+  }
+</style>
