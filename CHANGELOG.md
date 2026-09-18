@@ -7,6 +7,16 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.2.0] - 2026-09-18
+
+### Modificado
+- Seções `#metodo` (desktop) e `#metodomobile` (mobile) implementadas a partir dos frames Figma `598:678` e `599:1009`: quatro cards ilustrados, nova composição, espaçamento e tipografia.
+- CTA de método exibido no mobile conforme o frame aprovado, mantendo a navegação para `#oferta` e reutilizando `CtaBlock` sem alterar os demais CTAs.
+
+### Adicionado
+- Quatro imagens originais do Figma em `src/assets/metodo`, com versões WebP responsivas geradas pelo Astro no build.
+- Workflow de build em `.github/workflows/ci.yml`, ativando a validação de Pull Requests já prevista em `VERSIONING.md`.
+
 ## [1.1.0] - 2026-08-27
 
 ### Adicionado
