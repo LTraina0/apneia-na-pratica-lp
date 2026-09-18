@@ -63,7 +63,7 @@ const cards = [
       Muitas vezes, os sinais aparecem de forma fragmentada durante a consulta. O desafio não é apenas perceber que algo pode estar acontecendo — é saber quais informações merecem atenção e como conectá-las.
     </p>
 
-    <CardGrid>
+    <CardGrid desktopColumns={3}>
       {cards.map((card, index) => (
         <div class={`card-item reveal delay-${(index % 3) + 1}`}>
           <div class={`card-icon card-icon--${card.iconLayout}`} aria-hidden="true">

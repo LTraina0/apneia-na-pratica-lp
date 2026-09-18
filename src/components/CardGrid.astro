@@ -3,12 +3,13 @@ import type { HTMLAttributes } from 'astro/types';
 
 type Props = HTMLAttributes<'div'> & {
   as?: 'div' | 'ol';
+  desktopColumns?: 3 | 4;
 };
 
-const { as: Tag = 'div', class: className, ...attributes } = Astro.props;
+const { as: Tag = 'div', desktopColumns = 4, class: className, ...attributes } = Astro.props;
 ---
 
-<Tag {...attributes} class:list={['card-grid', className]}>
+<Tag {...attributes} class:list={['card-grid', { 'card-grid--three': desktopColumns === 3 }, className]}>
   <slot />
 </Tag>
 
@@ -48,9 +49,10 @@ const { as: Tag = 'div', class: className, ...attributes } = Astro.props;
       max-width: 1076px;
     }
 
-    /* Center a final pair without enlarging it or changing reading order. */
-    .card-grid > :global(:nth-child(4n + 1):nth-last-child(2)) {
-      grid-column: 2;
+    /* Six-item sections form two complete rows; the method keeps four columns.
+       Outer alignment, gaps and all mobile/tablet geometry remain shared. */
+    .card-grid--three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 </style>

@@ -7,6 +7,13 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.2.4] - 2026-09-18
+
+### Corrigido
+- Grades de identificação e treinamento voltam a três colunas e duas linhas no desktop, eliminando a distribuição de quatro cards mais dois.
+- `CardGrid` aceita três ou quatro colunas no desktop, preservando margens, espaçamentos e comportamento mobile/tablet compartilhados.
+- Método mantém quatro colunas; Hero e cartilha continuam ocultas e preservadas.
+
 ## [1.2.3] - 2026-09-18
 
 ### Modificado

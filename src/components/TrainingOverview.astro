@@ -78,7 +78,7 @@ const bookletItems = [
       </p>
     </header>
 
-    <CardGrid aria-label="O que você vai aprender">
+    <CardGrid desktopColumns={3} aria-label="O que você vai aprender">
       {learningCards.map((card, index) => (
         <article class={`learning-card learning-card-scene-${index + 1} reveal reveal-soft delay-${Math.min(index + 1, 5)}`}>
           <div class:list={['learning-card-media', { 'has-image': card.image }]} aria-hidden="true">
