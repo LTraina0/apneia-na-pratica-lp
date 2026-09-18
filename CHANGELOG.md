@@ -7,6 +7,13 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.2.3] - 2026-09-18
+
+### Modificado
+- Hero original e card da cartilha temporariamente ocultos por configuração, sem exclusão de componentes, estilos ou imagens.
+- Página começa na seção de identificação enquanto a nova Hero não é implementada; título principal acessível mantido sem criar uma substituição visual.
+- Demais seções, cards aprovados e conteúdo comercial da oferta preservados.
+
 ## [1.2.2] - 2026-09-18
 
 ### Corrigido
