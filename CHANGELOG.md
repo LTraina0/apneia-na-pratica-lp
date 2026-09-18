@@ -7,6 +7,21 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.0] - 2026-09-18
+
+### Modificado
+- Hero substituída pela implementação fornecida em HeroLP-testing, preservando composição, textos, imagens, Inter e breakpoints da referência.
+- Estilos e tokens da nova Hero isolados no componente Astro; botão conectado à oferta existente.
+- Retrato consolidado em um único original com WebP responsivo gerado pelo Astro.
+
+### Removido
+- Hero anterior, suas duas imagens exclusivas e card ilustrado da cartilha, conforme autorização explícita.
+- Flags de ocultação, prop da cartilha e H1 provisório. Histórico anterior permanece no Git.
+
+### Preservado
+- Entregável cartilha, oferta, modal, FAQ e demais seções.
+- Grades desktop 3×2 e método 4×1, duas colunas no tablet, uma no celular e hover aprovado do método.
+
 ## [1.2.5] - 2026-09-18
 
 ### Modificado
