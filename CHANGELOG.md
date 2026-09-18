@@ -7,6 +7,13 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.2.1] - 2026-09-18
+
+### Corrigido
+- Refinamento responsivo dos cards de método: imagens na proporção original 4:3, sem esticamento ou recortes diferentes por etapa, largura máxima de 280px e intervalo uniforme de 18px até o título.
+- Títulos alinhados no desktop/tablet, descrições em 14px/21px e padding consistente; altura acompanha o conteúdo sem empurrar títulos para cima.
+- Grid de duas colunas limitado a 760px no tablet e coluna mobile limitada a 400px, evitando cards excessivamente largos.
+
 ## [1.2.0] - 2026-09-18
 
 ### Modificado
