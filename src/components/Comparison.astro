@@ -29,7 +29,7 @@ const layouts = [
         {steps.map(({ slug, image, title, description }) => (
           <li class={`process-card process-card--${slug}`}>
             <div class="process-image">
-              <Image src={image} alt="" widths={[330, 660, 900]} sizes="(min-width: 768px) 241px, (min-width: 480px) 420px, calc(100vw - 60px)" width={660} format="webp" quality={85} loading="lazy" decoding="async" />
+              <Image src={image} alt="" widths={[330, 660, 900]} sizes="(min-width: 1100px) 220px, (min-width: 362px) 280px, calc(100vw - 82px)" width={660} format="webp" quality={85} loading="lazy" decoding="async" />
             </div>
             <div class="process-card-copy">
               <h3>{title}</h3>
@@ -51,29 +51,26 @@ const layouts = [
   .clinical-process-section { background: var(--color-off-white); color: var(--color-text-body); text-align: center; }
   .clinical-process-section--desktop { display: none; }
   .clinical-process-section--mobile { padding: 20px; }
-  .process-content { width: 100%; max-width: 440px; margin: 0 auto; padding: 20px 0; }
+  .process-content { width: 100%; max-width: 400px; margin: 0 auto; padding: 20px 0; }
   .process-header { display: flex; flex-direction: column; align-items: center; gap: 11px; padding: 12px 0; margin-bottom: 20px; }
   .clinical-process-title { max-width: 326px; font-size: 23px; font-weight: 700; line-height: 26px; letter-spacing: -0.76px; color: var(--color-navy-700); text-wrap: initial; }
   .clinical-process-subtitle { font-size: 14px; line-height: 17px; letter-spacing: -0.14px; text-wrap: initial; }
   .process-cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; list-style: none; }
   .process-card {
-    display: flex; flex-direction: column; align-items: center; gap: 8.907px;
-    padding: 17.813px 8.907px;
-    border: 0.891px solid rgba(24, 181, 200, 0.3); border-radius: 11.498px;
+    display: grid; grid-template-rows: auto 1fr; justify-items: center; align-content: start; gap: 18px;
+    padding: 20px;
+    border: 1px solid rgba(24, 181, 200, 0.3); border-radius: 12px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0), #eef6ff);
     box-shadow: 0 3.563px 17.813px -1.781px rgba(15, 23, 42, 0.05), 0 1.781px 5.344px -0.891px rgba(15, 23, 42, 0.03);
     min-width: 0;
   }
-  .process-image { position: relative; width: 100%; aspect-ratio: 606 / 439; overflow: hidden; border-radius: 12px; }
-  .process-image :global(img) { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
-  .process-card--observar :global(img) { width: 100.11%; height: 103.64%; left: -0.06%; top: -0.23%; }
-  .process-card--organizar .process-image { aspect-ratio: 330 / 225; }
-  .process-card--decidir .process-image { aspect-ratio: 330 / 236; }
-  .process-card--organizar :global(img) { width: 100.12%; height: 110.14%; left: -0.06%; top: -1.72%; }
-  .process-card--decidir :global(img) { width: 100.12%; height: 105%; left: -0.06%; top: -1.89%; }
-  .process-card-copy { display: flex; flex-direction: column; gap: 4px; width: 100%; padding: 2px 8px; }
-  .process-card-copy h3 { font-size: 13.415px; font-weight: 800; line-height: 15px; letter-spacing: 0.4791px; color: var(--color-navy-700); }
-  .process-card-copy p { font-size: 13px; line-height: 15px; text-wrap: initial; }
+  /* All four originals are 1448 × 1086 (4:3). A shared image slot keeps
+     the titles aligned and avoids stretching/cropping individual steps. */
+  .process-image { width: 100%; max-width: 280px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 8px; }
+  .process-image :global(img) { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .process-card-copy { display: flex; flex-direction: column; gap: 8px; width: 100%; min-width: 0; }
+  .process-card-copy h3 { font-size: 14px; font-weight: 800; line-height: 20px; letter-spacing: 0.4px; color: var(--color-navy-700); }
+  .process-card-copy p { font-size: 14px; line-height: 21px; text-wrap: pretty; }
 
   :global(#metodomobile .method-cta) { padding: 0; width: 100%; margin-top: 12px; }
   :global(#metodomobile .cta-inner-wrapper) { gap: 12px; }
@@ -86,22 +83,15 @@ const layouts = [
   @media (min-width: 768px) {
     .clinical-process-section--mobile { display: none; }
     .clinical-process-section--desktop { display: flex; align-items: center; min-height: 659.54px; padding: 40px 32px; }
-    .process-content { max-width: 1076px; padding: 0; }
+    .process-content { max-width: 760px; padding: 0; }
     .process-header { gap: 4.9px; padding: 0; margin-bottom: 20px; }
     .clinical-process-title { max-width: 548px; font-size: 38px; line-height: 44.84px; }
     .clinical-process-subtitle { max-width: 616px; padding-top: 8px; min-height: 58px; font-size: 15.8px; line-height: 24.55px; letter-spacing: 0; }
-    .process-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10.905px; padding: 21.809px 0; }
-    .process-card { justify-content: space-between; min-height: 285.383px; gap: 8px; padding: 18.175px 9.087px; border-width: 0.909px; border-radius: 11.731px; }
-    .process-image { max-width: 240.829px; border-radius: 0; }
-    .process-card--organizar .process-image,
-    .process-card--decidir .process-image { aspect-ratio: 606 / 439; }
-    .process-card--organizar :global(img),
-    .process-card--decidir :global(img) { width: 100%; height: 100%; left: 0; top: 0; }
-    .process-card-copy { max-width: 240.829px; padding: 0; gap: 3.91px; }
-    .process-card-copy h3 { font-size: 13.687px; line-height: 16px; letter-spacing: 0.4888px; }
-    .process-card-copy p { font-size: 11.813px; line-height: 14.54px; }
+    .process-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 24px 0; }
   }
   @media (min-width: 1100px) {
-    .process-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .process-content { max-width: 1076px; }
+    .process-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .process-card { padding: 20px 16px; }
   }
 </style>
