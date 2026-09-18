@@ -7,6 +7,13 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.2.5] - 2026-09-18
+
+### Modificado
+- Cards de método recebem o mesmo hover da identificação: elevação de 3px, sombra e borda realçadas, imagem ampliada em 5% e transição compartilhada.
+- Efeito limitado a dispositivos com hover e ponteiro preciso; movimento desativado quando o usuário prefere movimento reduzido.
+- Layout, dimensões em repouso, copy, imagens e demais seções preservados.
+
 ## [1.2.4] - 2026-09-18
 
 ### Corrigido
