@@ -7,6 +7,18 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.3] - 2026-09-18
+
+### Corrigido
+- Hero Content passa a responder continuamente entre os frames de 1440px, 1707.333px e 1920px, eliminando a troca brusca de tamanho na resolução do notebook.
+- Variantes extra-wide implementadas a partir do Figma para 2560px, 3440px e 5120px, com conteúdo e composição visual centralizados sem overflow horizontal.
+
+### Modificado
+- Mockup da oferta substituído pelo arquivo `PRODUTO.png` fornecido, com dimensões e texto alternativo atualizados.
+
+### Preservado
+- Hero mobile/tablet, copy, destino dos CTAs, formulário de lead, preço, cards e demais seções aprovadas.
+
 ## [1.3.2] - 2026-09-18
 
 ### Corrigido

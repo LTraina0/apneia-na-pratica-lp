@@ -943,6 +943,200 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 }
 
+/*
+ * Fluid Hero Content bridge across the three approved desktop anchors:
+ * 1440px (378:99), 1707.333px (611:348 / content 611:368) and
+ * 1920px (378:102). Only the semantic content scales here; artwork keeps its
+ * existing art direction and breakpoints.
+ */
+@media (min-width: 1440px) {
+  .hero-section {
+    --hero-content-progress-a: clamp(0px, calc(100vw - 1440px), 267.333px);
+    --hero-content-progress-b: clamp(0px, calc(100vw - 1707.333px), 212.667px);
+  }
+
+  .hero-content {
+    margin-left: calc(200px + var(--hero-content-progress-a) * 0.19825461129 + var(--hero-content-progress-b) * 0.456112137755);
+    margin-top: calc(98.17971px + var(--hero-content-progress-a) * 0.06291875482 + var(--hero-content-progress-b) * 0.018126157408);
+    width: calc(404px + var(--hero-content-progress-a) * 0.19825461129 + var(--hero-content-progress-b) * 0.089341552756);
+    height: calc(447.189728px + var(--hero-content-progress-a) * 0.215004742844 + var(--hero-content-progress-b) * 0.104857733038);
+    padding: calc(6.526647px + var(--hero-content-progress-a) * 0.003202810727 + var(--hero-content-progress-b) * 0.001443331594);
+    gap: calc(6.526647px + var(--hero-content-progress-a) * 0.003202810727 + var(--hero-content-progress-b) * 0.001443331594);
+    --hero-copy-gap: calc(12.304275px + var(--hero-content-progress-a) * 0.003683862449 + var(--hero-content-progress-b) * 0.00744833472);
+    --hero-body-gap: calc(11.747956px + var(--hero-content-progress-a) * 0.005764858809 + var(--hero-content-progress-b) * 0.002598057056);
+    --hero-heading-min-height: calc(148px + var(--hero-content-progress-a) * 0.071072407821 + var(--hero-content-progress-b) * 0.03291530891);
+    --hero-description-min-height: calc(111px + var(--hero-content-progress-a) * 0.052369142605 + var(--hero-content-progress-b) * 0.028213121923);
+  }
+
+  .hero-body {
+    height: calc(384.618347px + var(--hero-content-progress-a) * 0.184316319374 + var(--hero-content-progress-b) * 0.090040723764);
+  }
+
+  .hero-copy {
+    height: calc(271.304321px + var(--hero-content-progress-a) * 0.127127910343 + var(--hero-content-progress-b) * 0.068579099914);
+  }
+
+  .hero-brand-logo {
+    width: calc(109.01403px + var(--hero-content-progress-a) * 0.053479222543 + var(--hero-content-progress-b) * 0.024129126757);
+    height: calc(42.991451px + var(--hero-content-progress-a) * 0.021070384128 + var(--hero-content-progress-b) * 0.009540859654);
+  }
+
+  .hero-headline {
+    max-width: calc(390.95px + var(--hero-content-progress-a) * 0.193200072569 + var(--hero-content-progress-b) * 0.084739263732);
+    font-size: calc(47.074px + var(--hero-content-progress-a) * 0.02513718845 + var(--hero-content-progress-b) * 0.007852652269);
+    line-height: calc(49.073px + var(--hero-content-progress-a) * 0.024078583639 + var(--hero-content-progress-b) * 0.010852647566);
+    letter-spacing: calc(-2.454px + var(--hero-content-progress-a) * -0.001202994019 + var(--hero-content-progress-b) * -0.000542632378);
+  }
+
+  .hero-description {
+    max-width: calc(389.31px + var(--hero-content-progress-a) * 0.191054231988 + var(--hero-content-progress-b) * 0.086073057879);
+    font-size: calc(17.993px + var(--hero-content-progress-a) * 0.008865347712 + var(--hero-content-progress-b) * 0.003935730508);
+    line-height: calc(22.083px + var(--hero-content-progress-a) * 0.01087781905 + var(--hero-content-progress-b) * 0.004829146036);
+    letter-spacing: calc(-1.027px + var(--hero-content-progress-a) * -0.000503862967 + var(--hero-content-progress-b) * -0.000227114079);
+    margin-left: calc(1.642px + var(--hero-content-progress-a) * 0.00079155585 + var(--hero-content-progress-b) * 0.000363511969);
+  }
+
+  .hero-actions {
+    height: calc(101.566048px + var(--hero-content-progress-a) * 0.051431075783 + var(--hero-content-progress-b) * 0.01981237766);
+    gap: calc(12.12px + var(--hero-content-progress-a) * 0.005947638339 + var(--hero-content-progress-b) * 0.002680246583);
+    padding-block: calc(12.120033px + var(--hero-content-progress-a) * 0.005947514897 + var(--hero-content-progress-b) * 0.002680246583);
+    padding-inline: calc(1.34664px + var(--hero-content-progress-a) * 0.000660962171 + var(--hero-content-progress-b) * 0.000297789502);
+  }
+
+  .btn-cta-primary {
+    max-width: calc(388.252838px + var(--hero-content-progress-a) * 0.190532438937 + var(--hero-content-progress-b) * 0.085849409395);
+    height: calc(53.206043px + var(--hero-content-progress-a) * 0.026106861926 + var(--hero-content-progress-b) * 0.01176681916);
+    border-radius: calc(5.221px + var(--hero-content-progress-a) * 0.002562347335 + var(--hero-content-progress-b) * 0.001156037373);
+    font-size: calc(16.09px + var(--hero-content-progress-a) * 0.007907740533 + var(--hero-content-progress-b) * 0.003559555549);
+    line-height: calc(16.71px + var(--hero-content-progress-a) * 0.008206992777 + var(--hero-content-progress-b) * 0.003695918972);
+    gap: calc(9.9px + var(--hero-content-progress-a) * 0.037780595736 + var(--hero-content-progress-b) * -0.039169217603);
+    box-shadow:
+      inset 0 calc(0.979px + var(--hero-content-progress-a) * 0.00047880359 + var(--hero-content-progress-b) * 0.000216300601) 0 rgba(92, 255, 168, 0.51),
+      calc(0.653px + var(--hero-content-progress-a) * 0.000317955509 + var(--hero-content-progress-b) * 0.000145767797)
+      calc(11.095px + var(--hero-content-progress-a) * 0.005446390831 + var(--hero-content-progress-b) * 0.002454541607)
+      calc(6.527px + var(--hero-content-progress-a) * -0.010604751377 + var(--hero-content-progress-b) * 0.018799343575)
+      rgba(0, 11, 10, 0.2);
+  }
+
+  .btn-cta-icon {
+    width: calc(20.74px + var(--hero-content-progress-a) * 0.008610983305 + var(--hero-content-progress-b) * 0.006573657408);
+    height: calc(24.76px + var(--hero-content-progress-a) * 0.011528692679 + var(--hero-content-progress-b) * 0.006244504319);
+  }
+
+  .security-note {
+    max-width: calc(388.252838px + var(--hero-content-progress-a) * 0.190532438937 + var(--hero-content-progress-b) * 0.085849409395);
+    font-size: calc(9.79px + var(--hero-content-progress-a) * 0.004821701773 + var(--hero-content-progress-b) * 0.002167708201);
+    line-height: calc(11.88px + var(--hero-content-progress-a) * 0.0058391594 + var(--hero-content-progress-b) * 0.002628522526);
+  }
+}
+
+/*
+ * Extra-wide art direction from Figma nodes 295:10, 295:11 and 295:12.
+ * The 2560px, 3440px and 5120px frames use one fixed 1080px-high
+ * composition centered horizontally; only the surrounding whitespace grows.
+ */
+@media (min-width: 2560px) {
+  .hero-section {
+    --hero-ultra-progress-a: clamp(0px, calc(100vw - 2560px), 880px);
+    --hero-ultra-progress-b: clamp(0px, calc(100vw - 3440px), 1680px);
+    height: 1080px;
+    min-height: 1080px;
+  }
+
+  .hero-background {
+    bottom: auto;
+    height: 1440px;
+  }
+
+  .hero-background-img {
+    height: 1440px;
+  }
+
+  .hero-visual-viewport {
+    height: 1080px;
+  }
+
+  .hero-visual-stage {
+    left: 50vw;
+    right: auto;
+    top: 0;
+    width: calc(1175.121948px + var(--hero-ultra-progress-a) * -0.000629910511 + var(--hero-ultra-progress-b) * -0.000635492234);
+    height: calc(1024.211548px + var(--hero-ultra-progress-a) * -0.00054903892 + var(--hero-ultra-progress-b) * -0.000553821103);
+  }
+
+  .hero-content {
+    margin-left: calc(50vw - 801px);
+    margin-top: 181px;
+    width: 648px;
+    height: 717.987px;
+    padding: 10.468px;
+    gap: 10.468px;
+    --hero-copy-gap: 20.121px;
+    --hero-body-gap: 18.843px;
+    --hero-heading-min-height: 237px;
+    --hero-description-min-height: 178px;
+  }
+
+  .hero-body {
+    height: 617.625px;
+  }
+
+  .hero-copy {
+    height: 435.121px;
+  }
+
+  .hero-brand-logo {
+    width: 174.854px;
+    height: 68.957px;
+    filter: drop-shadow(0 2.094px 6.281px rgba(12, 38, 88, 0.05));
+  }
+
+  .hero-headline {
+    max-width: 627.061px;
+    font-size: 75.505px;
+    line-height: 78.711px;
+    letter-spacing: -3.9355px;
+  }
+
+  .hero-description {
+    max-width: 624.438px;
+    font-size: 28.861px;
+    line-height: 35.42px;
+    letter-spacing: -1.6466px;
+    margin-left: 2.632px;
+  }
+
+  .hero-actions {
+    height: 163.66px;
+    gap: 19.44px;
+    padding-block: 19.44px;
+    padding-inline: 2.16px;
+  }
+
+  .btn-cta-primary {
+    max-width: 622.742px;
+    height: 85.34px;
+    border-radius: 8.375px;
+    font-size: 25.812px;
+    line-height: 26.805px;
+    gap: 15.885px;
+    box-shadow:
+      inset 0 1.57px 0 rgba(92, 255, 168, 0.51),
+      1.047px 17.796px 10.468px rgba(0, 11, 10, 0.2);
+  }
+
+  .btn-cta-icon {
+    width: 33.269px;
+    height: 39.712px;
+  }
+
+  .security-note {
+    max-width: 622.742px;
+    font-size: 15.703px;
+    line-height: 19.053px;
+  }
+}
+
 /* Desktop fidelity: Figma 378:99 and 378:102. Mobile flow stays unchanged. */
 @media (min-width: 1024px) {
   .hero-body, .hero-copy {
