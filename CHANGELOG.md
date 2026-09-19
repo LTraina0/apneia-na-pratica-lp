@@ -7,6 +7,14 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.4] - 2026-09-18
+
+### Corrigido
+- Mockup da oferta passa a respeitar a proporção original de 1465×1074px com `object-fit: contain`, eliminando o corte do smartphone e do material de apoio em mobile e desktop.
+
+### Preservado
+- Conteúdo, largura do card, preço, CTA e demais seções aprovadas.
+
 ## [1.3.3] - 2026-09-18
 
 ### Corrigido
