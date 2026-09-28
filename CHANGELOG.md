@@ -7,6 +7,15 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.6] - 2026-09-28
+
+### Corrigido
+- URL do mockup da oferta versionada para evitar que o navegador ou a CDN reutilize a imagem anterior em cache.
+- O arquivo continua usando o mockup final fornecido, com proporção integral e dimensões de 1531×1027px.
+
+### Preservado
+- Layout da oferta, preço, CTA e demais seções aprovadas.
+
 ## [1.3.5] - 2026-09-28
 
 ### Modificado
