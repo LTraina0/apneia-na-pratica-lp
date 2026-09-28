@@ -7,6 +7,15 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.5] - 2026-09-28
+
+### Modificado
+- Mockup da oferta atualizado para a composição com notebook, smartphone e o novo Guia Prático Apneia do Sono.
+- Dimensões, proporção do contêiner e texto alternativo ajustados ao arquivo final de 1531×1027px.
+
+### Preservado
+- Enquadramento integral sem recorte, conteúdo, preço, CTA e demais seções aprovadas.
+
 ## [1.3.4] - 2026-09-18
 
 ### Corrigido
