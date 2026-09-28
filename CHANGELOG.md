@@ -7,6 +7,16 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
 
+## [1.3.6] - 2026-09-28
+
+### Corrigido
+- URL do mockup da oferta versionada para evitar que o navegador ou a CDN reutilize a imagem anterior em cache.
+- Área transparente excedente aparada visualmente para aproximar o mockup do título e reduzir o espaço vazio abaixo da imagem.
+- Todos os componentes visíveis do mockup são preservados, com margem transparente de segurança.
+
+### Preservado
+- Layout da oferta, preço, CTA e demais seções aprovadas.
+
 ## [1.3.5] - 2026-09-28
 
 ### Modificado
